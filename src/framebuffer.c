@@ -33,12 +33,13 @@ static unsigned render_grid(Framebuffer *f,const uint32_t *cells,int width,int h
         if (uppercase && ch>='a' && ch<='z') ch=ch-'a'+'A';
         if (ch==160) ch=32; /* NBSP has space semantics. */
         uint16_t glyph=glyph_bits(ch,&missing);
-        unsigned fg=(cell>>16)&63,bg=(cell>>22)&63,style=cell>>28;
+        unsigned fg=(cell>>16)&63,bg=(cell>>22)&63,style=(cell>>28)&3;
         /* Nonblack colors become on; bright black remains visible. */
         int ink=fg!=30 || style==1, paper=bg!=40 && bg!=49;
-        for (int y=0;y<5;y++) for (int x=0;x<3;x++) {
-            int stroke=(glyph>>(14-y*3-x))&1;
-            if (stroke ? ink:paper) {
+        int cursor=step_x==4 && step_y==6 && (cell&CELL_CURSOR);
+        for (int y=0;y<(cursor ? 6:5);y++) for (int x=0;x<(cursor ? 4:3);x++) {
+            int stroke=cursor ? 1:(glyph>>(14-y*3-x))&1;
+            if (cursor || (stroke ? ink:paper)) {
                 int px=8+(i%width)*step_x+x,py=4+(i/width)*step_y+y;
                 f->bits[py*FB_STRIDE+px/8]|=(uint8_t)(128>>(px%8));
             }

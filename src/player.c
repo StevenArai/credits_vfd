@@ -15,6 +15,7 @@ int player_step(Player *p,double now,unsigned keys,int active) {
     if (!active) {
         p->active=0;
         for (int i=0;i<CANVAS_CELLS;i++) p->animation->canvas.cells[i]=cell_pack(32,39,49,0);
+        for (int i=0;i<CANVAS_CELLS;i++) p->animation->canvas.cursor[i]=0;
         p->animation->canvas.background=49;
         return 2;
     }

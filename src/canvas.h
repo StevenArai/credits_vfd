@@ -2,6 +2,7 @@
 #define CREDITS_CANVAS_H
 #include "memory.h"
 #include <stdint.h>
+#define CELL_CURSOR (UINT32_C(1) << 30) /* Presentation metadata, never packed into baseline cells. */
 #define CANVAS_WIDTH 80
 #define CANVAS_HEIGHT 24
 #define CANVAS_CELLS (CANVAS_WIDTH * CANVAS_HEIGHT)
@@ -12,11 +13,14 @@ typedef struct {
     Section *groups;
     int count, capacity, peak_groups, peak_string, background;
     uint32_t cells[CANVAS_CELLS];
+    uint8_t cursor[CANVAS_CELLS];
 } Canvas;
 void canvas_init(Canvas *c, Memory *memory);
 void canvas_destroy(Canvas *c);
 void canvas_string(Canvas *c, double x, int y, const char *utf8, const char *code);
 void canvas_chars(Canvas *c, double x, int y, const uint32_t *text, int length, const char *code);
+/* cursor_index counts decoded characters; -1 selects the final character. */
+void canvas_string_cursor(Canvas *c, double x, int y, const char *utf8, const char *code, int cursor_index);
 void canvas_char(Canvas *c, double x, int y, const char *utf8, const char *code);
 void canvas_clear(Canvas *c);
 void canvas_render(Canvas *c);

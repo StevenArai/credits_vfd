@@ -43,7 +43,7 @@ static void ui(Credits *a,int part,int title) {
     case 2: canvas_string(&a->canvas,1,4,"running pure Python 3.6",CYAN NORMAL); break;
     case 3: canvas_string(&a->canvas,1,5,"in the command line",CYAN NORMAL); break;
     case 4: canvas_string(&a->canvas,0,21,"--------------------------------------------------------------------------------",WHITE BRIGHT); break;
-    case 5: canvas_string(&a->canvas,1,22,"> _ ",WHITE BRIGHT); break;
+    case 5: canvas_string_cursor(&a->canvas,1,22,"> _ ",WHITE BRIGHT,2); break;
     case 6: credits_multiline(a,26,14,
         "----------------------------\n"
         "|                          |\n|                          |\n|                          |\n"

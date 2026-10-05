@@ -130,6 +130,14 @@ void canvas_string(Canvas *c, double x, int y, const char *utf8, const char *cod
     canvas_chars(c,x,y,text.data,text.size,code);
     free_text(c,&text);
 }
+void canvas_string_cursor(Canvas *c, double x, int y, const char *utf8, const char *code, int cursor_index) {
+    Characters text=decode(c,utf8);
+    int index=cursor_index==-1 ? text.size-1:cursor_index;
+    if (index<0 || index>=text.size) credits_fail("cursor outside decoded string");
+    text.data[index]|=CELL_CURSOR;
+    canvas_chars(c,x,y,text.data,text.size,code);
+    free_text(c,&text);
+}
 void canvas_char(Canvas *c, double x, int y, const char *utf8, const char *code) {
     Characters text=decode(c,utf8);
     int loc=(int)(x*2)+y*80, i=bisect(c,loc)-1;
@@ -204,12 +212,15 @@ void canvas_render(Canvas *c) {
             stop=80-offset+split;
             int end=min_int(stop,s->text.size);
             for (int j=split;j<end;j++) {
-                uint32_t ch=s->text.data[j];
+                uint32_t raw=s->text.data[j],ch=raw&65535;
                 if (ch=='\n') { row++; col=0; }
                 else if (ch=='\r') col=0;
                 else {
                     if (col>=80) { row++; col=0; }
-                    if (row>=0 && row<24) c->cells[row*80+col]=cell_pack(ch,fg,bg,style);
+                    if (row>=0 && row<24) {
+                        c->cells[row*80+col]=cell_pack(ch,fg,bg,style);
+                        c->cursor[row*80+col]=(raw&CELL_CURSOR)!=0;
+                    }
                     col++;
                 }
             }

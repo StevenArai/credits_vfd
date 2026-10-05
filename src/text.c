@@ -27,7 +27,10 @@ void credits_type_characters(Credits *a,Typewriter *t,int x,int y,const char *co
             buffer[n]=0;
             if (local<count && begin[local]=='@') extra+=3;
             total+=count;
-            if (render) canvas_string(&a->canvas,x,y+line,buffer,colour);
+            if (render) {
+                if (local<count-1) canvas_string_cursor(&a->canvas,x,y+line,buffer,colour,-1);
+                else canvas_string(&a->canvas,x,y+line,buffer,colour);
+            }
         }
         if (!end) break;
         begin=end+1; line++;

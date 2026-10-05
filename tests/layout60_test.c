@@ -55,6 +55,47 @@ int main(int argc,char **argv) {
         }
     }
     CHECK(labels_seen==3); credits_destroy(a);
+    /* Semantic cursor survives UTF-8 decoding, line wrap, overwrite and clear. */
+    credits_init(a,1);
+    canvas_string_cursor(&a->canvas,39,0,"\xc2\xb0__","",-1);
+    canvas_render(&a->canvas);
+    CHECK(!a->canvas.cursor[78] && !a->canvas.cursor[79] && a->canvas.cursor[80]);
+    CHECK((a->canvas.cells[80]&65535)=='_' && !(a->canvas.cells[80]&CELL_CURSOR));
+    canvas_render(&a->canvas); CHECK(a->canvas.cursor[80]);
+    canvas_string(&a->canvas,0,1,"_",""); canvas_render(&a->canvas);
+    CHECK(!a->canvas.cursor[80]);
+    canvas_string_cursor(&a->canvas,0,1,"_","",0);
+    canvas_clear(&a->canvas); canvas_render(&a->canvas);
+    for (int i=0;i<CANVAS_CELLS;i++) CHECK(!a->canvas.cursor[i]);
+    Typewriter typer={.characters="_ABC",.offset=1};
+    credits_type_characters(a,&typer,0,0,"",1); canvas_render(&a->canvas);
+    CHECK(!a->canvas.cursor[0] && a->canvas.cursor[1]);
+    typer.offset=3;
+    credits_type_characters(a,&typer,0,0,"",1); canvas_render(&a->canvas);
+    CHECK(!a->canvas.cursor[1]);
+    /* Long line wraps and scrolls; marker must travel with its character. */
+    canvas_clear(&a->canvas); canvas_render(&a->canvas);
+    char longline[81]; memset(longline,'A',79); longline[79]='_'; longline[80]=0;
+    canvas_string_cursor(&a->canvas,0,23,longline,"",-1); canvas_render(&a->canvas);
+    a->scheduler.count=0;
+    layout60_render(&layout,a);
+    CHECK(layout.scrolled_rows==5 && (layout.cells[19*60+19]&CELL_CURSOR));
+    /* All 24 pixels, including gutters, light even with black foreground.
+       Ordinary underscores remain font glyphs. Last cell stays in bounds. */
+    for (int i=0;i<1200;i++) layout.cells[i]=cell_pack(' ',39,49,0);
+    layout.cells[1199]=cell_pack('_',30,49,0)|CELL_CURSOR;
+    framebuffer_render60(&f,layout.cells,1);
+    int lit=0;
+    for (int y=0;y<128;y++) for (int x=0;x<256;x++) {
+        int expected=x>=244 && x<248 && y>=118 && y<124;
+        CHECK(framebuffer_pixel(&f,x,y)==expected); lit+=framebuffer_pixel(&f,x,y);
+    }
+    CHECK(lit==24);
+    layout.cells[1199]=cell_pack('_',39,49,0);
+    framebuffer_render60(&f,layout.cells,1);
+    CHECK(!framebuffer_pixel(&f,247,123) && framebuffer_pixel(&f,244,122));
+    printf("Cursor semantics and 4x6 pixels passed; Canvas=%zu Credits=%zu bytes\n",sizeof(Canvas),sizeof(Credits));
+    credits_destroy(a); CHECK(a->memory.live==0);
     unsigned peak=0; FILE *previews=argc==2 ? fopen(argv[1],"wb"):NULL;
     for (int seed=0;seed<3;seed++) {
         credits_init(a,(uint64_t)seed);
