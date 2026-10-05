@@ -1,0 +1,28 @@
+{
+  "host": {
+    "Credits": 10776,
+    "Canvas": 4812,
+    "WordLine": 16,
+    "HistoryEntry": 24,
+    "Text": 32,
+    "Random": 2512,
+    "Ocean": 504,
+    "Weather": 56,
+    "Layout60": 4804,
+    "Framebuffer": 4096,
+    "FixedPlayer": 72
+  },
+  "arm": {
+    "Credits": 10264,
+    "Canvas": 4812,
+    "WordLine": 12,
+    "HistoryEntry": 12,
+    "Text": 20,
+    "Random": 2512,
+    "Ocean": 496,
+    "Weather": 56,
+    "Layout60": 4804,
+    "Framebuffer": 4096,
+    "FixedPlayer": 72
+  }
+}

@@ -1,0 +1,82 @@
+[
+  {
+    "hz": 100,
+    "polls": 27562,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 12.5499,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 100,
+    "polls": 27562,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 10.5043,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 100,
+    "polls": 27562,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 8.7666,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 100,
+    "polls": 27562,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 8.9509,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 100,
+    "polls": 27562,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 9.416,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 1000,
+    "polls": 275618,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 13.8706,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 1000,
+    "polls": 275618,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 11.7924,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 1000,
+    "polls": 275618,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 13.4706,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 1000,
+    "polls": 275618,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 17.6676,
+    "canvas_hash": "75111843d4cdc0e5"
+  },
+  {
+    "hz": 1000,
+    "polls": 275618,
+    "updates": 6509,
+    "frames": 6509,
+    "cpu_wall_ms": 12.3575,
+    "canvas_hash": "75111843d4cdc0e5"
+  }
+]

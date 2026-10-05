@@ -9,6 +9,8 @@
 
 ## 构建与运行
 
+当前原生运行版已使用离散数值查表和Q32.32定点播放器；时间精度、表范围及资源变化见 [LOOKUP_FIXED_TIME.md](docs/LOOKUP_FIXED_TIME.md)。普通最新构建为 `build/ocean-overlay/credits_sdl.exe`，内嵌音频版本见下文。
+
 单文件 Windows 版本：`build/standalone/credits_sdl.exe`，内嵌原始 WAV 并静态链接 SDL，无需旁置 `credits.wav` 或 `SDL2.dll`。仍依赖 Windows 系统组件/UCRT。默认播放内嵌音乐，`--audio 文件路径` 可覆盖。
 
 重建单文件版本：`./tools/build.ps1 -BuildDir build/standalone -Standalone`。CMake 对应 `CREDITS_SDL=ON`、`CREDITS_STANDALONE=ON`，可用 `CREDITS_WAV` 指定要内嵌的 WAV。此 Windows 资源加载只在主机前端，不进入可移植核心；WAV 与 EXE 不提交 Git。

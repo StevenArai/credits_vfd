@@ -1,0 +1,109 @@
+Start testing: Oct 06 00:49 中国标准时间
+----------------------------------------------------------
+19/33 Testing: sdl_audio_transport
+19/33 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/direct60-sanitize/credits_sdl.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"sdl_audio_transport" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmpftt4da_a\tone.wav backend=dummy rate=44100 duration=7.000023 wav_bytes=617402 queue_limit=16384 device_frames=512 host_pixels=1658880 core=10776 framebuffer=4096
+display_readback=matched 864x480
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=63 beat=96 audio_position=7.000023 wall_seconds=5.549030 max_compute_ms=0.963 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+core_peak=17116 core_live=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   6.08 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 06 00:49 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:06
+----------------------------------------------------------
+
+26/33 Testing: charbuf60
+26/33 Test: charbuf60
+Command: "D:/credits_vfd/build/direct60-sanitize/charbuf60_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"charbuf60" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+native char_buf bounds, wrap, scroll, cursor, title and stop passed; zero canvas allocations
+<end of output>
+Test time =   0.11 sec
+----------------------------------------------------------
+Test Passed.
+"charbuf60" end time: Oct 06 00:49 中国标准时间
+"charbuf60" time elapsed: 00:00:00
+----------------------------------------------------------
+
+29/33 Testing: ocean60_motion
+29/33 Test: ocean60_motion
+Command: "D:/credits_vfd/build/direct60-sanitize/ocean60_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"ocean60_motion" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+4800 updates; 2265600 exact one-column translations; scheduler flicker every tick with unchanged motion cadence; no frame allocations
+<end of output>
+Test time =   0.26 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_motion" end time: Oct 06 00:49 中国标准时间
+"ocean60_motion" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/33 Testing: ocean60_python_glitch
+30/33 Test: ocean60_python_glitch
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/ocean60_glitch_test.py" "D:/credits_vfd/build/direct60-sanitize/ocean60_glitch_probe.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"ocean60_python_glitch" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+seed 0: 1680 rendered frames (including stationary redraws) match original mutate_text; 13916 transient cells; 118 non-saturated frames at glitch=500
+seed 1: 1680 rendered frames (including stationary redraws) match original mutate_text; 13519 transient cells; 118 non-saturated frames at glitch=500
+seed 42: 1680 rendered frames (including stationary redraws) match original mutate_text; 13263 transient cells; 118 non-saturated frames at glitch=500
+<end of output>
+Test time =   6.89 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_python_glitch" end time: Oct 06 00:49 中国标准时间
+"ocean60_python_glitch" time elapsed: 00:00:06
+----------------------------------------------------------
+
+31/33 Testing: native_math_lookup
+31/33 Test: native_math_lookup
+Command: "D:/credits_vfd/build/direct60-sanitize/math_lookup_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"native_math_lookup" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+All lookup entries match host reference math; 10821 read-only bytes
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"native_math_lookup" end time: Oct 06 00:49 中国标准时间
+"native_math_lookup" time elapsed: 00:00:00
+----------------------------------------------------------
+
+33/33 Testing: fixed_player_precision
+33/33 Test: fixed_player_precision
+Command: "D:/credits_vfd/build/direct60-sanitize/player_fixed_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"fixed_player_precision" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+3900 legacy jitter/input comparisons; 6509 exact/one-LSB boundaries; 10 million-beat horizon and sample conversion precision passed
+<end of output>
+Test time =   0.41 sec
+----------------------------------------------------------
+Test Passed.
+"fixed_player_precision" end time: Oct 06 00:49 中国标准时间
+"fixed_player_precision" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 06 00:49 中国标准时间

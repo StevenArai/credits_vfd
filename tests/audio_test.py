@@ -5,7 +5,8 @@ with tempfile.TemporaryDirectory() as d:
     wav=Path(d)/'tone.wav'; bmp=Path(d)/'display.bmp'
     with wave.open(str(wav),'wb') as out:
         out.setparams((1,2,44100,0,'NONE','not compressed'))
-        out.writeframes(b''.join(struct.pack('<h',1000 if i%100<50 else -1000) for i in range(44100*7)))
+        # Fractional-second EOF catches fixed-time rounding/termination bugs.
+        out.writeframes(b''.join(struct.pack('<h',1000 if i%100<50 else -1000) for i in range(44100*7+1)))
     env=dict(os.environ,SDL_AUDIODRIVER='dummy',SDL_VIDEODRIVER='dummy')
     run=subprocess.run([sys.argv[1],'--audio',str(wav),'--scripted','--seconds','10','--snapshot',str(bmp)],env=env,capture_output=True,text=True,timeout=15)
     print(run.stderr)
@@ -23,6 +24,6 @@ with tempfile.TemporaryDirectory() as d:
         actual=r<<16|g<<8|b
         # A paused frame may be captured only after the scripted drag wakes presentation.
         assert actual==expected or (x in (378,594) and actual==0xeeeeee), (x,hex(actual),hex(expected))
-    assert 'audio_position=7.000000' in run.stderr, 'must stop at exact sample EOF'
+    assert 'audio_position=7.000023' in run.stderr, 'must stop at exact sample EOF'
     assert float(re.search(r'max_backlog_ms=([0-9.]+)',run.stderr)[1])<0.001
     print('SDL queue pause/resume/seek/EOF and RGB readback passed')

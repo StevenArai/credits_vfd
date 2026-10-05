@@ -1,0 +1,16 @@
+sdl_audio_transport 6 0.886014
+direct60_clock_sync 4 0.0113427
+direct60_comparison 5 1.33727
+ocean60_motion 5 0.00845844
+ocean60_python_glitch 4 0.476263
+native_math_lookup 2 0.00839495
+exported_math_tables 2 0.0471164
+fixed_player_precision 2 0.030159
+player_1 1 2.86098
+player_2 1 1.82552
+player_3 1 1.75681
+player_4 1 1.29917
+player_5 1 1.2077
+player_6 1 0.802879
+charbuf60 1 0.0218241
+---

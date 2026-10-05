@@ -13,7 +13,7 @@ out = (ROOT / a.out).resolve()
 out.mkdir(parents=True, exist_ok=True)
 common = [a.cc, '-std=c99', '-O3', '-ffp-contract=off', '-DCREDITS_DIRECT60=1', '-I', str(ROOT/'src'), '-I', str(out)]
 sources = [str(ROOT/'src'/f'{m}.c') for m in NATIVE]
-for module in ('scenes60', 'weather', 'player', 'ocean60', 'framebuffer'):
+for module in ('scenes60', 'weather', 'player_fixed', 'ocean60', 'framebuffer'):
     subprocess.run(common + ['-S', '-emit-llvm', str(ROOT/'src'/f'{module}.c'), '-o', str(out/f'{module}.ll')], check=True)
 
 # Link-time wrappers count calls AFTER compiler optimization, not source macros.
@@ -39,34 +39,13 @@ for seed in (0,1,42):
     results.append(result)
 (out/'math-calls.json').write_text(json.dumps(results, indent=2))
 
-# Measured build-only experiment: hoist the access-grid invariant, no production edit.
-scene = (ROOT/'src/scenes60.c').read_text()
-old = '                int limit=32-(int)pow(b,1.2); if (limit<1) limit=1;'
-assert old in scene
-scene = scene.replace(old, '')
-marker = 'static void access_grid(Credits *a,int b,int randomize) {'
-scene = scene.replace(marker, marker + '\n    int limit=1;\n    if (randomize) { limit=32-(int)pow(b,1.2); if (limit<1) limit=1; }')
-variant = out/'scenes60_hoist.c'
-variant.write_text(scene)
-variant_sources = [str(variant) if Path(s).name=='scenes60.c' else s for s in sources]
-exe = out/'hoist_math.exe'
-subprocess.run(common + ['-DPROFILE_COUNTS'] + variant_sources + [str(ROOT/'tools/profile_driver.c'), str(ROOT/'src/host_time.c'), str(out/'math_wrap.c'), '-Wl,'+','.join('--wrap='+n for n in math), '-o', str(exe)], check=True)
-results = []
-for seed in (0,1,42):
-    result = json.loads(subprocess.check_output([str(exe), str(seed)], text=True))
-    assert result['digest'] == json.loads((out/f'timing-{seed}.json').read_text())['digest']
-    results.append(result)
-(out/'hoist-experiment.json').write_text(json.dumps(results, indent=2))
-
 exe = out/'player_poll.exe'
 subprocess.run(common + sources + [str(ROOT/'tools/profile_player.c'), str(ROOT/'src/host_time.c'), '-o', str(exe)], check=True)
 results = [json.loads(subprocess.check_output([str(exe), str(hz)], text=True)) for hz in (100,1000) for repeat in range(5)]
 assert len({r['canvas_hash'] for r in results}) == 1
 (out/'player-poll.json').write_text(json.dumps(results, indent=2))
-# Exact native surface body, isolated solely to inspect ARM lowering without an MCU libc.
-source = (ROOT/'src/ocean60.c').read_text()
-body = source[source.index('static int surface('):source.index('static uint32_t noise(')].replace('static int surface(', 'int surface(')
-probe = out/'arm_surface.c'
-probe.write_text('double sin(double); double cos(double); double floor(double);\nenum { SEA_HEIGHT=8 };\n'+body)
-subprocess.run([a.cc, '-target', 'arm-none-eabi', '-mcpu=cortex-m4', '-mfloat-abi=soft', '-O3', '-S', str(probe), '-o', str(out/'arm_surface.s')], check=True)
+# Compile the actual fixed player for M0 soft ABI; no SDK/link/runtime implied.
+subprocess.run([a.cc, '-target', 'arm-none-eabi', '-mcpu=cortex-m0', '-mfloat-abi=soft',
+                '-DCREDITS_DIRECT60=1', '-I', str(ROOT/'src'), '-O3', '-S',
+                str(ROOT/'src/player_fixed.c'), '-o', str(out/'arm_player_fixed.s')], check=True)
 print(out)

@@ -1,7 +1,7 @@
 /* Native character coordinates. No 80x24 rendering or post-layout pass. */
 #include "credits.h"
 #include "colours.h"
-#include <math.h>
+#include "math_lookup.h"
 #include <stdio.h>
 #include <string.h>
 static void ui(Credits *a,int part,int title) {
@@ -78,11 +78,11 @@ static void loading(Credits *a,int scene,int g) {
     } else if (g==6) credits_type_words(a,credits_typer(a,scene,g),6,11,0);
 }
 static void access_grid(Credits *a,int b,int randomize) {
+    int limit=randomize ? math_access_limit(b):1;
     for (int block=0;block<4;block++) {
         for (int line=0;line<3;line++) {
             char text[58]; int offset=0;
             for (int x=0;x<6;x++) {
-                int limit=32-(int)pow(b,1.2); if (limit<1) limit=1;
                 int visible=!randomize || random_int(&a->random,0,limit)<4;
                 char item[8];
                 if (!visible) strcpy(item,"       ");
@@ -111,14 +111,14 @@ static void access_ping(Credits *a) {
     }
 }
 static void poweroff(Credits *a,int g,int b) {
-    int adjusted=b-2+g,height=(int)(20/pow(adjusted,1.3));
+    int adjusted=b-2+g,height=math_poweroff_height(adjusted);
     if (height<0 || height>20) credits_fail("poweroff height");
     const char *colours[]={BLACK NORMAL,BLACK BRIGHT,WHITE NORMAL,WHITE BRIGHT};
     uint32_t row[60]; for (int x=0;x<60;x++) row[x]='#';
     for (int y=0;y<height;y++) canvas_chars(&a->canvas,0,10-height/2+y,row,60,colours[g]);
 }
 static void noise(Credits *a,int b,int wipe) {
-    int count=(int)pow(b,wipe ? 1.4:2.2);
+    int count=math_noise_count(b,wipe);
     int white=b,normal=70-b,black=4*(40-b);
     if (normal<0) normal=0;
     if (black<0) black=0;
@@ -151,8 +151,7 @@ void credits_request_generator(void *context,int scene,int g,int beat) {
         else {
             int render=1;
             if (scene==SC_OCEAN_C) {
-                int mod=(int)pow(beat,g==1 ? 1.143:1.2)%20;
-                render=g==1 ? (mod!=0 && mod!=8 && mod!=17 && mod!=15):g==2 ? (mod==0 || mod==15):g==3 ? mod==8:mod==17;
+                render=math_ocean_text(beat,g);
             }
             credits_type_characters(a,credits_typer(a,scene,g),2,1,scene==SC_OCEAN_B ? BRIGHT WHITE:BRIGHT RED,render);
         }

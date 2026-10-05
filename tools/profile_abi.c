@@ -2,6 +2,7 @@
 #include "credits.h"
 #include "layout60.h"
 #include "framebuffer.h"
+#include "player_fixed.h"
 #define SIZE(t) const unsigned size_##t=sizeof(t)
 SIZE(Credits); SIZE(Canvas); SIZE(WordLine);
 #ifndef CREDITS_DIRECT60
@@ -9,3 +10,5 @@ SIZE(Section); SIZE(Characters);
 #endif
 SIZE(HistoryEntry); SIZE(Text); SIZE(Random); SIZE(Ocean); SIZE(Weather);
 SIZE(Layout60); SIZE(Framebuffer);
+
+SIZE(FixedPlayer);

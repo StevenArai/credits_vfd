@@ -1,0 +1,50 @@
+Start testing: Oct 06 00:49 中国标准时间
+----------------------------------------------------------
+19/34 Testing: sdl_standalone
+19/34 Test: sdl_standalone
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/standalone_test.py" "D:/credits_vfd/build/standalone/credits_sdl.exe" "D:/credits_vfd/credits.wav"
+Directory: D:/credits_vfd/build/standalone
+"sdl_standalone" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+audio=embedded backend=dummy rate=44100 duration=278.845170 wav_bytes=49188288 queue_limit=32768 device_frames=512 host_pixels=1658880 core=10776 framebuffer=4096
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=time-limit
+phosphor=#00E89B uppercase=1
+presented=1 beat=-1 audio_position=0.986848 wall_seconds=1.003213 max_compute_ms=0.033 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=0 underruns=0
+core_peak=17030 core_live=0
+
+EXE-only launch, embedded WAV bytes, duration and audio progress passed
+<end of output>
+Test time =   2.01 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_standalone" end time: Oct 06 00:49 中国标准时间
+"sdl_standalone" time elapsed: 00:00:02
+----------------------------------------------------------
+
+20/34 Testing: sdl_audio_transport
+20/34 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/standalone/credits_sdl.exe"
+Directory: D:/credits_vfd/build/standalone
+"sdl_audio_transport" start time: Oct 06 00:49 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmpmb8u6pl7\tone.wav backend=dummy rate=44100 duration=7.000023 wav_bytes=617402 queue_limit=16384 device_frames=512 host_pixels=1658880 core=10776 framebuffer=4096
+display_readback=matched 864x480
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=50 beat=96 audio_position=7.000023 wall_seconds=4.913407 max_compute_ms=0.539 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+core_peak=17116 core_live=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   5.37 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 06 00:50 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:05
+----------------------------------------------------------
+
+End testing: Oct 06 00:50 中国标准时间

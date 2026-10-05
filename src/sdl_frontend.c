@@ -1,6 +1,6 @@
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
-#include "player.h"
+#include "player_fixed.h"
 #include "framebuffer.h"
 #include <stdlib.h>
 #include <string.h>
@@ -11,6 +11,13 @@
 #include <windows.h>
 #endif
 
+/* Floating-point conversions stay in the host display/diagnostic adapter. */
+static double time_seconds(FixedTime value) { return (double)value/4294967296.0; }
+static FixedTime fixed_now(void) {
+    Uint64 frequency=SDL_GetPerformanceFrequency();
+    if(!frequency || frequency>UINT32_MAX) { fputs("unsupported host counter frequency\n",stderr); exit(1); }
+    return fixed_time_ratio(SDL_GetPerformanceCounter(),(uint32_t)frequency);
+}
 /* Host owns decoded WAV and SDL's bounded queue. Core never sees SDL objects. */
 typedef struct {
     SDL_AudioDeviceID device;
@@ -148,8 +155,8 @@ int main(int argc,char **argv) {
     Credits *a=&animation;
     unsigned max_scrolled=0;
     if (!pixels || !a) fail("allocate host state");
-    credits_init(a,seed); Player p; player_init(&p,a,jump,seconds());
-    audio_seek(&audio,p.position);
+    credits_init(a,seed); FixedPlayer p; fixed_player_init(&p,a,jump,fixed_now());
+    audio_seek(&audio,time_seconds(p.position));
     SDL_PauseAudioDevice(audio.device,0);
     double start=seconds(),max_compute=0,max_backlog=0,paused_position=-1;
     unsigned presented=0,missing=0,pending=0; int quit=0,script_stage=0,saved=0;
@@ -166,15 +173,15 @@ int main(int argc,char **argv) {
                 SDL_Keycode key=event.key.keysym.sym;
                 if (key==SDLK_ESCAPE) { quit=1; exit_reason="escape"; }
                 if (key==SDLK_u && !event.key.repeat) { uppercase=!uppercase; dirty=1; }
-                if (key==SDLK_p) pressed|=KEY_PAUSE;
-                if (key==SDLK_COMMA) pressed|=KEY_COMMA;
-                if (key==SDLK_PERIOD) pressed|=KEY_PERIOD;
-                if (key==SDLK_SLASH) pressed|=KEY_SLASH;
+                if (key==SDLK_p) pressed|=FP_PAUSE;
+                if (key==SDLK_COMMA) pressed|=FP_COMMA;
+                if (key==SDLK_PERIOD) pressed|=FP_PERIOD;
+                if (key==SDLK_SLASH) pressed|=FP_SLASH;
                 if (key>=SDLK_1 && key<=SDLK_6) {
                     SDL_PauseAudioDevice(audio.device,1);
                     credits_destroy(a); credits_init(a,seed);
-                    player_init(&p,a,(int)(key-SDLK_1+1),seconds());
-                    audio_seek(&audio,p.position); SDL_PauseAudioDevice(audio.device,0);
+                    fixed_player_init(&p,a,(int)(key-SDLK_1+1),fixed_now());
+                    audio_seek(&audio,time_seconds(p.position)); SDL_PauseAudioDevice(audio.device,0);
                 }
             }
             if (event.type==SDL_MOUSEBUTTONDOWN && event.button.button==SDL_BUTTON_LEFT &&
@@ -190,9 +197,9 @@ int main(int argc,char **argv) {
         }
         const Uint8 *keys=SDL_GetKeyboardState(NULL);
         pending|=pressed;
-        unsigned input=pending|(keys[SDL_SCANCODE_P] ? KEY_PAUSE:0)|
-            (keys[SDL_SCANCODE_COMMA] ? KEY_COMMA:0)|(keys[SDL_SCANCODE_PERIOD] ? KEY_PERIOD:0)|
-            (keys[SDL_SCANCODE_SLASH] ? KEY_SLASH:0);
+        unsigned input=pending|(keys[SDL_SCANCODE_P] ? FP_PAUSE:0)|
+            (keys[SDL_SCANCODE_COMMA] ? FP_COMMA:0)|(keys[SDL_SCANCODE_PERIOD] ? FP_PERIOD:0)|
+            (keys[SDL_SCANCODE_SLASH] ? FP_SLASH:0);
         double now=seconds(),elapsed=now-start;
         if (scripted) {
             if (elapsed>2.5 && !ui_test_sent) {
@@ -202,25 +209,27 @@ int main(int argc,char **argv) {
                 SDL_Event key={0}; key.type=SDL_KEYDOWN; key.key.keysym.sym=SDLK_u; SDL_PushEvent(&key);
                 ui_test_sent=1;
             }
-            if (elapsed>1 && script_stage==0) { input|=KEY_PAUSE; if (p.paused) script_stage=1; }
+            if (elapsed>1 && script_stage==0) { input|=FP_PAUSE; if (p.paused) script_stage=1; }
             if (elapsed>1.3 && script_stage==1 && p.paused) {
                 if (paused_position<0) paused_position=audio_position(&audio);
                 if (fabs(audio_position(&audio)-paused_position)>1e-9) fail("pause clock moved");
             }
-            if (elapsed>2 && script_stage==1) { input|=KEY_PAUSE; if (!p.paused) script_stage=2; }
-            if (elapsed>3 && elapsed<3.2) input|=KEY_SLASH;
+            if (elapsed>2 && script_stage==1) { input|=FP_PAUSE; if (!p.paused) script_stage=2; }
+            if (elapsed>3 && elapsed<3.2) input|=FP_SLASH;
         }
-        double media=audio_position(&audio); int was_paused=p.paused;
-        int active=media<audio.length/audio.bytes_per_second;
-        double update=p.last_update;
-        int result=player_sync(&p,now,media,input,active,INT_MAX);
+        Uint32 consumed=audio.submitted-SDL_GetQueuedAudioSize(audio.device);
+        FixedTime media_time=fixed_time_ratio(consumed,(uint32_t)audio.spec.freq*audio.frame_bytes);
+        double media=time_seconds(media_time); int was_paused=p.paused;
+        int active=consumed<audio.length;
+        FixedTime update=p.last_update;
+        int result=fixed_player_sync(&p,fixed_now(),media_time,input,active,INT_MAX);
         if (update!=p.last_update) pending=0;
         double compute=seconds()-now; if (compute>max_compute) max_compute=compute;
-        if (p.position>media+0.5/audio.spec.freq) audio_seek(&audio,p.position);
-        if (p.paused!=was_paused || p.position>media+0.5/audio.spec.freq)
+        if (time_seconds(p.position)>media+0.5/audio.spec.freq) audio_seek(&audio,time_seconds(p.position));
+        if (p.paused!=was_paused || time_seconds(p.position)>media+0.5/audio.spec.freq)
             SDL_PauseAudioDevice(audio.device,p.paused);
         audio_fill(&audio);
-        double backlog=p.position-5.492-(p.beat-1)*player_delay();
+        double backlog=time_seconds(p.position-p.next_beat);
         if (a->scheduler.beat<6508 && backlog>max_backlog) max_backlog=backlog;
         if (result || !presented || dirty) {
             if (a->canvas.scrolled_rows>max_scrolled) max_scrolled=a->canvas.scrolled_rows;

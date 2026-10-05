@@ -1,7 +1,7 @@
 #include "credits.h"
 #include "framebuffer.h"
 #include "colours.h"
-#include "player.h"
+#include "player_fixed.h"
 #include <stdio.h>
 #include <string.h>
 #define CHECK(v) do { if (!(v)) { fprintf(stderr,"direct check line %d\n",__LINE__); return 1; } } while (0)
@@ -36,9 +36,9 @@ int main(void) {
         }
     }
     credits_destroy(&a);
-    credits_init(&a,1); Player p; player_init(&p,&a,1,0);
+    credits_init(&a,1); FixedPlayer p; fixed_player_init(&p,&a,1,0);
     canvas_string_cursor(&a.canvas,0,0,"_",WHITE BRIGHT,0);
-    player_step(&p,1,0,0);
+    fixed_player_step(&p,FIXED_SECOND,0,0);
     for (int i=0;i<1200;i++) CHECK(a.canvas.cells[i]==cell_pack(' ',39,49,0));
     credits_destroy(&a); CHECK(!a.memory.live);
     for (int scene=0;scene<SC_COUNT;scene++) {
