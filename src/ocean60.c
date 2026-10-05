@@ -43,6 +43,9 @@ void credits_ocean_update(Credits *a,Ocean *o) {
     for (int y=0;y<SEA_HEIGHT;y++)
         memmove(o->cells+y*SEA_WIDTH,o->cells+y*SEA_WIDTH+1,SEA_WIDTH-1);
     column(o,SEA_WIDTH-1,o->glitch);
+    credits_ocean_render(a,o);
+}
+void credits_ocean_render(Credits *a,Ocean *o) {
     uint32_t style=canvas60_style(o->colour);
     for (int y=0;y<SEA_HEIGHT;y++) for (int x=0;x<SEA_WIDTH;x++) {
         uint32_t ch=o->cells[y*SEA_WIDTH+x];

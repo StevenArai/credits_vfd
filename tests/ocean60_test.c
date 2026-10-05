@@ -56,6 +56,26 @@ int main(void) {
         credits_destroy(&a); credits_destroy(&b);
         CHECK(!a.memory.live && !b.memory.live);
     }
-    printf("4800 updates; %u exact one-column translations; continuous eight-row coast; repeatable glitches; no frame allocations\n",translations);
+    /* Exercise actual scheduler dispatch, not only direct ocean calls. */
+    for (int scene=SC_OCEAN_B;scene<=SC_OCEAN_D;scene++) {
+        credits_init(&a,42);
+        scheduler_start(&a.scheduler,scene,0,0);
+        Ocean *o=&a.oceans[scene-SC_OCEAN_B];
+        o->glitch=100;
+        for (int tick=1;tick<=20;tick++) {
+            uint8_t previous[480]; memcpy(previous,o->cells,sizeof(previous));
+            uint32_t pixels[480]; memcpy(pixels,a.canvas.cells+720,sizeof(pixels));
+            int phase=o->phase;
+            scheduler_frame(&a.scheduler,scene,1);
+            int moves=scene==SC_OCEAN_D || tick%2==0;
+            CHECK(o->phase==phase+moves);
+            if (!moves) {
+                CHECK(!memcmp(previous,o->cells,sizeof(previous)));
+                CHECK(memcmp(pixels,a.canvas.cells+720,sizeof(pixels))!=0);
+            }
+        }
+        credits_destroy(&a); CHECK(!a.memory.live);
+    }
+    printf("4800 updates; %u exact one-column translations; scheduler flicker every tick with unchanged motion cadence; no frame allocations\n",translations);
     return 0;
 }

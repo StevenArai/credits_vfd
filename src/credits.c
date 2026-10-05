@@ -77,6 +77,13 @@ static void no_clear(void *context,int scene,int generator,int beat) {
     (void)context;(void)scene;(void)generator;(void)beat;
     /* All 79 source generators currently use no_request as request_clear. */
 }
+#ifdef CREDITS_DIRECT60
+static int native_scene_due(int scene,int generator,int beat) {
+    /* Redraw transient sea noise every tick; motion retains its own cadence. */
+    if (!generator && (scene==SC_OCEAN_B || scene==SC_OCEAN_C)) return 1;
+    return scene_due(scene,generator,beat);
+}
+#endif
 void credits_init(Credits *a,uint64_t seed) {
     memset(a,0,sizeof(*a));
     canvas_init(&a->canvas,&a->memory);
@@ -86,6 +93,9 @@ void credits_init(Credits *a,uint64_t seed) {
     weather_init(a->weather);
     scheduler_init(&a->scheduler,scene_definitions,a->scenes,SC_COUNT,a->active,SC_COUNT);
     a->scheduler.context=a; a->scheduler.condition=scene_due;
+#ifdef CREDITS_DIRECT60
+    a->scheduler.condition=native_scene_due;
+#endif
     a->scheduler.create=credits_create_generator; a->scheduler.clear=no_clear;
     a->scheduler.request=credits_request_generator; a->scheduler.events=timeline;
 }

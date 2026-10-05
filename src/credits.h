@@ -49,6 +49,9 @@ void credits_request_generator(void *context,int scene,int generator,int beat);
 void credits_type_characters(Credits *a,Typewriter *t,int x,int y,const char *colour,int render);
 void credits_ocean_begin(Credits *a,Ocean *o);
 void credits_ocean_update(Credits *a,Ocean *o);
+#ifdef CREDITS_DIRECT60
+void credits_ocean_render(Credits *a,Ocean *o);
+#endif
 void credits_type_words(Credits *a,Typewriter *t,int x,int y,int history);
 void credits_write_history(Credits *a,int x,int y,int stop,int history);
 void credits_history_destroy(Credits *a);

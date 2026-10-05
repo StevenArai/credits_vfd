@@ -19,6 +19,7 @@ int main(int argc,char **argv) {
     dump(&a,o,0);
     for (int level=0;level<12;level++) for (int frame=0;frame<70;frame++) {
         o->glitch=levels[level]; credits_ocean_update(&a,o); dump(&a,o,o->glitch);
+        credits_ocean_render(&a,o); dump(&a,o,o->glitch);
     }
     credits_destroy(&a); return a.memory.live!=0;
 }

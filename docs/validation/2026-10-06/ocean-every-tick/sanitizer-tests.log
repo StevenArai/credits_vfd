@@ -1,0 +1,37 @@
+Start testing: Oct 06 00:08 中国标准时间
+----------------------------------------------------------
+29/30 Testing: ocean60_motion
+29/30 Test: ocean60_motion
+Command: "D:/credits_vfd/build/direct60-sanitize/ocean60_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"ocean60_motion" start time: Oct 06 00:08 中国标准时间
+Output:
+----------------------------------------------------------
+4800 updates; 2265600 exact one-column translations; scheduler flicker every tick with unchanged motion cadence; no frame allocations
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_motion" end time: Oct 06 00:08 中国标准时间
+"ocean60_motion" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/30 Testing: ocean60_python_glitch
+30/30 Test: ocean60_python_glitch
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/ocean60_glitch_test.py" "D:/credits_vfd/build/direct60-sanitize/ocean60_glitch_probe.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"ocean60_python_glitch" start time: Oct 06 00:08 中国标准时间
+Output:
+----------------------------------------------------------
+seed 0: 1680 rendered frames (including stationary redraws) match original mutate_text; 13916 transient cells; 118 non-saturated frames at glitch=500
+seed 1: 1680 rendered frames (including stationary redraws) match original mutate_text; 13519 transient cells; 118 non-saturated frames at glitch=500
+seed 42: 1680 rendered frames (including stationary redraws) match original mutate_text; 13263 transient cells; 118 non-saturated frames at glitch=500
+<end of output>
+Test time =   6.96 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_python_glitch" end time: Oct 06 00:08 中国标准时间
+"ocean60_python_glitch" time elapsed: 00:00:06
+----------------------------------------------------------
+
+End testing: Oct 06 00:08 中国标准时间

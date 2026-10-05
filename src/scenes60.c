@@ -142,7 +142,11 @@ void credits_request_generator(void *context,int scene,int g,int beat) {
     case SC_WIPE: noise(a,beat,1); break;
     case SC_CLEAR_WIPE: noise(a,beat,0); break;
     case SC_OCEAN_B: case SC_OCEAN_C: case SC_OCEAN_D:
-        if (!g) credits_ocean_update(a,&a->oceans[scene-SC_OCEAN_B]);
+        if (!g) {
+            Ocean *o=&a->oceans[scene-SC_OCEAN_B];
+            if (scene==SC_OCEAN_D || beat%2==0) credits_ocean_update(a,o);
+            else credits_ocean_render(a,o);
+        }
         else if (scene==SC_OCEAN_D) fatal_error(a);
         else {
             int render=1;
