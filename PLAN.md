@@ -1,6 +1,6 @@
 # 重建实施计划与实际进度
 
-更新日期：2026-10-05。P0–P2 已实际构建并通过对照，正在进入 P3。
+更新日期：2026-10-05。P0–P3 已实际构建并通过终端阶段验收；本轮不进入 P4/P5。
 
 ## 当前状态
 
@@ -12,7 +12,7 @@
 - [x] P0：建立可运行的参考驱动与 C 构建基线。
 - [x] P1：验证字符画布、节拍引擎和随机接口。
 - [x] P2：通过文字与海洋的端到端对照。
-- [ ] P3：完成全部终端动画和交互验收。
+- [x] P3：完成全部终端动画和交互验收。
 - [ ] P4：生成核心内的单色 framebuffer。
 - [ ] P5：接入仅显示 framebuffer 的 SDL2 模拟前端。
 
@@ -104,10 +104,25 @@
 - 编译器单函数静态栈：ocean_update 3416 字节、type_characters 184 字节，最大仍为 canvas_clear 7736 字节；这些不是整条调用链或运行时高水位。
 - 首次将事件导出编译为 C 时发现 JSON 的 `\\u001b` 不属于 C99 合法控制字符转义，导出器已改为 `\\033` 并重新生成、编译、核对。当前 P2 对照无未解决差异。完整时间线/交互/内存诊断尚待 P3。
 
+## P3 验证记录（2026-10-05）
+
+- P2 本地提交为 `bfc33e9`。补齐 all_scenes 的 22 个业务场景、79 个发生器、18 份文本及 85 个默认时间线事件。按词打字、三份历史、天气、日期、加载条、访问点、双路文字、掉电条均有具体状态；历史引用稳定模板行，不复制完整历史文本。源 debug=False，额外的 debug_counter 不进入默认播放验收。
+- `./tools/build.ps1`：Release 构建及 **18/18 CTest 通过**，46.54 秒。`./tools/build.ps1 -BuildDir build/sanitize -BuildType Debug -Sanitize`：ASan/UBSan 构建及 **18/18 通过**，54.07 秒。详细运行输出分别在 `build/host/Testing/Temporary/LastTest.log`、`build/sanitize/Testing/Temporary/LastTest.log`。
+- 完整对照命令：`python tests/compare.py build/host/credits.exe --last 6508 --seeds 0,1,42 --jumps 1,2,3,4,5,6`。18 组回放，共 **72132 帧 / 138493440 格**逐格比较通过；每种子的从头播放为 6509 帧 / 85 事件。六个跳转的帧数依次为 6509、5509、4739、3469、2729、1089，事件数为 85、67、55、40、28、10。最终 RNG 的 625 项状态、活动场景及 ocean_time 一致。
+- `python tests/scene_test.py build/host/scene_probe.exe`：22 个 all_scenes 场景独立运行，另覆盖 title、weather、loadingbar、poweroff、accesspoints 的起拍/条件边界，与原始 ANSI 帧一致。
+- `python tests/player_test.py build/host/player_probe.exe --seed 1 --jump N`（N=1..6）：直接执行原 credits.py 菜单、播放循环和退出分支的 AST，固定时钟/输入/音频替身。共 **45612 个逐次状态、38533 个渲染/清屏帧**一致，覆盖 30 Hz 严格时间边界、相同时间重复轮询、暂停/恢复、积压拍追赶、各快进键及组合、终止后无更新。cls/clear 外部调用明确映射为默认属性的 ANSI 清屏。
+- Windows 真实 ConPTY（80×30）测试：执行实际 credits.exe，菜单选择 6、输入 p 和快进键、Ctrl+C；自然结束和中断均退出 0，有实际 ANSI 输出并清屏/恢复光标。首轮测试工具错误继承了父进程重定向句柄，定位后改由 ConPTY 提供子进程句柄，重跑通过。
+- 本轮发现并修复的画面差异：降水概率经 Python min/max 截断后为 int 0/1，显示 `0%`/`100%`，不显示 `.0`；断线哨兵同样为整数。修复后上述种子/时间/输入范围内没有未解决差异。
+- 最终 Release 资源：**Credits 21808 字节**，动态峰值最大 **100576 字节**（18 组中），各次销毁后 live=0；最多 496 个渲染分组，最长内部分组文本 1920 字符；三份历史条目峰值 173/28/13。字符串/描述数据逻辑只读大小 13867 字节；整个 Windows EXE `.rdata` 27732 字节、`.text` 44934 字节，均含主机/运行库部分，不代表 MCU 预算。
+- 从头播放三个种子的纯核心平均帧耗时 3.605–4.098 微秒，最大单帧 1519.2–1561.9 微秒；所有跳转组合最大 2023.4 微秒。输出 I/O 不在计时内，主机调度会影响最大值。没有基于这些均值盲目优化。
+- 编译器单函数静态栈：canvas_clear 7736 字节、ocean_update 3416 字节、场景请求 520 字节、天气绘制 392 字节。未宣称调用链栈峰值。Windows ASan 不提供本轮 LeakSanitizer 检查；使用 ASan/UBSan 与核心显式分配/释放计数，均无报错。
+- `git diff --exit-code 18f5cf36a10a7e95aa20d4bf31fd79a5895ccdb0 -- ':(top,glob)*.py' CLIRender colorama` 通过，原始 Python 未修改；`git diff --check` 通过。仅验证 Windows x64 / Clang-MinGW；未验证其他 OS、GCC、MCU。
+- 本轮交付是无音频的终端动画：默认在最后事件 6508 后清屏退出；音乐解码、音频时钟同步、由音乐时长退出未实现。framebuffer、字体和 SDL2 均未实施。
+
 ## 后续实施交接
 
-先读取 `AGENTS.md`、`SPEC.md`、本文件；用户已授权持续完成 P0–P3。按勾选状态和实际证据继续，勿重读事故或恢复旧实现。
+先读取 `AGENTS.md`、`SPEC.md`、本文件。P0–P3 已验收；后续进入 P4 前，向用户索取候选 3×5 字体并确认步进及单色映射。勿重读事故或恢复旧实现。
 
 建议交接指令：
 
-> 按 AGENTS.md、SPEC.md 和 PLAN.md 实施平台无关 C 动画重建，从 P0 开始，先做到终端与 Python 的受控行为对照通过。保持参考 Python 原样。代码可读性优先，报告实际资源占用。framebuffer 阶段再向我索取字体，SDL2 阶段只显示核心生成的 framebuffer。进度以真实构建和验证结果为准。
+> P0–P3 已通过，继续前先读现有验收记录。若开始 framebuffer 阶段，先索取字体、确认步进与单色映射；SDL2 最后只呈现核心 framebuffer。保持 Python 基线不变，验证和提交规则继续适用。

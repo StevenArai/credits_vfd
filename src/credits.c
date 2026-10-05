@@ -41,7 +41,11 @@ static void apply_event(Credits *a,const EventAction *e) {
         if (e->number>=0) {
             t->words=&a->texts[e->number]; t->characters=t->words->raw;
         } else if (e->number==-1) { t->characters=e->text; t->words=NULL; }
-        else credits_fail("empty word template not yet implemented");
+        else {
+            static WordLine lines[]={{"",0,1},{"",0,1}};
+            static const Text empty={"",0,2,1,lines};
+            t->words=&empty; t->characters=empty.raw;
+        }
         break;
     }
     case EV_OFFSET: credits_typer(a,e->scene,e->generator)->offset=e->number; break;
@@ -49,7 +53,8 @@ static void apply_event(Credits *a,const EventAction *e) {
     case EV_OCEAN_GLITCH: a->oceans[e->scene-SC_OCEAN_B].glitch=e->number; break;
     case EV_COLOUR: a->oceans[e->scene-SC_OCEAN_B].colour=e->text; break;
     case EV_RANDOM_COLOUR: a->oceans[e->scene-SC_OCEAN_B].colour=random_below(&a->random,2)==0 ? BRIGHT BLACK:NORMAL BLACK; break;
-    default: credits_fail("event requires P3 scene state");
+    case EV_HISTORY_RESET: a->history[0].count=0; break;
+    case EV_REFRESH: a->refresh=e->number; break;
     }
 }
 static void timeline(void *context,int beat) {
@@ -60,6 +65,12 @@ static void timeline(void *context,int beat) {
         if (a->trace_event) a->trace_event(a->trace_context,beat,e->index);
         a->events_executed++;
         for (int j=0;j<e->count;j++) apply_event(a,&event_actions[e->first+j]);
+    }
+    if (a->jump==3 && (beat==1849 || beat==1860)) {
+        if (a->trace_event) a->trace_event(a->trace_context,beat,0);
+        a->events_executed++;
+        if (beat==1849) scheduler_start(&a->scheduler,SC_REDRAW_UI,0,1);
+        else scheduler_remove(&a->scheduler,SC_REDRAW_UI);
     }
 }
 static void no_clear(void *context,int scene,int generator,int beat) {
@@ -72,10 +83,17 @@ void credits_init(Credits *a,uint64_t seed) {
     random_seed(&a->random,seed);
     a->ocean_time=(int)floor(random_unit(&a->random)*2000);
     data_init(a->texts,&a->memory,&a->random);
+    weather_init(a->weather);
     scheduler_init(&a->scheduler,scene_definitions,a->scenes,SC_COUNT,a->active,SC_COUNT);
     a->scheduler.context=a; a->scheduler.condition=scene_due;
     a->scheduler.create=credits_create_generator; a->scheduler.clear=no_clear;
     a->scheduler.request=credits_request_generator; a->scheduler.events=timeline;
+}
+void credits_jump(Credits *a,int jump) {
+    static const int amounts[]={0,1000,1770,3040,3780,5420};
+    if (jump<1 || jump>6) credits_fail("startup jump must be 1..6");
+    if (a->frames || a->scheduler.beat!=-1) credits_fail("jump only valid before playback");
+    a->jump=jump; a->scheduler.beat+=amounts[jump-1];
 }
 void credits_next(Credits *a,int render) {
     scheduler_next(&a->scheduler,render);
@@ -84,6 +102,7 @@ void credits_next(Credits *a,int render) {
 void credits_destroy(Credits *a) {
     canvas_destroy(&a->canvas);
     data_destroy(a->texts,&a->memory);
+    credits_history_destroy(a);
     mem_free(&a->memory,a->scratch,a->scratch_capacity);
     a->scratch=NULL; a->scratch_capacity=0;
 }

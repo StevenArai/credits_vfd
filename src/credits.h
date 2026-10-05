@@ -4,8 +4,11 @@
 #include "data.h"
 #include "random.h"
 #include "scheduler.h"
+#include "weather.h"
 typedef struct { const Text *words; const char *characters; int offset,line; const char *colour; } Typewriter;
 typedef struct { uint32_t cells[800]; int glitch; const char *colour; } Ocean;
+typedef struct { const WordLine *line; const char *colour; const char *prefix; } HistoryEntry;
+typedef struct { HistoryEntry *entries; int count,capacity,peak; } History;
 typedef struct Credits {
     Memory memory;
     Canvas canvas;
@@ -17,6 +20,11 @@ typedef struct Credits {
     Typewriter typers[14];
     Ocean oceans[3];
     int ocean_time;
+    Weather weather[5];
+    History history[3];
+    int refresh, progress[SC_COUNT], access_counter, access_block;
+    int beat_toggle[2][2];
+    int jump;
     char *scratch;
     size_t scratch_capacity;
     unsigned frames, events_executed;
@@ -33,4 +41,9 @@ void credits_request_generator(void *context,int scene,int generator,int beat);
 void credits_type_characters(Credits *a,Typewriter *t,int x,int y,const char *colour,int render);
 void credits_ocean_begin(Credits *a,Ocean *o);
 void credits_ocean_update(Credits *a,Ocean *o);
+void credits_type_words(Credits *a,Typewriter *t,int x,int y,int history);
+void credits_write_history(Credits *a,int x,int y,int stop,int history);
+void credits_history_destroy(Credits *a);
+void credits_multiline(Credits *a,int x,int y,const char *text,const char *colour);
+void credits_jump(Credits *a,int jump);
 #endif

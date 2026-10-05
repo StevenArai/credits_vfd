@@ -1,13 +1,20 @@
 #include "credits.h"
 #include "terminal.h"
 #include "host_time.h"
+#include "host_console.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <errno.h>
 static FILE *open_file(const char *path,const char *mode) {
     FILE *f=fopen(path,mode); if (!f) credits_fail("cannot open output file"); return f;
 }
 static void trace(void *context,int beat,int index) { fprintf(context,"%d %d\n",beat,index); }
+static long parse_int(const char *text,long low,long high) {
+    char *end; errno=0; long n=strtol(text,&end,10);
+    if (errno || !*text || *end || n<low || n>high) credits_fail("invalid integer option or value outside supported range");
+    return n;
+}
 static void state_file(Credits *a,const char *path) {
     FILE *f=open_file(path,"w");
     fprintf(f,"{\"beat\":%d,\"ocean_time\":%d,\"active\":[",a->scheduler.beat,a->ocean_time);
@@ -20,13 +27,24 @@ static void state_file(Credits *a,const char *path) {
     fprintf(f,",%d]}\n",a->random.index); fclose(f);
 }
 int main(int argc,char **argv) {
-    uint64_t seed=1; int last=1079;
+    uint64_t seed=1; int last=6508,jump=1,play=argc==1,menu=1;
     const char *frames_path=NULL,*ansi_path=NULL,*state_path=NULL,*trace_path=NULL,*data_path=NULL;
     for (int i=1;i<argc;i++) {
         if (!strcmp(argv[i],"--self-test")) { puts("C99 host baseline: 80 x 24 cells"); return 0; }
+        if (!strcmp(argv[i],"--play")) { play=1; continue; }
+        if (!strcmp(argv[i],"--help")) {
+            puts("credits [--play] [--jump 1..6] [--seed N] [--last BEAT]\n"
+                 "        [--replay frames.bin] [--ansi file|-] [--state file] [--trace file]\n"
+                 "No options: silent-clock playback with a two-second jump menu.\n"
+                 "Controls: p pause/resume; , . / advance; Ctrl+C stop. No audio."); return 0;
+        }
         if (i+1>=argc) credits_fail("option requires a value");
-        if (!strcmp(argv[i],"--seed")) seed=strtoull(argv[++i],NULL,10);
-        else if (!strcmp(argv[i],"--last")) last=atoi(argv[++i]);
+        if (!strcmp(argv[i],"--seed")) {
+            char *end; const char *value=argv[++i]; errno=0; seed=strtoull(value,&end,10);
+            if (errno || !*value || *end || *value=='-') credits_fail("seed must be an unsigned 64-bit integer");
+        }
+        else if (!strcmp(argv[i],"--last")) last=(int)parse_int(argv[++i],-1,6508);
+        else if (!strcmp(argv[i],"--jump")) { jump=(int)parse_int(argv[++i],1,6); menu=0; }
         else if (!strcmp(argv[i],"--replay")) frames_path=argv[++i];
         else if (!strcmp(argv[i],"--ansi")) ansi_path=argv[++i];
         else if (!strcmp(argv[i],"--state")) state_path=argv[++i];
@@ -34,8 +52,15 @@ int main(int argc,char **argv) {
         else if (!strcmp(argv[i],"--dump-data")) data_path=argv[++i];
         else credits_fail("unknown option");
     }
+    if (play && (frames_path || ansi_path || data_path || state_path || trace_path)) credits_fail("choose interactive playback or file replay");
     Credits *a=malloc(sizeof(*a)); if (!a) credits_fail("cannot allocate core");
     credits_init(a,seed);
+    if (play) {
+        int status=host_play(a,jump,menu,last);
+        credits_destroy(a); if (a->memory.live) credits_fail("core memory not fully released");
+        free(a); return status;
+    }
+    credits_jump(a,jump);
     if (data_path) {
         FILE *f=open_file(data_path,"wb");
         fwrite(&a->ocean_time,4,1,f);
@@ -60,9 +85,9 @@ int main(int argc,char **argv) {
     if (ansi) fclose(ansi);
     if (events) fclose(events);
     if (state_path) state_file(a,state_path);
-    fprintf(stderr,"frames=%u events=%u state=%zu readonly_data=%zu dynamic_peak=%zu allocations=%zu max_groups=%d max_string=%d mean_us=%.3f max_us=%.3f\n",
+    fprintf(stderr,"frames=%u events=%u state=%zu readonly_data=%zu dynamic_peak=%zu allocations=%zu max_groups=%d max_string=%d history_peaks=%d,%d,%d mean_us=%.3f max_us=%.3f\n",
         a->frames,a->events_executed,sizeof(*a),data_readonly_size(),a->memory.peak,a->memory.calls,a->canvas.peak_groups,a->canvas.peak_string,
-        a->frames ? total*1e6/a->frames:0,maximum*1e6);
+        a->history[0].peak,a->history[1].peak,a->history[2].peak,a->frames ? total*1e6/a->frames:0,maximum*1e6);
     credits_destroy(a);
     size_t leaked=a->memory.live; free(a);
     if (leaked) credits_fail("core memory not fully released");
