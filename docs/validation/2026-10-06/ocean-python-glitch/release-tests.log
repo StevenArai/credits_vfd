@@ -1,0 +1,94 @@
+Start testing: Oct 06 00:02 中国标准时间
+----------------------------------------------------------
+19/30 Testing: sdl_audio_transport
+19/30 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/ocean-overlay/credits_sdl.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"sdl_audio_transport" start time: Oct 06 00:02 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmp1ra74c2a\tone.wav backend=dummy rate=44100 duration=7.000000 wav_bytes=617400 queue_limit=16384 device_frames=512 host_pixels=1658880 core=10776 framebuffer=4096
+display_readback=matched 864x480
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=50 beat=96 audio_position=7.000000 wall_seconds=4.910017 max_compute_ms=0.255 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+core_peak=17116 core_live=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   5.35 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 06 00:02 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:05
+----------------------------------------------------------
+
+27/30 Testing: direct60_clock_sync
+27/30 Test: direct60_clock_sync
+Command: "D:/credits_vfd/build/ocean-overlay/sync60_test.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"direct60_clock_sync" start time: Oct 06 00:02 中国标准时间
+Output:
+----------------------------------------------------------
+3900 jitter/pause/seek samples match drained reference player, cells, RNG and events
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"direct60_clock_sync" end time: Oct 06 00:02 中国标准时间
+"direct60_clock_sync" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/30 Testing: direct60_comparison
+28/30 Test: direct60_comparison
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/direct60_compare.py" "D:/credits_vfd/build/ocean-overlay/direct60_probe.exe" "D:/credits_vfd/build/ocean-overlay/layout_reference_probe.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"direct60_comparison" start time: Oct 06 00:02 中国标准时间
+Output:
+----------------------------------------------------------
+{"frames": 72132, "exact_pixel_frames": 8660, "changed_pixel_frames": 63472, "title_pixel_frames": 4584, "ocean_cell_frames": 11802, "ocean_changed_frames": 10860, "block_cell_frames": 4806}
+Deterministic controls/text/history hashes match; ocean/RNG/weather/random progress intentionally excluded.
+<end of output>
+Test time =   7.12 sec
+----------------------------------------------------------
+Test Passed.
+"direct60_comparison" end time: Oct 06 00:03 中国标准时间
+"direct60_comparison" time elapsed: 00:00:07
+----------------------------------------------------------
+
+29/30 Testing: ocean60_motion
+29/30 Test: ocean60_motion
+Command: "D:/credits_vfd/build/ocean-overlay/ocean60_test.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"ocean60_motion" start time: Oct 06 00:03 中国标准时间
+Output:
+----------------------------------------------------------
+4800 updates; 2265600 exact one-column translations; continuous eight-row coast; repeatable glitches; no frame allocations
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_motion" end time: Oct 06 00:03 中国标准时间
+"ocean60_motion" time elapsed: 00:00:00
+----------------------------------------------------------
+
+30/30 Testing: ocean60_python_glitch
+30/30 Test: ocean60_python_glitch
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/ocean60_glitch_test.py" "D:/credits_vfd/build/ocean-overlay/ocean60_glitch_probe.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"ocean60_python_glitch" start time: Oct 06 00:03 中国标准时间
+Output:
+----------------------------------------------------------
+seed 0: 840 rendered frames match original mutate_text; 6661 transient cells; 59 non-saturated frames at glitch=500
+seed 1: 840 rendered frames match original mutate_text; 7068 transient cells; 59 non-saturated frames at glitch=500
+seed 42: 840 rendered frames match original mutate_text; 6883 transient cells; 59 non-saturated frames at glitch=500
+<end of output>
+Test time =   1.07 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_python_glitch" end time: Oct 06 00:03 中国标准时间
+"ocean60_python_glitch" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Oct 06 00:03 中国标准时间

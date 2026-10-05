@@ -96,3 +96,7 @@ add_test(NAME direct60_comparison COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_D
 add_executable(ocean60_test tests/ocean60_test.c)
 target_link_libraries(ocean60_test PRIVATE credits_core60)
 add_test(NAME ocean60_motion COMMAND ocean60_test)
+
+add_executable(ocean60_glitch_probe tests/ocean60_glitch_probe.c)
+target_link_libraries(ocean60_glitch_probe PRIVATE credits_core60)
+add_test(NAME ocean60_python_glitch COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/ocean60_glitch_test.py $<TARGET_FILE:ocean60_glitch_probe>)

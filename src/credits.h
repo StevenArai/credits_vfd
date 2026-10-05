@@ -7,7 +7,7 @@
 #include "weather.h"
 typedef struct { const Text *words; const char *characters; int offset,line; const char *colour; } Typewriter;
 #ifdef CREDITS_DIRECT60
-/* Clean wave cells move one column per update; noise is an immutable mask seed. */
+/* Persistent water moves one column per update; noise drives both corruption layers. */
 typedef struct { uint8_t cells[60*8]; int glitch; const char *colour; int phase; uint32_t noise; } Ocean;
 #else
 typedef struct { uint32_t cells[800]; int glitch; const char *colour; } Ocean;
