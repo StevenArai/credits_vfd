@@ -8,7 +8,8 @@ $env:PATH = "$compilerBin;" + $env:PATH
 $sanitizeOption = if ($Sanitize) { 'ON' } else { 'OFF' }
 $sdlOption = if ($SDL) { 'ON' } else { 'OFF' }
 $sdlDir = (Join-Path $root '.tools/SDL2-2.32.10/x86_64-w64-mingw32/lib/cmake/SDL2').Replace('\', '/')
-$sdlArguments = if ($SDL) { @("-DSDL2_DIR=$sdlDir") } else { @() }
+$sdlArguments = @()
+if ($SDL) { $sdlArguments += "-DSDL2_DIR=$sdlDir" }
 & $cmake -S $root -B (Join-Path $root $BuildDir) -G Ninja "-DCMAKE_MAKE_PROGRAM=$ninja" "-DCMAKE_C_COMPILER=$compilerBin/clang.exe" "-DCMAKE_BUILD_TYPE=$BuildType" "-DCREDITS_SANITIZE=$sanitizeOption" "-DCREDITS_SDL=$sdlOption" @sdlArguments
 if ($LASTEXITCODE) { exit $LASTEXITCODE }
 & $cmake --build (Join-Path $root $BuildDir)

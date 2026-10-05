@@ -16,18 +16,20 @@ with tempfile.TemporaryDirectory() as d:
     cells=[(32+i%97) | (30+i%10)<<16 | (40+i%10)<<22 | (i%3)<<28 for i in range(1920)]
     cells[0]=160|39<<16|49<<22; cells[-1]=176|39<<16|49<<22
     selected+=struct.pack('<i1920I',-1,*cells); frames.write_bytes(selected)
-    subprocess.run([sys.argv[1],str(frames),str(pixels)],check=True)
-    output=pixels.read_bytes()
-    for frame,off in enumerate(range(0,len(selected),size)):
-        expected=bytearray(4096)
-        for i,c in enumerate(struct.unpack_from('<1920I',selected,off+4)):
-            ch=c&65535
-            if ch==160: ch=32
-            if not 32<=ch<=126: ch=ord('?')
-            for bit,stroke in enumerate(patterns[ch-32]):
-                on=((c>>16)&63)!=30 or c>>28==1 if stroke=='1' else ((c>>22)&63) not in (40,49)
-                if on:
-                    x=8+i%80*3+bit%3; y=4+i//80*5+bit//3
-                    expected[y*32+x//8]|=128>>(x%8)
-        assert output[frame*4096:(frame+1)*4096]==expected,frame
+    for uppercase in (False,True):
+        subprocess.run([sys.argv[1],str(frames),str(pixels)]+(["uppercase"] if uppercase else []),check=True)
+        output=pixels.read_bytes()
+        for frame,off in enumerate(range(0,len(selected),size)):
+            expected=bytearray(4096)
+            for i,c in enumerate(struct.unpack_from('<1920I',selected,off+4)):
+                ch=c&65535
+                if uppercase and ord('a')<=ch<=ord('z'): ch-=32
+                if ch==160: ch=32
+                if not 32<=ch<=126: ch=ord('?')
+                for bit,stroke in enumerate(patterns[ch-32]):
+                    on=((c>>16)&63)!=30 or c>>28==1 if stroke=='1' else ((c>>22)&63) not in (40,49)
+                    if on:
+                        x=8+i%80*3+bit%3; y=4+i//80*5+bit//3
+                        expected[y*32+x//8]|=128>>(x%8)
+            assert output[frame*4096:(frame+1)*4096]==expected,frame
     print('pixel frames',len(selected)//size,'missing', [f'U+{c:04X}' for c in sorted(codepoints) if not 32<=c<=126 and c!=160])

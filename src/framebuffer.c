@@ -8,10 +8,14 @@ int framebuffer_pixel(const Framebuffer *f,int x,int y) {
     return (f->bits[y*FB_STRIDE+x/8]>>(7-x%8))&1;
 }
 unsigned framebuffer_render(Framebuffer *f,const uint32_t cells[CANVAS_CELLS]) {
+    return framebuffer_render_case(f,cells,0);
+}
+unsigned framebuffer_render_case(Framebuffer *f,const uint32_t cells[CANVAS_CELLS],int uppercase) {
     unsigned missing=0;
     memset(f,0,sizeof(*f));
     for (int i=0;i<CANVAS_CELLS;i++) {
         uint32_t cell=cells[i],ch=cell&65535;
+        if (uppercase && ch>='a' && ch<='z') ch=ch-'a'+'A';
         if (ch==160) ch=32; /* NBSP has space semantics. */
         if (ch<32 || ch>126) { ch='?'; missing++; }
         unsigned fg=(cell>>16)&63,bg=(cell>>22)&63,style=cell>>28;

@@ -47,13 +47,34 @@ static void audio_seek(Audio *a,double position) {
     audio_fill(a);
 }
 enum { BORDER=48, PITCH=3, WIDTH=FB_WIDTH*PITCH+2*BORDER, HEIGHT=FB_HEIGHT*PITCH+2*BORDER };
-static void expand(const Framebuffer *f,Uint32 *pixels) {
+enum { SLIDER_LEFT=270, SLIDER_WIDTH=324, SLIDER_Y=456 };
+static Uint32 phosphor(double value) {
+    static const Uint32 anchors[]={0x00cfa0,0x00e89b,0x20e6a0,0x00ffc0};
+    if (value<=0) return 0xff000000|anchors[0];
+    if (value>=1) return 0xff000000|anchors[3];
+    double scaled=value*3; int index=(int)scaled; double part=scaled-index;
+    Uint32 color=0xff000000;
+    for (int shift=0;shift<=16;shift+=8) {
+        int a=(anchors[index]>>shift)&255,b=(anchors[index+1]>>shift)&255;
+        color|=(Uint32)(a+(b-a)*part+0.5)<<shift;
+    }
+    return color;
+}
+static void expand(const Framebuffer *f,Uint32 *pixels,double color_position) {
+    Uint32 lit=phosphor(color_position);
     /* Black gaps and bezel persist; only 2x2 physical phosphor blocks change. */
     for (int y=0;y<FB_HEIGHT;y++) for (int x=0;x<FB_WIDTH;x++) {
-        Uint32 color=framebuffer_pixel(f,x,y) ? 0xffc8e65c:0xff161914;
+        Uint32 color=framebuffer_pixel(f,x,y) ? lit:0xff161914;
         int base=(BORDER+y*PITCH)*WIDTH+BORDER+x*PITCH;
         pixels[base]=pixels[base+1]=pixels[base+WIDTH]=pixels[base+WIDTH+1]=color;
     }
+    /* Host control outside the 256x128 VFD; never changes core framebuffer. */
+    for (int y=SLIDER_Y-8;y<=SLIDER_Y+8;y++)
+        for (int x=SLIDER_LEFT-5;x<=SLIDER_LEFT+SLIDER_WIDTH+5;x++) pixels[y*WIDTH+x]=0xff000000;
+    for (int x=0;x<=SLIDER_WIDTH;x++) for (int y=-2;y<=2;y++)
+        pixels[(SLIDER_Y+y)*WIDTH+SLIDER_LEFT+x]=phosphor((double)x/SLIDER_WIDTH);
+    int handle=SLIDER_LEFT+(int)(color_position*SLIDER_WIDTH+0.5);
+    for (int y=-7;y<=7;y++) for (int x=-2;x<=2;x++) pixels[(SLIDER_Y+y)*WIDTH+handle+x]=0xffeeeeee;
 }
 static double seconds(void) { return (double)SDL_GetPerformanceCounter()/SDL_GetPerformanceFrequency(); }
 static long number(const char *value,long low,long high) {
@@ -63,15 +84,17 @@ static long number(const char *value,long low,long high) {
 }
 int main(int argc,char **argv) {
     const char *wav="credits.wav",*snapshot=NULL;
-    int jump=1,limit=0,scripted=0,hidden=0; uint64_t seed=1;
+    int jump=1,limit=0,scripted=0,hidden=0,uppercase=1; uint64_t seed=1;
     for (int i=1;i<argc;i++) {
         if (!strcmp(argv[i],"--help")) {
             puts("credits_sdl [--audio credits.wav] [--jump 1..6] [--seed N]\n"
                  "            [--seconds N] [--snapshot frame.bmp] [--scripted]\n"
-                 "P pause, , . / forward, 1..6 restart at section, Esc quit."); return 0;
+                 "P pause, , . / forward, 1..6 restart, U uppercase, drag color bar, Esc quit.\n"
+                 "--original-case preserves lowercase in framebuffer."); return 0;
         }
         if (!strcmp(argv[i],"--scripted")) { scripted=1; continue; }
         if (!strcmp(argv[i],"--hidden")) { hidden=1; continue; }
+        if (!strcmp(argv[i],"--original-case")) { uppercase=0; continue; }
         if (i+1>=argc) fail("missing option value");
         if (!strcmp(argv[i],"--audio")) wav=argv[++i];
         else if (!strcmp(argv[i],"--snapshot")) snapshot=argv[++i];
@@ -106,6 +129,7 @@ int main(int argc,char **argv) {
     SDL_PauseAudioDevice(audio.device,0);
     double start=seconds(),max_compute=0,max_backlog=0,paused_position=-1;
     unsigned presented=0,missing=0,pending=0; int quit=0,script_stage=0,saved=0;
+    double color_position=1.0/3; int dragging=0,dirty=1,ui_test_sent=0;
     const char *exit_reason="unknown";
     fprintf(stderr,"audio=%s backend=%s rate=%d duration=%.6f wav_bytes=%u queue_limit=%u device_frames=%u host_pixels=%zu core=%zu framebuffer=%zu\n",
         wav,SDL_GetCurrentAudioDriver(),audio.spec.freq,audio.length/audio.bytes_per_second,
@@ -117,6 +141,7 @@ int main(int argc,char **argv) {
             if (event.type==SDL_KEYDOWN) {
                 SDL_Keycode key=event.key.keysym.sym;
                 if (key==SDLK_ESCAPE) { quit=1; exit_reason="escape"; }
+                if (key==SDLK_u && !event.key.repeat) { uppercase=!uppercase; dirty=1; }
                 if (key==SDLK_p) pressed|=KEY_PAUSE;
                 if (key==SDLK_COMMA) pressed|=KEY_COMMA;
                 if (key==SDLK_PERIOD) pressed|=KEY_PERIOD;
@@ -128,6 +153,16 @@ int main(int argc,char **argv) {
                     audio_seek(&audio,p.position); SDL_PauseAudioDevice(audio.device,0);
                 }
             }
+            if (event.type==SDL_MOUSEBUTTONDOWN && event.button.button==SDL_BUTTON_LEFT &&
+                abs(event.button.y-SLIDER_Y)<=12 && event.button.x>=SLIDER_LEFT-8 && event.button.x<=SLIDER_LEFT+SLIDER_WIDTH+8) dragging=1;
+            if (dragging && (event.type==SDL_MOUSEMOTION || event.type==SDL_MOUSEBUTTONDOWN)) {
+                int x=event.type==SDL_MOUSEMOTION ? event.motion.x:event.button.x;
+                color_position=(double)(x-SLIDER_LEFT)/SLIDER_WIDTH;
+                if (color_position<0) color_position=0;
+                if (color_position>1) color_position=1;
+                dirty=1;
+            }
+            if (event.type==SDL_MOUSEBUTTONUP) dragging=0;
         }
         const Uint8 *keys=SDL_GetKeyboardState(NULL);
         pending|=pressed;
@@ -136,6 +171,13 @@ int main(int argc,char **argv) {
             (keys[SDL_SCANCODE_SLASH] ? KEY_SLASH:0);
         double now=seconds(),elapsed=now-start;
         if (scripted) {
+            if (elapsed>2.5 && !ui_test_sent) {
+                SDL_Event click={0}; click.type=SDL_MOUSEBUTTONDOWN; click.button.button=SDL_BUTTON_LEFT;
+                click.button.x=SLIDER_LEFT+SLIDER_WIDTH; click.button.y=SLIDER_Y;
+                SDL_PushEvent(&click); click.type=SDL_MOUSEBUTTONUP; SDL_PushEvent(&click);
+                SDL_Event key={0}; key.type=SDL_KEYDOWN; key.key.keysym.sym=SDLK_u; SDL_PushEvent(&key);
+                ui_test_sent=1;
+            }
             if (elapsed>1 && script_stage==0) { input|=KEY_PAUSE; if (p.paused) script_stage=1; }
             if (elapsed>1.3 && script_stage==1) {
                 if (paused_position<0) paused_position=audio_position(&audio);
@@ -156,8 +198,13 @@ int main(int argc,char **argv) {
         audio_fill(&audio);
         double backlog=p.position-5.492-(p.beat-1)*player_delay();
         if (a->scheduler.beat<6508 && backlog>max_backlog) max_backlog=backlog;
-        if (result || !presented) {
-            missing+=framebuffer_render(&frame,a->canvas.cells); expand(&frame,pixels);
+        if (result || !presented || dirty) {
+            missing+=framebuffer_render_case(&frame,a->canvas.cells,uppercase); expand(&frame,pixels,color_position);
+            if (dirty) {
+                char title[160];
+                snprintf(title,sizeof(title),"Credits VFD | #%06X | U uppercase: %s | drag color bar | P pause | 1-6 jump",(unsigned)(phosphor(color_position)&0xffffff),uppercase ? "ON":"OFF");
+                SDL_SetWindowTitle(window,title); dirty=0;
+            }
             if (SDL_UpdateTexture(texture,NULL,pixels,WIDTH*4)) fail("upload texture");
             SDL_RenderClear(renderer); SDL_RenderCopy(renderer,texture,NULL,NULL); presented++;
             if (snapshot && !saved && elapsed>1.5) {
@@ -178,6 +225,7 @@ int main(int argc,char **argv) {
     }
     SDL_PauseAudioDevice(audio.device,1);
     fprintf(stderr,"exit_reason=%s\n",exit_reason);
+    fprintf(stderr,"phosphor=#%06X uppercase=%d\n",(unsigned)(phosphor(color_position)&0xffffff),uppercase);
     fprintf(stderr,"presented=%u beat=%d audio_position=%.6f wall_seconds=%.6f max_compute_ms=%.3f max_backlog_ms=%.3f missing_glyph_cells=%u script_stage=%d underruns=%u\n",
         presented,a->scheduler.beat,audio_position(&audio),seconds()-start,max_compute*1000,max_backlog*1000,missing,script_stage,audio.underruns);
     credits_destroy(a); fprintf(stderr,"core_peak=%zu core_live=%zu\n",a->memory.peak,a->memory.live);
