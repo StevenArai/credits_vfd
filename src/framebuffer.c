@@ -10,10 +10,17 @@ int framebuffer_pixel(const Framebuffer *f,int x,int y) {
 unsigned framebuffer_render(Framebuffer *f,const uint32_t cells[CANVAS_CELLS]) {
     return framebuffer_render_case(f,cells,0);
 }
+static unsigned render_grid(Framebuffer *f,const uint32_t *cells,int width,int height,int step_x,int step_y,int uppercase);
 unsigned framebuffer_render_case(Framebuffer *f,const uint32_t cells[CANVAS_CELLS],int uppercase) {
+    return render_grid(f,cells,80,24,3,5,uppercase);
+}
+unsigned framebuffer_render60(Framebuffer *f,const uint32_t cells[1200],int uppercase) {
+    return render_grid(f,cells,60,20,4,6,uppercase);
+}
+static unsigned render_grid(Framebuffer *f,const uint32_t *cells,int width,int height,int step_x,int step_y,int uppercase) {
     unsigned missing=0;
     memset(f,0,sizeof(*f));
-    for (int i=0;i<CANVAS_CELLS;i++) {
+    for (int i=0;i<width*height;i++) {
         uint32_t cell=cells[i],ch=cell&65535;
         if (uppercase && ch>='a' && ch<='z') ch=ch-'a'+'A';
         if (ch==160) ch=32; /* NBSP has space semantics. */
@@ -24,7 +31,7 @@ unsigned framebuffer_render_case(Framebuffer *f,const uint32_t cells[CANVAS_CELL
         for (int y=0;y<5;y++) for (int x=0;x<3;x++) {
             int stroke=(font[ch-32]>>(14-y*3-x))&1;
             if (stroke ? ink:paper) {
-                int px=8+(i%80)*3+x,py=4+(i/80)*5+y;
+                int px=8+(i%width)*step_x+x,py=4+(i/width)*step_y+y;
                 f->bits[py*FB_STRIDE+px/8]|=(uint8_t)(128>>(px%8));
             }
         }

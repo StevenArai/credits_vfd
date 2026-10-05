@@ -8,5 +8,7 @@ typedef struct { uint8_t bits[FB_HEIGHT*FB_STRIDE]; } Framebuffer;
 /* MSB first, (8,4) origin, 3x5 cell advance. Returns missing glyph count. */
 unsigned framebuffer_render(Framebuffer *f,const uint32_t cells[CANVAS_CELLS]);
 unsigned framebuffer_render_case(Framebuffer *f,const uint32_t cells[CANVAS_CELLS],int uppercase);
+/* 60x20: 3x5 glyphs, 4x6 advance, origin (8,4); clear inter-cell gaps. */
+unsigned framebuffer_render60(Framebuffer *f,const uint32_t cells[1200],int uppercase);
 int framebuffer_pixel(const Framebuffer *f,int x,int y);
 #endif

@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include "player.h"
 #include "framebuffer.h"
+#include "layout60.h"
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -122,7 +123,8 @@ int main(int argc,char **argv) {
     SDL_Texture *texture=SDL_CreateTexture(renderer,SDL_PIXELFORMAT_ARGB8888,SDL_TEXTUREACCESS_STREAMING,WIDTH,HEIGHT);
     if (!texture) fail("create texture");
     Uint32 *pixels=calloc((size_t)WIDTH*HEIGHT,sizeof(*pixels));
-    Credits *a=malloc(sizeof(*a)); Framebuffer frame;
+    Credits *a=malloc(sizeof(*a)); Framebuffer frame; Layout60 layout;
+    unsigned max_scrolled=0;
     if (!pixels || !a) fail("allocate host state");
     credits_init(a,seed); Player p; player_init(&p,a,jump,seconds());
     audio_seek(&audio,p.position);
@@ -179,7 +181,7 @@ int main(int argc,char **argv) {
                 ui_test_sent=1;
             }
             if (elapsed>1 && script_stage==0) { input|=KEY_PAUSE; if (p.paused) script_stage=1; }
-            if (elapsed>1.3 && script_stage==1) {
+            if (elapsed>1.3 && script_stage==1 && p.paused) {
                 if (paused_position<0) paused_position=audio_position(&audio);
                 if (fabs(audio_position(&audio)-paused_position)>1e-9) fail("pause clock moved");
             }
@@ -199,10 +201,12 @@ int main(int argc,char **argv) {
         double backlog=p.position-5.492-(p.beat-1)*player_delay();
         if (a->scheduler.beat<6508 && backlog>max_backlog) max_backlog=backlog;
         if (result || !presented || dirty) {
-            missing+=framebuffer_render_case(&frame,a->canvas.cells,uppercase); expand(&frame,pixels,color_position);
+            layout60_render(&layout,a);
+            if (layout.scrolled_rows>max_scrolled) max_scrolled=layout.scrolled_rows;
+            missing+=framebuffer_render60(&frame,layout.cells,uppercase); expand(&frame,pixels,color_position);
             if (dirty) {
                 char title[160];
-                snprintf(title,sizeof(title),"Credits VFD | #%06X | U uppercase: %s | drag color bar | P pause | 1-6 jump",(unsigned)(phosphor(color_position)&0xffffff),uppercase ? "ON":"OFF");
+                snprintf(title,sizeof(title),"Credits VFD 60x20 | #%06X | U uppercase: %s | drag color bar | P pause | 1-6 jump",(unsigned)(phosphor(color_position)&0xffffff),uppercase ? "ON":"OFF");
                 SDL_SetWindowTitle(window,title); dirty=0;
             }
             if (SDL_UpdateTexture(texture,NULL,pixels,WIDTH*4)) fail("upload texture");
@@ -224,6 +228,7 @@ int main(int argc,char **argv) {
         SDL_Delay(1);
     }
     SDL_PauseAudioDevice(audio.device,1);
+    fprintf(stderr,"layout=60x20 layout_bytes=%zu max_scrolled_rows=%u\n",sizeof(layout),max_scrolled);
     fprintf(stderr,"exit_reason=%s\n",exit_reason);
     fprintf(stderr,"phosphor=#%06X uppercase=%d\n",(unsigned)(phosphor(color_position)&0xffffff),uppercase);
     fprintf(stderr,"presented=%u beat=%d audio_position=%.6f wall_seconds=%.6f max_compute_ms=%.3f max_backlog_ms=%.3f missing_glyph_cells=%u script_stage=%d underruns=%u\n",

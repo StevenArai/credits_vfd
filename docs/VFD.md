@@ -1,3 +1,5 @@
+> 当前实验分支 `codex/layout-60x20`：运行 `build/layout60/credits_sdl.exe`。SDL 已改为 60×20、3×5 字形、4×6 步进。下方旧 80×24 验收记录用于参考；新布局详见 [LAYOUT60.md](LAYOUT60.md)，内容完整性待用户目视验收。
+
 # VFD 显示与音频
 
 在项目根目录构建并运行：
