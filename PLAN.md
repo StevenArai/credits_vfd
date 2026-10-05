@@ -205,3 +205,5 @@
 - VFD 文案改为 `Modded by StevenArai`、`On the VFD Panel`；沿用源场景逐行显示时机和颜色，保留作者署名。修改仅在布局层，原 Python 和终端对照不变。
 - build/host 重建通过；布局、SDL 音频/交互、归档检查 3/3 通过。新增真实标题时间线 1080–1843 拍逐格验证 32 格矩形及两行文案；三个种子 19527 帧布局运行通过。
 - 已检查第 1600 拍实际核心输出预览 `build/host/title-fixed.png`，两行文案完整、矩形不再与面板重叠。
+
+- 标题第二行按用户要求进一步改为 `On the GU256X128C-3900 VFD Panel`；build/host 重建及 layout60 文案/布局检查通过。

@@ -41,7 +41,7 @@ int main(int argc,char **argv) {
         for (int y=0;y<4;y++) for (int x=0;x<8;x++)
             CHECK(layout.cells[(7+y)*60+26+x]==a->canvas.cells[(11+y)*80+36+x]);
         const char *old[]={"running pure Python 3.6","in the command line"};
-        const char *updated[]={"Modded by StevenArai","On the VFD Panel"};
+        const char *updated[]={"Modded by StevenArai","On the GU256X128C-3900 VFD Panel"};
         for (int line=0;line<2;line++) {
             int row=4+line,visible=1;
             for (size_t i=0;old[line][i];i++)

@@ -82,7 +82,7 @@ void layout60_render(Layout60 *out,const Credits *a) {
         } else {
             flow(out,cells,(Rect){0,0,80,7},(Rect){0,0,60,7});
             title_label(out,cells,4,"running pure Python 3.6","Modded by StevenArai");
-            title_label(out,cells,5,"in the command line","On the VFD Panel");
+            title_label(out,cells,5,"in the command line","On the GU256X128C-3900 VFD Panel");
             /* End at row 10: weather begins at (32,11), including blank cells. */
             graphic(out,cells,(Rect){36,11,8,4},(Rect){26,7,8,4});
         }
