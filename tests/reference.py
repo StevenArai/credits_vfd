@@ -150,9 +150,11 @@ def replay(scope, out, last, jump=1):
             digest.update(record)
             frames.write(record)
             count += 1
+    import ocean
     return {'frames': count, 'sha256': digest.hexdigest(), 'events': event_trace,
             'active': [[s.name, s.start_beat, s.internal_beat] for s in controller.active_scene],
-            'rng_state_sha256': hashlib.sha256(repr(random.getstate()).encode()).hexdigest()}
+            'rng_state_sha256': hashlib.sha256(repr(random.getstate()).encode()).hexdigest(),
+            'rng': list(random.getstate()[1]), 'ocean_time': ocean.ocean_time}
 
 
 def main():
@@ -168,7 +170,7 @@ def main():
     result = replay(scope, args.out, args.last, args.jump)
     result.update(seed=args.seed, jump=args.jump, last=args.last)
     args.out.with_suffix('.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
-    print(json.dumps(result | {'events': len(result['events'])}))
+    print(json.dumps({k:v for k,v in result.items() if k!='rng'} | {'events': len(result['events'])}))
 
 
 if __name__ == '__main__':
