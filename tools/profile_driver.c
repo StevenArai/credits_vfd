@@ -42,6 +42,7 @@ int main(int argc,char **argv) {
         framebuffer_render60(&frame,cells,1); double end=host_seconds();
         animation+=next-start; flow+=drawn-next; pixels+=end-drawn;
         hash(a->canvas.cells,sizeof(a->canvas.cells)); hash(frame.bits,sizeof(frame.bits));
+        hash(&a->random,sizeof(a->random)); /* Catch hidden RNG drift in experiments. */
     }
     printf("{\"seed\":%u,\"frames\":6509,\"digest\":\"%016llx\",\"credits\":%zu,\"layout\":%zu,\"framebuffer\":%zu,\"init_live\":%zu,\"init_calls\":%zu,\"dynamic_peak\":%zu,\"allocations\":%zu,\"animation_ms\":%.6f,\"layout_ms\":%.6f,\"pixels_ms\":%.6f",
         seed,digest,sizeof(*a),layout_size,sizeof(frame),init_live,init_calls,a->memory.peak,a->memory.calls,animation*1000,flow*1000,pixels*1000);

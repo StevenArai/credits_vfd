@@ -1,5 +1,13 @@
 # 重建实施计划与实际进度
 
+## 高频浮点/bloat复核（2026-10-06）
+
+- 基于48d2204新增按调用点/每帧峰值、链接阶段数学调用计数、player轮询和独立ARM surface汇编探针。只改工具/文档，不改生产行为。结果与优先级见docs/HOTSPOTS.md。
+- 三种子各6509帧，源插桩、链接wrap及build内访问点循环不变量实验均与原始构建的每帧字符/像素/主RNG摘要一致；调用点总量自检、内存释放检查通过。真实pow2883次、峰值72；实验2173次、峰值4。不能把插桩耗时当成实际提速比例。
+- 天气逐字浮点比较11516次、海洋入场一帧183 sin+61 cos、天气1002次模拟/最大14次单帧；player1000Hz轮询275618次但仅6509更新。soft ABI surface确实生成双精度软件运算，尚无板端周期或目标libc大小。
+- 当前仍39次分配、堆峰值25184B、ARM主要对象投影34476B；Windows/SDL/WAV均排除。原生对象保留sscanf、浮点snprintf、fprintf/abort依赖。没有重新跑无关CTest或重建发布EXE。
+- 实际编译运行工具及证据：tools/profile_core.py、profile_math.py、profile_player.c，docs/validation/2026-10-06/hotspots。未实施后续优化，不推送。
+
 ## 自包含 WAV 的 Windows EXE（2026-10-06）
 
 - 用户授权构建单文件EXE。增加可选CREDITS_STANDALONE：WAV以Windows RCDATA嵌入，通过只读资源流交给SDL_LoadWAV_RW，不落盘解包；SDL静态链接。默认使用内嵌音频，显式--audio仍读取外部文件。普通动态SDL构建保留，不改核心/动画。

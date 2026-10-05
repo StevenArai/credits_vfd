@@ -17,6 +17,20 @@ static size_t arm_live,arm_peak;
 static int arm_peak_beat;
 static int peak_beat;
 int profile_beat=-1;
+static const char *hotnames[]={PROFILE_HOTNAMES};
+static struct { unsigned long long total,initial,current,peak; int last,peak_beat; } hotstats[sizeof(hotnames)/sizeof(*hotnames)];
+void profile_hit(int site) {
+    if (hotstats[site].last!=profile_beat) {
+        hotstats[site].last=profile_beat; hotstats[site].current=0;
+    }
+    hotstats[site].total++;
+    if (profile_beat<0) { hotstats[site].initial++; return; }
+    hotstats[site].current++;
+    if (hotstats[site].current>hotstats[site].peak) {
+        hotstats[site].peak=hotstats[site].current;
+        hotstats[site].peak_beat=profile_beat;
+    }
+}
 static int find(void *p) {
     for (int i=0;i<4096;i++) if (allocations[i].ptr==p) return i;
     fputs("profile allocation table exhausted or unknown pointer\n",stderr); abort();
@@ -67,5 +81,9 @@ void profile_report(void) {
     printf("},\"library_calls\":{");
     for (size_t i=0;i<sizeof(libnames)/sizeof(*libnames);i++)
         printf("%s\"%s\":%llu",i ? ",":"",libnames[i],profile_libcalls[i]);
-    printf("}");
+    printf("},\"hotspots\":[");
+    for (size_t i=0;i<sizeof(hotnames)/sizeof(*hotnames);i++)
+        printf("%s{\"site\":\"%s\",\"total\":%llu,\"initial\":%llu,\"max_per_frame\":%llu,\"peak_frame\":%d}",
+            i ? ",":"",hotnames[i],hotstats[i].total,hotstats[i].initial,hotstats[i].peak,hotstats[i].peak_beat);
+    printf("]");
 }
