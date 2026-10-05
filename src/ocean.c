@@ -21,7 +21,7 @@ void credits_ocean_begin(Credits *a,Ocean *o) {
 void credits_ocean_update(Credits *a,Ocean *o) {
     uint32_t slice[10];
 #ifdef CREDITS_DIRECT60
-    int destination=0;
+    int column=0;
     uint32_t style=canvas60_style(o->colour);
 #else
     uint32_t output[800];
@@ -39,10 +39,19 @@ void credits_ocean_update(Credits *a,Ocean *o) {
         if ((ch=='#' || ch=='.' || ch==160) && random_unit(&a->random)<=chance)
             ch=(uint32_t)('a'+(int)floor(random_unit(&a->random)*26));
 #ifdef CREDITS_DIRECT60
-        /* Keep every simulation/RNG step; sample directly into the 60x8 region. */
-        if (destination<480 && i==(destination/60*9/7)*80+destination%60*79/59) {
-            canvas60_put(&a->canvas,destination%60,12+destination/60,style|ch);
-            destination++;
+        /* Reduce 10 rows to 8 without dropping the one-cell shoreline.
+           Row groups are [0],[1],[2],[3],[4,5],[6],[7],[8,9]. Keep '#'
+           if either rendered source cell has it; otherwise use the last cell.
+           Apply this after glitches, without synthesizing lost/randomized '#'. */
+        int source_y=i/80,source_x=i%80;
+        if (!source_x) column=0;
+        if (column<60 && source_x==column*79/59) {
+            int row=(source_y*7+8)/9;
+            int first=source_y==0 || ((source_y-1)*7+8)/9!=row;
+            uint32_t previous=a->canvas.cells[(12+row)*60+column]&65535;
+            if (first || ch=='#' || previous!='#')
+                canvas60_put(&a->canvas,column,12+row,style|ch);
+            column++;
         }
 #else
         output[i]=ch;

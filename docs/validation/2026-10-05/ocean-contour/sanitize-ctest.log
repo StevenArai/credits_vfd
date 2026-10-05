@@ -1,0 +1,19 @@
+Start testing: Oct 05 23:34 中国标准时间
+----------------------------------------------------------
+29/29 Testing: ocean60_contour
+29/29 Test: ocean60_contour
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/ocean60_test.py" "D:/credits_vfd/build/direct60-sanitize/ocean60_probe.exe" "D:/credits_vfd/build/direct60-sanitize/ocean_reference_probe.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"ocean60_contour" start time: Oct 05 23:34 中国标准时间
+Output:
+----------------------------------------------------------
+990 ocean frames, all ten shoreline heights and five glitch levels; 14356 dropped shoreline cells preserved; RNG identical
+<end of output>
+Test time =   1.05 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_contour" end time: Oct 05 23:34 中国标准时间
+"ocean60_contour" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Oct 05 23:34 中国标准时间

@@ -1,0 +1,15 @@
+{
+  "seed": 1,
+  "frames": 6509,
+  "digest": "934daf66cee415b0",
+  "credits": 18912,
+  "layout": 0,
+  "framebuffer": 4096,
+  "init_live": 17030,
+  "init_calls": 28,
+  "dynamic_peak": 25184,
+  "allocations": 39,
+  "animation_ms": 14.3957,
+  "layout_ms": 0.0,
+  "pixels_ms": 130.1241
+}
