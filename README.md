@@ -7,6 +7,12 @@
 60×20 版本在可移植核心中直接写入固定字符画布，再生成同一张 framebuffer；SDL 不负责业务绘制。
 当前直接布局已获用户目视接受；最新原生海洋匀步移动修复待复看。自动测试覆盖原始 80×24 参考行为、直接布局业务状态、像素输出和交互，不代表新布局已完全通过视觉验收。实现与内存实测见 [DIRECT60.md](docs/DIRECT60.md)。
 
+## 无音乐 MCU 接口
+
+直接使用 [单头文件](include/credits_animator.h)：外部时钟 → init/update → 读取只读 framebuffer → 板端显示驱动。Animator 内含字符画布、状态和一张 4096 B framebuffer，核心没有显式堆分配。ARM ABI 对象大小 34872 B（不含栈、驱动和目标运行库开销）；尚未做真实 MCU 链接或运行验收。
+
+[接口与生命周期说明](docs/ANIMATOR_API.md) · [板端集成示例](examples/animator_mcu.c)。SDL 也通过该封装取帧。
+
 ## 构建与运行
 
 当前原生运行版已使用离散数值查表和Q32.32定点播放器；时间精度、表范围及资源变化见 [LOOKUP_FIXED_TIME.md](docs/LOOKUP_FIXED_TIME.md)。普通最新构建为 `build/ocean-overlay/credits_sdl.exe`，内嵌音频版本见下文。

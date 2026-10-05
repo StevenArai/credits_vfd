@@ -68,7 +68,11 @@ void profile_free(Memory *m,void *p,size_t size) {
 }
 void profile_report(void) {
     if (arm_live) abort();
+#ifdef CREDITS_DIRECT60
+    printf(",\"arm_projected_heap_peak\":0,\"arm_projected_reserved_peak\":%zu,\"arm_projected_peak_beat\":%d",arm_peak,arm_peak_beat);
+#else
     printf(",\"arm_projected_heap_peak\":%zu,\"arm_projected_peak_beat\":%d",arm_peak,arm_peak_beat);
+#endif
     printf(",\"allocation_peak_beat\":%d,\"tracked_live_after_destroy\":%zu,\"sites\":[",peak_beat,live);
     for (size_t i=0;i<sizeof(stats)/sizeof(*stats);i++) {
         Site *s=&stats[i];

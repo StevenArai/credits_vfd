@@ -45,7 +45,16 @@ int main(int argc,char **argv) {
         hash(&a->random,sizeof(a->random)); /* Catch hidden RNG drift in experiments. */
     }
     printf("{\"seed\":%u,\"frames\":6509,\"digest\":\"%016llx\",\"credits\":%zu,\"layout\":%zu,\"framebuffer\":%zu,\"init_live\":%zu,\"init_calls\":%zu,\"dynamic_peak\":%zu,\"allocations\":%zu,\"animation_ms\":%.6f,\"layout_ms\":%.6f,\"pixels_ms\":%.6f",
-        seed,digest,sizeof(*a),layout_size,sizeof(frame),init_live,init_calls,a->memory.peak,a->memory.calls,animation*1000,flow*1000,pixels*1000);
+        seed,digest,sizeof(*a),layout_size,sizeof(frame),init_live,init_calls,
+#ifdef CREDITS_DIRECT60
+        (size_t)0,(size_t)0,
+#else
+        a->memory.peak,a->memory.calls,
+#endif
+        animation*1000,flow*1000,pixels*1000);
+#ifdef CREDITS_DIRECT60
+    printf(",\"reservations\":%zu,\"reserved_peak\":%zu,\"workspace_used\":%zu,\"workspace_capacity\":%zu",a->memory.calls,a->memory.peak,a->memory.used,a->memory.capacity);
+#endif
     credits_destroy(a); if (a->memory.live) return 2;
 #ifdef PROFILE_COUNTS
     profile_report();

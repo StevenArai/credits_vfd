@@ -1,7 +1,6 @@
 #define SDL_MAIN_HANDLED
 #include <SDL.h>
-#include "player_fixed.h"
-#include "framebuffer.h"
+#include "animator.h"
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -12,11 +11,11 @@
 #endif
 
 /* Floating-point conversions stay in the host display/diagnostic adapter. */
-static double time_seconds(FixedTime value) { return (double)value/4294967296.0; }
-static FixedTime fixed_now(void) {
+static double time_seconds(CreditsTime value) { return (double)value/4294967296.0; }
+static CreditsTime fixed_now(void) {
     Uint64 frequency=SDL_GetPerformanceFrequency();
     if(!frequency || frequency>UINT32_MAX) { fputs("unsupported host counter frequency\n",stderr); exit(1); }
-    return fixed_time_ratio(SDL_GetPerformanceCounter(),(uint32_t)frequency);
+    return credits_time_from_counter(SDL_GetPerformanceCounter(),(uint32_t)frequency);
 }
 /* Host owns decoded WAV and SDL's bounded queue. Core never sees SDL objects. */
 typedef struct {
@@ -56,7 +55,7 @@ static void audio_seek(Audio *a,double position) {
     a->submitted=(Uint32)frames*a->frame_bytes;
     audio_fill(a);
 }
-enum { BORDER=48, PITCH=3, WIDTH=FB_WIDTH*PITCH+2*BORDER, HEIGHT=FB_HEIGHT*PITCH+2*BORDER };
+enum { BORDER=48, PITCH=3, WIDTH=256*PITCH+2*BORDER, HEIGHT=128*PITCH+2*BORDER };
 enum { SLIDER_LEFT=270, SLIDER_WIDTH=324, SLIDER_Y=456 };
 static Uint32 phosphor(double value) {
     static const Uint32 anchors[]={0x00cfa0,0x00e89b,0x20e6a0,0x00ffc0};
@@ -70,11 +69,11 @@ static Uint32 phosphor(double value) {
     }
     return color;
 }
-static void expand(const Framebuffer *f,Uint32 *pixels,double color_position) {
+static void expand(const CreditsFrameView *f,Uint32 *pixels,double color_position) {
     Uint32 lit=phosphor(color_position);
     /* Black gaps and bezel persist; only 2x2 physical phosphor blocks change. */
-    for (int y=0;y<FB_HEIGHT;y++) for (int x=0;x<FB_WIDTH;x++) {
-        Uint32 color=framebuffer_pixel(f,x,y) ? lit:0xff161914;
+    for (int y=0;y<128;y++) for (int x=0;x<256;x++) {
+        Uint32 color=((f->data[y*f->stride+x/8]>>(7-x%8))&1) ? lit:0xff161914;
         int base=(BORDER+y*PITCH)*WIDTH+BORDER+x*PITCH;
         pixels[base]=pixels[base+1]=pixels[base+WIDTH]=pixels[base+WIDTH+1]=color;
     }
@@ -150,13 +149,15 @@ int main(int argc,char **argv) {
     SDL_Texture *texture=SDL_CreateTexture(renderer,SDL_PIXELFORMAT_ARGB8888,SDL_TEXTUREACCESS_STREAMING,WIDTH,HEIGHT);
     if (!texture) fail("create texture");
     Uint32 *pixels=calloc((size_t)WIDTH*HEIGHT,sizeof(*pixels));
-    static Credits animation; /* Persistent char_buf is owned by this instance. */
-    static Framebuffer frame;
-    Credits *a=&animation;
+    static CreditsAnimator animation;
+    CreditsAnimator *a=&animation;
     unsigned max_scrolled=0;
     if (!pixels || !a) fail("allocate host state");
-    credits_init(a,seed); FixedPlayer p; fixed_player_init(&p,a,jump,fixed_now());
-    audio_seek(&audio,time_seconds(p.position));
+    CreditsAnimatorConfig config={seed,jump,uppercase};
+    CreditsTime origin=fixed_now();
+    if(credits_animator_init(a,&config,origin)) fail("animator init");
+    CreditsAnimatorResult state=credits_animator_update(a,origin);
+    audio_seek(&audio,time_seconds(state.position));
     SDL_PauseAudioDevice(audio.device,0);
     double start=seconds(),max_compute=0,max_backlog=0,paused_position=-1;
     unsigned presented=0,missing=0,pending=0; int quit=0,script_stage=0,saved=0;
@@ -164,7 +165,7 @@ int main(int argc,char **argv) {
     const char *exit_reason="unknown";
     fprintf(stderr,"audio=%s backend=%s rate=%d duration=%.6f wav_bytes=%u queue_limit=%u device_frames=%u host_pixels=%zu core=%zu framebuffer=%zu\n",
         wav,SDL_GetCurrentAudioDriver(),audio.spec.freq,audio.length/audio.bytes_per_second,
-        audio.length,8192*audio.frame_bytes,audio.spec.samples,(size_t)WIDTH*HEIGHT*4,sizeof(*a),sizeof(frame));
+        audio.length,8192*audio.frame_bytes,audio.spec.samples,(size_t)WIDTH*HEIGHT*4,sizeof(*a),(size_t)4096);
     while (!quit) {
         SDL_Event event; unsigned pressed=0;
         while (SDL_PollEvent(&event)) {
@@ -173,15 +174,17 @@ int main(int argc,char **argv) {
                 SDL_Keycode key=event.key.keysym.sym;
                 if (key==SDLK_ESCAPE) { quit=1; exit_reason="escape"; }
                 if (key==SDLK_u && !event.key.repeat) { uppercase=!uppercase; dirty=1; }
-                if (key==SDLK_p) pressed|=FP_PAUSE;
-                if (key==SDLK_COMMA) pressed|=FP_COMMA;
-                if (key==SDLK_PERIOD) pressed|=FP_PERIOD;
-                if (key==SDLK_SLASH) pressed|=FP_SLASH;
+                if (key==SDLK_p) pressed|=CREDITS_CONTROL_PAUSE;
+                if (key==SDLK_COMMA) pressed|=CREDITS_CONTROL_FORWARD_SMALL;
+                if (key==SDLK_PERIOD) pressed|=CREDITS_CONTROL_FORWARD_MEDIUM;
+                if (key==SDLK_SLASH) pressed|=CREDITS_CONTROL_FORWARD_LARGE;
                 if (key>=SDLK_1 && key<=SDLK_6) {
                     SDL_PauseAudioDevice(audio.device,1);
-                    credits_destroy(a); credits_init(a,seed);
-                    fixed_player_init(&p,a,(int)(key-SDLK_1+1),fixed_now());
-                    audio_seek(&audio,time_seconds(p.position)); SDL_PauseAudioDevice(audio.device,0);
+                    config.start_section=(int)(key-SDLK_1+1); config.uppercase=uppercase;
+                    origin=fixed_now();
+                    if(credits_animator_init(a,&config,origin)) fail("animator restart");
+                    state=credits_animator_update(a,origin);
+                    audio_seek(&audio,time_seconds(state.position)); SDL_PauseAudioDevice(audio.device,0);
                 }
             }
             if (event.type==SDL_MOUSEBUTTONDOWN && event.button.button==SDL_BUTTON_LEFT &&
@@ -197,9 +200,9 @@ int main(int argc,char **argv) {
         }
         const Uint8 *keys=SDL_GetKeyboardState(NULL);
         pending|=pressed;
-        unsigned input=pending|(keys[SDL_SCANCODE_P] ? FP_PAUSE:0)|
-            (keys[SDL_SCANCODE_COMMA] ? FP_COMMA:0)|(keys[SDL_SCANCODE_PERIOD] ? FP_PERIOD:0)|
-            (keys[SDL_SCANCODE_SLASH] ? FP_SLASH:0);
+        unsigned input=pending|(keys[SDL_SCANCODE_P] ? CREDITS_CONTROL_PAUSE:0)|
+            (keys[SDL_SCANCODE_COMMA] ? CREDITS_CONTROL_FORWARD_SMALL:0)|(keys[SDL_SCANCODE_PERIOD] ? CREDITS_CONTROL_FORWARD_MEDIUM:0)|
+            (keys[SDL_SCANCODE_SLASH] ? CREDITS_CONTROL_FORWARD_LARGE:0);
         double now=seconds(),elapsed=now-start;
         if (scripted) {
             if (elapsed>2.5 && !ui_test_sent) {
@@ -209,31 +212,35 @@ int main(int argc,char **argv) {
                 SDL_Event key={0}; key.type=SDL_KEYDOWN; key.key.keysym.sym=SDLK_u; SDL_PushEvent(&key);
                 ui_test_sent=1;
             }
-            if (elapsed>1 && script_stage==0) { input|=FP_PAUSE; if (p.paused) script_stage=1; }
-            if (elapsed>1.3 && script_stage==1 && p.paused) {
+            if (elapsed>1 && script_stage==0) { input|=CREDITS_CONTROL_PAUSE; if (state.paused) script_stage=1; }
+            if (elapsed>1.3 && script_stage==1 && state.paused) {
                 if (paused_position<0) paused_position=audio_position(&audio);
                 if (fabs(audio_position(&audio)-paused_position)>1e-9) fail("pause clock moved");
             }
-            if (elapsed>2 && script_stage==1) { input|=FP_PAUSE; if (!p.paused) script_stage=2; }
-            if (elapsed>3 && elapsed<3.2) input|=FP_SLASH;
+            if (elapsed>2 && script_stage==1) { input|=CREDITS_CONTROL_PAUSE; if (!state.paused) script_stage=2; }
+            if (elapsed>3 && elapsed<3.2) input|=CREDITS_CONTROL_FORWARD_LARGE;
         }
         Uint32 consumed=audio.submitted-SDL_GetQueuedAudioSize(audio.device);
-        FixedTime media_time=fixed_time_ratio(consumed,(uint32_t)audio.spec.freq*audio.frame_bytes);
-        double media=time_seconds(media_time); int was_paused=p.paused;
+        CreditsTime media_time=credits_time_from_counter(consumed,(uint32_t)audio.spec.freq*audio.frame_bytes);
+        double media=time_seconds(media_time); int was_paused=state.paused;
         int active=consumed<audio.length;
-        FixedTime update=p.last_update;
-        int result=fixed_player_sync(&p,fixed_now(),media_time,input,active,INT_MAX);
-        if (update!=p.last_update) pending=0;
+        credits_animator_set_uppercase(a,uppercase);
+        state=credits_animator_sync(a,fixed_now(),media_time,input,active);
+        if(state.status) fail("animator clock");
+        int result=state.frame_changed;
+        if (state.input_sampled) pending=0;
         double compute=seconds()-now; if (compute>max_compute) max_compute=compute;
-        if (time_seconds(p.position)>media+0.5/audio.spec.freq) audio_seek(&audio,time_seconds(p.position));
-        if (p.paused!=was_paused || time_seconds(p.position)>media+0.5/audio.spec.freq)
-            SDL_PauseAudioDevice(audio.device,p.paused);
+        if (time_seconds(state.position)>media+0.5/audio.spec.freq) audio_seek(&audio,time_seconds(state.position));
+        if (state.paused!=was_paused || time_seconds(state.position)>media+0.5/audio.spec.freq)
+            SDL_PauseAudioDevice(audio.device,state.paused);
         audio_fill(&audio);
-        double backlog=time_seconds(p.position-p.next_beat);
-        if (a->scheduler.beat<6508 && backlog>max_backlog) max_backlog=backlog;
+        double backlog=time_seconds(state.lag);
+        CreditsAnimatorStats stats=credits_animator_stats(a);
+        if (stats.beat<6508 && backlog>max_backlog) max_backlog=backlog;
         if (result || !presented || dirty) {
-            if (a->canvas.scrolled_rows>max_scrolled) max_scrolled=a->canvas.scrolled_rows;
-            missing+=framebuffer_render60(&frame,a->canvas.cells,uppercase); expand(&frame,pixels,color_position);
+            if (stats.scrolled_rows>max_scrolled) max_scrolled=stats.scrolled_rows;
+            CreditsFrameView frame=credits_animator_frame(a);
+            missing+=stats.missing_glyphs; expand(&frame,pixels,color_position);
             if (dirty) {
                 char title[160];
                 snprintf(title,sizeof(title),"Credits VFD 60x20 | #%06X | U uppercase: %s | drag color bar | P pause | 1-6 jump",(unsigned)(phosphor(color_position)&0xffffff),uppercase ? "ON":"OFF");
@@ -258,12 +265,13 @@ int main(int argc,char **argv) {
         SDL_Delay(1);
     }
     SDL_PauseAudioDevice(audio.device,1);
-    fprintf(stderr,"layout=direct60 char_buf_bytes=%zu scrolled_rows=%u clipped_cells=%u\n",sizeof(a->canvas.cells),max_scrolled,a->canvas.clipped_cells);
+    CreditsAnimatorStats stats=credits_animator_stats(a);
+    fprintf(stderr,"layout=direct60 char_buf_bytes=%zu scrolled_rows=%u clipped_cells=%u\n",(size_t)4800,max_scrolled,stats.clipped_cells);
     fprintf(stderr,"exit_reason=%s\n",exit_reason);
     fprintf(stderr,"phosphor=#%06X uppercase=%d\n",(unsigned)(phosphor(color_position)&0xffffff),uppercase);
     fprintf(stderr,"presented=%u beat=%d audio_position=%.6f wall_seconds=%.6f max_compute_ms=%.3f max_backlog_ms=%.3f missing_glyph_cells=%u script_stage=%d underruns=%u\n",
-        presented,a->scheduler.beat,audio_position(&audio),seconds()-start,max_compute*1000,max_backlog*1000,missing,script_stage,audio.underruns);
-    credits_destroy(a); fprintf(stderr,"core_peak=%zu core_live=%zu\n",a->memory.peak,a->memory.live);
+        presented,stats.beat,audio_position(&audio),seconds()-start,max_compute*1000,max_backlog*1000,missing,script_stage,audio.underruns);
+    credits_animator_destroy(a); fprintf(stderr,"workspace_used=%zu core_live=%zu heap_bytes=0\n",stats.workspace_used,credits_animator_stats(a).reserved_bytes);
     free(pixels); SDL_CloseAudioDevice(audio.device); SDL_FreeWAV(audio.data);
     SDL_DestroyTexture(texture); SDL_DestroyRenderer(renderer); SDL_DestroyWindow(window); SDL_Quit(); return 0;
 }

@@ -1,0 +1,19 @@
+Start testing: Oct 06 01:28 中国标准时间
+----------------------------------------------------------
+34/37 Testing: animator_clock_wrapper
+34/37 Test: animator_clock_wrapper
+Command: "D:/credits_vfd/build/direct60-sanitize/animator_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"animator_clock_wrapper" start time: Oct 06 01:28 中国标准时间
+Output:
+----------------------------------------------------------
+18 full clock-only replays, 32952 presented frames; object=40584 arena=25574 used=25424; no playback reservations
+<end of output>
+Test time =  17.53 sec
+----------------------------------------------------------
+Test Passed.
+"animator_clock_wrapper" end time: Oct 06 01:29 中国标准时间
+"animator_clock_wrapper" time elapsed: 00:00:17
+----------------------------------------------------------
+
+End testing: Oct 06 01:29 中国标准时间

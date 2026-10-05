@@ -1,0 +1,19 @@
+{
+  "seed": 42,
+  "frames": 6509,
+  "digest": "c5c5a91fc281a1f9",
+  "credits": 36376,
+  "layout": 0,
+  "framebuffer": 4096,
+  "init_live": 25350,
+  "init_calls": 32,
+  "dynamic_peak": 0,
+  "allocations": 0,
+  "animation_ms": 10.6447,
+  "layout_ms": 0.0,
+  "pixels_ms": 127.4768,
+  "reservations": 32,
+  "reserved_peak": 25350,
+  "workspace_used": 25424,
+  "workspace_capacity": 25574
+}

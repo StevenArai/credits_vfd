@@ -10,7 +10,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 CORE = 'memory random canvas scheduler data credits ocean text scene_init scenes weather player framebuffer layout60'.split()
-NATIVE = 'memory random scheduler data credits ocean60 math_lookup text scene_init scenes60 weather player_fixed framebuffer charbuf60 text60'.split()
+NATIVE = 'memory random scheduler data credits ocean60 math_lookup text scene_init scenes60 weather player_fixed animator framebuffer charbuf60 text60'.split()
 LIBCALLS = 'memcpy memmove memset strlen strcmp strchr memchr strncmp snprintf sscanf sin cos pow floor fabs'.split()
 
 
@@ -119,8 +119,8 @@ extern int profile_beat;
         timing = json.loads((out / f'timing-{seed}.json').read_text())
         assert counts['digest'] == timing['digest'], 'instrumentation changed output'
         assert counts['tracked_live_after_destroy'] == 0
-        assert sum(x['calls'] for x in counts['sites']) == timing['allocations']
-        assert sum(x['at_global_peak'] for x in counts['sites']) == timing['dynamic_peak']
+        assert sum(x['calls'] for x in counts['sites']) == timing.get('reservations', timing['allocations'])
+        assert sum(x['at_global_peak'] for x in counts['sites']) == timing.get('reserved_peak', timing['dynamic_peak'])
         for name in ('sin', 'cos', 'pow', 'floor', 'fabs', 'snprintf', 'sscanf'):
             assert sum(x['total'] for x in counts['hotspots'] if x['site'].endswith(':'+name)) == counts['library_calls'][name]
     print(out)

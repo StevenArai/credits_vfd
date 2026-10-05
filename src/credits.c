@@ -86,10 +86,23 @@ static int native_scene_due(int scene,int generator,int beat) {
 #endif
 void credits_init(Credits *a,uint64_t seed) {
     memset(a,0,sizeof(*a));
+#ifdef CREDITS_DIRECT60
+    a->memory.arena=a->storage.bytes;
+    a->memory.capacity=sizeof(a->storage.bytes);
+#endif
     canvas_init(&a->canvas,&a->memory);
     random_seed(&a->random,seed);
     a->ocean_time=(int)floor(random_unit(&a->random)*2000);
     data_init(a->texts,&a->memory,&a->random);
+#ifdef CREDITS_DIRECT60
+    a->scratch_capacity=1024;
+    a->scratch=mem_resize(&a->memory,NULL,0,a->scratch_capacity);
+    const int history_capacity[]={240,48,16};
+    for (int i=0;i<3;i++) {
+        a->history[i].capacity=history_capacity[i];
+        a->history[i].entries=mem_resize(&a->memory,NULL,0,(size_t)history_capacity[i]*sizeof(HistoryEntry));
+    }
+#endif
     weather_init(a->weather);
     scheduler_init(&a->scheduler,scene_definitions,a->scenes,SC_COUNT,a->active,SC_COUNT);
     a->scheduler.context=a; a->scheduler.condition=scene_due;

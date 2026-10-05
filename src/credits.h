@@ -37,6 +37,13 @@ typedef struct Credits {
     void *trace_context;
 #ifdef CREDITS_DIRECT60
     int draw_scene,draw_generator; /* Native text region selected by the scene. */
+    /* Current data: 11350 text bytes, 355 WordLines, history capacities 240/48/16.
+       Extra alignment space covers all 32 initial reservations on either ABI. */
+    union {
+        uint64_t alignment;
+        void *pointer_alignment;
+        unsigned char bytes[11350+355*sizeof(WordLine)+304*sizeof(HistoryEntry)+1024+32*(sizeof(void *)-1)];
+    } storage;
 #endif
 } Credits;
 void credits_init(Credits *a,uint64_t seed);
