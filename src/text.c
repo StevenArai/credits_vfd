@@ -2,7 +2,13 @@
 #include "colours.h"
 #include <stdio.h>
 #include <string.h>
+#ifdef CREDITS_DIRECT60
+#include "text60.h"
+#endif
 void credits_type_characters(Credits *a,Typewriter *t,int x,int y,const char *colour,int render) {
+#ifdef CREDITS_DIRECT60
+    credits60_characters(a,t,x,y,colour,render);
+#else
     const char *text=t->characters;
     if (!text || !*text) return;
     if (strncmp(text,"[##CLEAR|",9)==0) {
@@ -36,8 +42,13 @@ void credits_type_characters(Credits *a,Typewriter *t,int x,int y,const char *co
         begin=end+1; line++;
     }
     t->offset+=1+extra;
+#endif
 }
 void credits_multiline(Credits *a,int x,int y,const char *text,const char *colour) {
+#ifdef CREDITS_DIRECT60
+    /* Explicit newlines preserve a graphic's origin; no decode allocation. */
+    canvas_string(&a->canvas,x,y,text,colour);
+#else
     /* Do not use the shared scratch here: callers may pass that buffer. */
     const char *start=text;
     for (int line=0;;line++) {
@@ -55,6 +66,7 @@ void credits_multiline(Credits *a,int x,int y,const char *text,const char *colou
         if (!end) break;
         start=end+1;
     }
+#endif
 }
 static int join_words(char *out,const WordLine *line,int offset,int remove_tildes) {
     int word=0,n=0;
@@ -85,13 +97,22 @@ void credits_type_words(Credits *a,Typewriter *t,int x,int y,int history) {
         int width;
         if (sscanf(line->value+9,"%d",&width)!=1 || width<0) credits_fail("invalid word clear");
         buffer=credits_scratch(a,(size_t)width+1); memset(buffer,' ',(size_t)width); buffer[width]=0;
-        canvas_string(&a->canvas,x,y,buffer,t->colour); return;
+#ifdef CREDITS_DIRECT60
+        credits60_words(a,t,x,y,1);
+#else
+        canvas_string(&a->canvas,x,y,buffer,t->colour);
+#endif
+        return;
     }
     int length=join_words(buffer,line,t->offset,0);
     int fluff=!length || buffer[0]==' ',important=length && buffer[length-1]=='~';
     if (length) join_words(buffer,line,t->offset,1);
     else { memset(buffer,' ',60); buffer[60]=0; }
+#ifdef CREDITS_DIRECT60
+    credits60_words(a,t,x,y,0);
+#else
     canvas_string(&a->canvas,x,y,buffer,t->colour);
+#endif
     if (t->offset>=line->words) {
         history_append(a,&a->history[history],line,fluff,important);
         t->offset=0; t->line++;
@@ -100,6 +121,10 @@ void credits_type_words(Credits *a,Typewriter *t,int x,int y,int history) {
 void credits_write_history(Credits *a,int x,int y,int stop,int which) {
     if (!a->refresh) return;
     a->refresh=0;
+#ifdef CREDITS_DIRECT60
+    (void)x; (void)y; (void)stop;
+    credits60_history(a,which);
+#else
     History *history=&a->history[which];
     for (int row=y,index=0;row>=stop;row--,index++) {
         const char *colour=history->count ? BLACK BRIGHT:BLACK NORMAL;
@@ -119,6 +144,7 @@ void credits_write_history(Credits *a,int x,int y,int stop,int which) {
         while (n<50) buffer[n++]=' ';
         buffer[n]=0; canvas_string(&a->canvas,x,row,buffer,colour);
     }
+#endif
 }
 void credits_history_destroy(Credits *a) {
     for (int i=0;i<3;i++) {

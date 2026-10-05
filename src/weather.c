@@ -81,7 +81,13 @@ static void spaced(Credits *a,int x,int y,char *text,const char *colour,double c
         else for (int j=0;j<bytes;j++) text[write++]=text[read+j];
         read+=(size_t)bytes;
     }
-    text[write]=0; canvas_string(&a->canvas,x,y,text,colour);
+    text[write]=0;
+#ifdef CREDITS_DIRECT60
+    /* Weather's fixed 28x7 panel starts at native column 32, row 11. */
+    canvas_string(&a->canvas,32+(x-26)*2,y-3,text,colour);
+#else
+    canvas_string(&a->canvas,x,y,text,colour);
+#endif
 }
 void credits_weather(Credits *a,Weather *w,int mutations,double chance) {
     char text[160];

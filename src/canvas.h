@@ -3,6 +3,9 @@
 #include "memory.h"
 #include <stdint.h>
 #define CELL_CURSOR (UINT32_C(1) << 30) /* Presentation metadata, never packed into baseline cells. */
+#ifdef CREDITS_DIRECT60
+#include "charbuf60.h"
+#else
 #define CANVAS_WIDTH 80
 #define CANVAS_HEIGHT 24
 #define CANVAS_CELLS (CANVAS_WIDTH * CANVAS_HEIGHT)
@@ -25,4 +28,5 @@ void canvas_char(Canvas *c, double x, int y, const char *utf8, const char *code)
 void canvas_clear(Canvas *c);
 void canvas_render(Canvas *c);
 uint32_t cell_pack(uint32_t ch, int fg, int bg, int style);
+#endif
 #endif

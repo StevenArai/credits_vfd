@@ -224,3 +224,17 @@
 - seed 1 画布字符缓冲 89723/90225 次分配（99.44%），主机全局堆峰值时字符缓冲 59868 B、分组表 19840 B。原始核心独立计时中光栅化阶段平均约 13 µs/帧，高于动画/布局各约 3–4 µs，但不外推目标性能。
 - 审计核心未定义符号及源码调用次数，列出 sscanf、浮点 snprintf、pow/sin/cos/floor 和宿主错误打印的代码体积候选；目标 Flash 占用和周期尚未测量。数据保存于 docs/validation/2026-10-05/core-profile。
 - ABI 探针集成时首次使用不被 clang 接受的分离 -mcpu 参数，按诊断改成 -mcpu=cortex-m4 后通过；工具有明确的失败退出，不将失败记录当作有效结果。
+
+## 场景直接布局 60×20（2026-10-05）
+
+- 分支 codex/direct-60x20；先以 f86dbfb 提交 docs/OPTIMIZATION_PLAN.md。用户随后明确由助手负责构建/profile，用户负责目视验收。
+- [x] credits_core60 直接写一个 4800 B 字符格数组，再生成同一张静态 4096 B framebuffer；没有动态 Section、80×24 中间画布或 Layout60 实例。SDL 仅调用核心光栅化并显示/音频/输入，不承担业务排版。
+- [x] 22 个场景采用原生坐标/分区；原始终端参考与 Python 仍独立保留。调度、随机、事件、状态共用，绘制入口分为参考/原生；细节及有意布局变化见 docs/DIRECT60.md。
+- [x] `./tools/build.ps1 -BuildDir build/direct60 -SDL` 最终配置/编译成功，**28/28 CTest 通过（77.63 秒）**。此前首次基础构建 25/25 通过；后续以加入直接布局验收的最终结果为准。
+- [x] ASan/UBSan Debug build/direct60-sanitize 构建目标 charbuf60_test、sync60_test、direct60_probe、layout_reference_probe、credits_sdl；相关 **4/4 CTest 通过（59.30 秒）**。本轮未重复 sanitizer 的全部旧 Python 用例；Release 已运行完整套件。
+- [x] 三种子×六跳转，72132 帧业务摘要全部相同，涵盖完整 RNG、海洋、天气、历史和事件状态；所有回放 clipped=0、释放 live=0。标题 4584 帧像素、海洋 11802 帧区域格、标题块 4806 帧一致。整图有 18718 帧像素一致、53414 帧不同；不把原生换行/清除/进度条边界/噪声坐标差异称为完全保真。
+- [x] 独立 native profile 三个种子各6509帧，计数与非插桩字符/像素摘要相同。每次共39分配（初始化28，scratch4，历史7），画布零分配；x64 Credits 18912 B，堆峰值25184 B，fb4096 B，总主要对象48192 B。ARM ABI sizeof + 轨迹投影：18400+20116+4096=42612 B / 41.61 KiB，不含目标栈/分配器/驱动/少量静态对象，也不混入 XIP 或宿主资源。
+- [x] x64 Release 单函数栈最大504 B，ocean_update 200 B；非插桩 profile 动画含布局约2.1 µs/帧、光栅化约20–21 µs/帧。光栅化比旧测量约13 µs更慢，已记录，未在本轮进行热点优化。
+- [ ] 用户目视验收。当前构建入口 build/direct60/credits_sdl.exe；没有自动打开/关闭用户旧窗口。
+- 诊断记录：原生对照测试初稿误把3132–3375加载阶段标为海洋区域；3375实际是进度溢出帧，按事件表修正检查到真正海洋3376–3379，并将进度限制在32格内部的视觉差异单列。标题空白格属性差异通过实际像素对照确认不改变显示。历史前导空格与转场标题残留已修正后再跑最终测试。
+- 优化方向、结构、原生 profile JSON/比较摘要/栈/日志分别在 docs/OPTIMIZATION_PLAN.md、docs/DIRECT60.md、docs/validation/2026-10-05/native60-profile。没有修改字体、BPM 或浮点算法；不推送。

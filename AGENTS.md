@@ -29,4 +29,9 @@
 
 当前请求已扩展授权：修复实时播放对齐，完成 P4/P5 framebuffer、SDL2 显示及音频。音频位于根目录 `credits.wav`，不提交 Git。阶段通过后建立本地 Git 提交，不推送。
 
+最新方向：场景直接写固定 60×20 字符画布，再光栅化到同一张 4096 B framebuffer。
+SDL 链接 credits_core60，不包含 80×24 Canvas 或 Layout60 转换；credits_core 保留为终端参考构建。
+所有业务仍在可移植 C 内。优化路线见 docs/OPTIMIZATION_PLAN.md，结构与内存见 docs/DIRECT60.md。
+当前可运行构建目录为 build/direct60；用户负责目视验收，助手负责实际构建、状态回归和内存 profile。
+
 已实际验证的 Windows 主机构建：`./tools/build.ps1`（CMake + Ninja + LLVM-MinGW，输出 `build/host`）。参考及基础测试命令和结果见 `PLAN.md`、`docs/TERMINAL.md`。不要将其他平台写成已验证。

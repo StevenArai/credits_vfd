@@ -4,7 +4,8 @@
 
 当前默认显示 **60×20 字符**：3×5 字形，横纵各 1 像素间距；每个 VFD 点显示为 2×2 实际像素，点间黑缝 1 像素，四周黑边。支持青绿色调节、大小写切换、音频同步和字形编辑。
 
-60×20 版本会重新换行、分区及滚动；其内容完整性仍待目视验收。自动测试覆盖原始 80×24 行为、像素输出和交互，不代表新布局已完全通过视觉验收。
+60×20 版本在可移植核心中直接写入固定字符画布，再生成同一张 framebuffer；SDL 不负责业务绘制。
+当前直接布局的内容完整性仍待目视验收。自动测试覆盖原始 80×24 参考行为、直接布局业务状态、像素输出和交互，不代表新布局已完全通过视觉验收。实现与内存实测见 [DIRECT60.md](docs/DIRECT60.md)。
 
 ## 构建与运行
 
@@ -13,8 +14,8 @@
 本机已有工具链，项目根目录运行：
 
 ```powershell
-./tools/build.ps1 -SDL
-./build/host/credits_sdl.exe --audio ./credits.wav
+./tools/build.ps1 -BuildDir build/direct60 -SDL
+./build/direct60/credits_sdl.exe --audio ./credits.wav
 ```
 
 脚本同时配置、编译和运行 CTest。脚本中的 LLVM-MinGW、SDL2 位于 `.tools/`；CMake/Ninja 路径是本机配置。换机器请调整脚本，或使用标准 CMake：
@@ -79,7 +80,7 @@ python tools/export_font.py --input "你的字体文件.json"
 | `archive/python/` | 原 Python 播放器、CLIRender、colorama、原 README/依赖/媒体说明，内容原样保留 |
 | `archive/fonts/` | 原始用户字体 HTML，仅作参考 |
 | `docs/` | 规格说明、阶段证据、布局限制和保留的验证日志 |
-| `build/host/` | 当前主机构建产物，不入 Git |
+| `build/direct60/` | 当前直接布局主机构建产物，不入 Git |
 | `build/test-artifacts/` | 可重新生成的测试帧与回放数据，不入 Git |
 | `.tools/` | 本机已安装工具链，不入 Git |
 

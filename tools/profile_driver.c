@@ -15,7 +15,13 @@ static void hash(const void *data,size_t size) {
 }
 int main(int argc,char **argv) {
     Credits *a=malloc(sizeof(*a)); if (!a) return 1;
-    Layout60 layout; Framebuffer frame;
+    Framebuffer frame;
+#ifndef CREDITS_DIRECT60
+    Layout60 layout;
+    size_t layout_size=sizeof(layout);
+#else
+    size_t layout_size=0;
+#endif
     unsigned seed=argc>1 ? (unsigned)strtoul(argv[1],NULL,10):1;
     credits_init(a,seed); credits_jump(a,1);
     size_t init_live=a->memory.live,init_calls=a->memory.calls;
@@ -25,13 +31,20 @@ int main(int argc,char **argv) {
         profile_beat=beat;
 #endif
         double start=host_seconds(); credits_next(a,1); double next=host_seconds();
-        layout60_render(&layout,a); double drawn=host_seconds();
-        framebuffer_render60(&frame,layout.cells,1); double end=host_seconds();
+#ifndef CREDITS_DIRECT60
+        layout60_render(&layout,a);
+        const uint32_t *cells=layout.cells;
+        double drawn=host_seconds();
+#else
+        const uint32_t *cells=a->canvas.cells;
+        double drawn=next;
+#endif
+        framebuffer_render60(&frame,cells,1); double end=host_seconds();
         animation+=next-start; flow+=drawn-next; pixels+=end-drawn;
         hash(a->canvas.cells,sizeof(a->canvas.cells)); hash(frame.bits,sizeof(frame.bits));
     }
     printf("{\"seed\":%u,\"frames\":6509,\"digest\":\"%016llx\",\"credits\":%zu,\"layout\":%zu,\"framebuffer\":%zu,\"init_live\":%zu,\"init_calls\":%zu,\"dynamic_peak\":%zu,\"allocations\":%zu,\"animation_ms\":%.6f,\"layout_ms\":%.6f,\"pixels_ms\":%.6f",
-        seed,digest,sizeof(*a),sizeof(layout),sizeof(frame),init_live,init_calls,a->memory.peak,a->memory.calls,animation*1000,flow*1000,pixels*1000);
+        seed,digest,sizeof(*a),layout_size,sizeof(frame),init_live,init_calls,a->memory.peak,a->memory.calls,animation*1000,flow*1000,pixels*1000);
     credits_destroy(a); if (a->memory.live) return 2;
 #ifdef PROFILE_COUNTS
     profile_report();

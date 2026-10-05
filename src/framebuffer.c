@@ -20,7 +20,11 @@ unsigned framebuffer_render(Framebuffer *f,const uint32_t cells[CANVAS_CELLS]) {
 }
 static unsigned render_grid(Framebuffer *f,const uint32_t *cells,int width,int height,int step_x,int step_y,int uppercase);
 unsigned framebuffer_render_case(Framebuffer *f,const uint32_t cells[CANVAS_CELLS],int uppercase) {
+#ifdef CREDITS_DIRECT60
+    return render_grid(f,cells,60,20,4,6,uppercase);
+#else
     return render_grid(f,cells,80,24,3,5,uppercase);
+#endif
 }
 unsigned framebuffer_render60(Framebuffer *f,const uint32_t cells[1200],int uppercase) {
     return render_grid(f,cells,60,20,4,6,uppercase);

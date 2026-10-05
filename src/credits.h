@@ -30,6 +30,9 @@ typedef struct Credits {
     unsigned frames, events_executed;
     void (*trace_event)(void *context,int beat,int index);
     void *trace_context;
+#ifdef CREDITS_DIRECT60
+    int draw_scene,draw_generator; /* Native text region selected by the scene. */
+#endif
 } Credits;
 void credits_init(Credits *a,uint64_t seed);
 void credits_next(Credits *a,int render);

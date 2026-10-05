@@ -1,0 +1,76 @@
+Start testing: Oct 05 23:24 中国标准时间
+----------------------------------------------------------
+19/28 Testing: sdl_audio_transport
+19/28 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/direct60-sanitize/credits_sdl.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"sdl_audio_transport" start time: Oct 05 23:24 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmp_04fpn0z\tone.wav backend=dummy rate=44100 duration=7.000000 wav_bytes=617400 queue_limit=16384 device_frames=512 host_pixels=1658880 core=18912 framebuffer=4096
+display_readback=matched 864x480
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=49 beat=96 audio_position=7.000000 wall_seconds=4.908834 max_compute_ms=2.436 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+core_peak=17116 core_live=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   5.87 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 05 23:24 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:05
+----------------------------------------------------------
+
+26/28 Testing: charbuf60
+26/28 Test: charbuf60
+Command: "D:/credits_vfd/build/direct60-sanitize/charbuf60_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"charbuf60" start time: Oct 05 23:24 中国标准时间
+Output:
+----------------------------------------------------------
+native char_buf bounds, wrap, scroll, cursor, title and stop passed; zero canvas allocations
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"charbuf60" end time: Oct 05 23:24 中国标准时间
+"charbuf60" time elapsed: 00:00:00
+----------------------------------------------------------
+
+27/28 Testing: direct60_clock_sync
+27/28 Test: direct60_clock_sync
+Command: "D:/credits_vfd/build/direct60-sanitize/sync60_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"direct60_clock_sync" start time: Oct 05 23:24 中国标准时间
+Output:
+----------------------------------------------------------
+3900 jitter/pause/seek samples match drained reference player, cells, RNG and events
+<end of output>
+Test time =   0.49 sec
+----------------------------------------------------------
+Test Passed.
+"direct60_clock_sync" end time: Oct 05 23:24 中国标准时间
+"direct60_clock_sync" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/28 Testing: direct60_comparison
+28/28 Test: direct60_comparison
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/direct60_compare.py" "D:/credits_vfd/build/direct60-sanitize/direct60_probe.exe" "D:/credits_vfd/build/direct60-sanitize/layout_reference_probe.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"direct60_comparison" start time: Oct 05 23:24 中国标准时间
+Output:
+----------------------------------------------------------
+{"frames": 72132, "exact_pixel_frames": 18718, "changed_pixel_frames": 53414, "title_pixel_frames": 4584, "ocean_cell_frames": 11802, "block_cell_frames": 4806}
+All business hashes match; changed layouts are reported, not called identical.
+<end of output>
+Test time =  52.79 sec
+----------------------------------------------------------
+Test Passed.
+"direct60_comparison" end time: Oct 05 23:25 中国标准时间
+"direct60_comparison" time elapsed: 00:00:52
+----------------------------------------------------------
+
+End testing: Oct 05 23:25 中国标准时间

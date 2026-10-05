@@ -19,7 +19,13 @@ void credits_ocean_begin(Credits *a,Ocean *o) {
     a->ocean_time+=80;
 }
 void credits_ocean_update(Credits *a,Ocean *o) {
-    uint32_t slice[10],output[800];
+    uint32_t slice[10];
+#ifdef CREDITS_DIRECT60
+    int destination=0;
+    uint32_t style=canvas60_style(o->colour);
+#else
+    uint32_t output[800];
+#endif
     int height=surface(a->ocean_time);
     for (int y=0;y<10;y++) slice[y]=sample(a,y,height,o->glitch);
     a->ocean_time++;
@@ -32,7 +38,17 @@ void credits_ocean_update(Credits *a,Ocean *o) {
         uint32_t ch=o->cells[i];
         if ((ch=='#' || ch=='.' || ch==160) && random_unit(&a->random)<=chance)
             ch=(uint32_t)('a'+(int)floor(random_unit(&a->random)*26));
+#ifdef CREDITS_DIRECT60
+        /* Keep every simulation/RNG step; sample directly into the 60x8 region. */
+        if (destination<480 && i==(destination/60*9/7)*80+destination%60*79/59) {
+            canvas60_put(&a->canvas,destination%60,12+destination/60,style|ch);
+            destination++;
+        }
+#else
         output[i]=ch;
+#endif
     }
+#ifndef CREDITS_DIRECT60
     canvas_chars(&a->canvas,0,14,output,800,o->colour);
+#endif
 }

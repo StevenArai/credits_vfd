@@ -9,28 +9,32 @@ import re
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-CORE = 'memory random canvas scheduler data credits ocean text scenes weather player framebuffer layout60'.split()
+CORE = 'memory random canvas scheduler data credits ocean text scene_init scenes weather player framebuffer layout60'.split()
+NATIVE = 'memory random scheduler data credits ocean text scene_init scenes60 weather player framebuffer charbuf60 text60'.split()
 LIBCALLS = 'memcpy memmove memset strlen strcmp strchr memchr strncmp snprintf sscanf sin cos pow floor'.split()
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cc', required=True)
-    parser.add_argument('--out', default='build/profile-core')
+    parser.add_argument('--out')
+    parser.add_argument('--native', action='store_true', help='Profile direct 60x20 instead of the reference canvas')
     args = parser.parse_args()
-    out = (ROOT / args.out).resolve()
+    out = (ROOT / (args.out or ('build/profile-native60' if args.native else 'build/profile-core'))).resolve()
+    modules = NATIVE if args.native else CORE
+    defines = ['-DCREDITS_DIRECT60=1'] if args.native else []
     out.mkdir(parents=True, exist_ok=True)
     abi = {}
     for target, flags in [('host', []), ('arm', ['-target', 'arm-none-eabi', '-mcpu=cortex-m4'])]:
         ir = out / f'abi-{target}.ll'
-        subprocess.run([args.cc, *flags, '-std=c99', '-I', str(ROOT / 'src'), '-S', '-emit-llvm',
+        subprocess.run([args.cc, *flags, *defines, '-std=c99', '-I', str(ROOT / 'src'), '-S', '-emit-llvm',
                         str(ROOT / 'tools/profile_abi.c'), '-o', str(ir)], check=True)
         abi[target] = {k: int(v) for k, v in re.findall(r'@size_(\w+) = .*?constant i32 (\d+)', ir.read_text())}
     (out / 'abi.json').write_text(json.dumps(abi, indent=2))
     names = []
     sites = []
     scales = []
-    for module in CORE:
+    for module in modules:
         source = (ROOT / 'src' / f'{module}.c').read_text(encoding='utf-8')
         # Only top-level, single-line definitions; count logical calls even if inlined.
         def count(match):
@@ -49,6 +53,8 @@ def main():
             source = '\n'.join(lines)
         # Insert after includes, so libc declarations are never macro-expanded.
         last_include = list(re.finditer(r'^#include[^\n]*\n', source, re.M))[-1].end()
+        if source[last_include:].startswith('#endif\n'):
+            last_include += len('#endif\n')
         macros = ''.join(f'#define {name}(...) (profile_libcalls[{i}]++, {name}(__VA_ARGS__))\n'
                          for i, name in enumerate(LIBCALLS))
         source = source[:last_include] + macros + source[last_include:]
@@ -68,12 +74,12 @@ extern int profile_beat;
     support = support.replace('PROFILE_SCALES', ','.join('{%d,%d}' % pair for pair in scales))
     support = support.replace('PROFILE_LIBNAMES', ','.join(json.dumps(x) for x in LIBCALLS))
     (out / 'support.c').write_text(support)
-    common = [args.cc, '-std=c99', '-O3', '-ffp-contract=off', '-I', str(ROOT / 'src'), '-I', str(out)]
+    common = [args.cc, *defines, '-std=c99', '-O3', '-ffp-contract=off', '-I', str(ROOT / 'src'), '-I', str(out)]
     driver = ROOT / 'tools/profile_driver.c'
     for instrumented in (False, True):
         directory = out if instrumented else ROOT / 'src'
         exe = out / ('counts.exe' if instrumented else 'timing.exe')
-        command = common + [str(directory / f'{x}.c') for x in CORE]
+        command = common + [str(directory / f'{x}.c') for x in modules]
         command += [str(driver), str(ROOT / 'src/host_time.c')]
         if instrumented:
             command += ['-DPROFILE_COUNTS', str(out / 'support.c')]

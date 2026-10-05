@@ -1,0 +1,136 @@
+{
+  "frames": 72132,
+  "exact_pixel_frames": 18718,
+  "changed_pixel_frames": 53414,
+  "title_pixel_frames": 4584,
+  "ocean_cell_frames": 11802,
+  "block_cell_frames": 4806,
+  "runs": [
+    {
+      "seed": 0,
+      "jump": 1,
+      "frames": 6509,
+      "exact_pixel_frames": 2418,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=39 animation_layout_ms=14.636 pixels_ms=135.588 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 2,
+      "frames": 5509,
+      "exact_pixel_frames": 1600,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=8.586 pixels_ms=109.761 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 3,
+      "frames": 4739,
+      "exact_pixel_frames": 835,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=8.957 pixels_ms=99.224 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 4,
+      "frames": 3469,
+      "exact_pixel_frames": 656,
+      "resources": "state=18912 canvas=4812 heap_peak=24670 calls=38 animation_layout_ms=5.655 pixels_ms=74.676 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 5,
+      "frames": 2729,
+      "exact_pixel_frames": 655,
+      "resources": "state=18912 canvas=4812 heap_peak=19880 calls=34 animation_layout_ms=4.544 pixels_ms=56.140 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 6,
+      "frames": 1089,
+      "exact_pixel_frames": 81,
+      "resources": "state=18912 canvas=4812 heap_peak=17621 calls=30 animation_layout_ms=0.425 pixels_ms=21.671 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 1,
+      "frames": 6509,
+      "exact_pixel_frames": 2433,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=39 animation_layout_ms=14.536 pixels_ms=127.734 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 2,
+      "frames": 5509,
+      "exact_pixel_frames": 1622,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=8.199 pixels_ms=115.972 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 3,
+      "frames": 4739,
+      "exact_pixel_frames": 857,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=8.844 pixels_ms=100.049 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 4,
+      "frames": 3469,
+      "exact_pixel_frames": 679,
+      "resources": "state=18912 canvas=4812 heap_peak=24712 calls=38 animation_layout_ms=5.450 pixels_ms=75.681 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 5,
+      "frames": 2729,
+      "exact_pixel_frames": 678,
+      "resources": "state=18912 canvas=4812 heap_peak=19880 calls=34 animation_layout_ms=4.599 pixels_ms=54.769 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 6,
+      "frames": 1089,
+      "exact_pixel_frames": 81,
+      "resources": "state=18912 canvas=4812 heap_peak=17621 calls=30 animation_layout_ms=0.434 pixels_ms=21.058 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 1,
+      "frames": 6509,
+      "exact_pixel_frames": 2392,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=39 animation_layout_ms=13.340 pixels_ms=122.426 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 2,
+      "frames": 5509,
+      "exact_pixel_frames": 1576,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=9.034 pixels_ms=113.987 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 3,
+      "frames": 4739,
+      "exact_pixel_frames": 811,
+      "resources": "state=18912 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=8.824 pixels_ms=99.273 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 4,
+      "frames": 3469,
+      "exact_pixel_frames": 632,
+      "resources": "state=18912 canvas=4812 heap_peak=24679 calls=38 animation_layout_ms=4.832 pixels_ms=66.171 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 5,
+      "frames": 2729,
+      "exact_pixel_frames": 631,
+      "resources": "state=18912 canvas=4812 heap_peak=19880 calls=34 animation_layout_ms=4.362 pixels_ms=55.299 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 6,
+      "frames": 1089,
+      "exact_pixel_frames": 81,
+      "resources": "state=18912 canvas=4812 heap_peak=17621 calls=30 animation_layout_ms=0.438 pixels_ms=20.831 scrolled=0 clipped=0 live=0"
+    }
+  ]
+}
