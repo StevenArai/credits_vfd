@@ -6,3 +6,5 @@ media/*.MP3
 venv
 .tools/
 build*/
+
+/credits.wav

@@ -10,5 +10,7 @@ typedef struct {
 double player_delay(void);
 void player_init(Player *p,Credits *animation,int jump,double now);
 /* Returns 1 for a rendered beat, 2 for stop/clear, 0 for no visible update. */
+/* Media time is authoritative. Runs every due tick, presents only latest. */
+int player_sync(Player *p,double now,double media,unsigned keys,int active,int last);
 int player_step(Player *p,double now,unsigned keys,int active);
 #endif

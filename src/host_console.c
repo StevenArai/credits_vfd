@@ -2,6 +2,7 @@
 #include "host_time.h"
 #include "terminal.h"
 #include <stdio.h>
+#include <stdlib.h>
 #if defined(_WIN32)
 #include <windows.h>
 typedef struct {
@@ -71,15 +72,24 @@ int host_play(Credits *a,int jump,int menu,int last) {
         if (c.menu) jump=c.menu;
     }
     clear_screen(); Player p; player_init(&p,a,jump,host_seconds());
+    const char *timing_path=getenv("CREDITS_TIMING_LOG");
+    FILE *timing=timing_path ? fopen(timing_path,"a"):NULL;
     while (p.active) {
         poll(&c);
         double update=p.last_update;
-        int result=player_step(&p,host_seconds(),c.held|c.pressed,!interrupted && a->scheduler.beat<last);
+        double before=host_seconds();
+        double media=p.position+(p.paused ? 0:before-p.last_time);
+        int result=player_sync(&p,before,media,c.held|c.pressed,!interrupted && a->scheduler.beat<last,last);
+        double computed=host_seconds();
         if (p.last_update!=update) c.pressed=0;
-        if (result==1) { terminal_render(stdout,a->canvas.cells); fflush(stdout); }
+        if (result==1) {
+            terminal_render(stdout,a->canvas.cells); fflush(stdout);
+            if (timing) fprintf(timing,"%d,%d,%.9f,%.9f,%.9f\n",jump,a->scheduler.beat,computed-before,host_seconds()-computed,p.position-5.492-(p.beat-1)*player_delay());
+        }
         else if (result==2) clear_screen();
         else Sleep(1);
     }
+    if (timing) fclose(timing);
     fputs("\033[?25h",stdout); fflush(stdout);
     SetConsoleCtrlHandler(stop_handler,FALSE);
     SetConsoleOutputCP(c.codepage); SetConsoleMode(c.input,c.input_mode); SetConsoleMode(c.output,c.output_mode);

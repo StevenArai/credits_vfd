@@ -6,8 +6,8 @@
 
 - 使用 C；语言标准默认 C99，主机工具链优先 Clang + MinGW-w64。业务代码可读性优先。
 - 先在系统终端还原 Python 行为，再生成 256×128 单色 framebuffer，最后接 SDL2 显示前端。
-- 动画、排版、字体光栅化和像素合成都属于可移植核心。SDL2 只提供窗口、接收 framebuffer 并显示。
-- 3×5 字体待 framebuffer 阶段向用户索取。尚无指定 MCU、RAM/Flash 上限或额外帧率指标。
+- 动画、排版、字体光栅化和像素合成都属于可移植核心。SDL2 只提供窗口、接收 framebuffer 并显示，以及主机音频播放。
+- 字体使用用户提供的 `3x5fonts.html`；缺字列入 `docs/GLYPH_TODO.md`。尚无指定 MCU、RAM/Flash 上限或额外帧率指标。
 - 内存须有明确归属、边界和测量结果。避免不必要的分配与大对象复制；热点优化以 profiling 为依据。
 
 ## 实现和验收
@@ -27,6 +27,6 @@
 
 旧移植已移出工作目录，事故摘要见 `docs/INCIDENT.md`。外部恢复目录中的旧 SPEC、todo 和源码仅为历史证据，不是当前约定。
 
-当前请求已授权完成 `PLAN.md` 的 P0–P3；暂不实施 framebuffer 和 SDL2。阶段通过后建立本地 Git 提交，不推送。
+当前请求已扩展授权：修复实时播放对齐，完成 P4/P5 framebuffer、SDL2 显示及音频。音频位于根目录 `credits.wav`，不提交 Git。阶段通过后建立本地 Git 提交，不推送。
 
 已实际验证的 Windows 主机构建：`./tools/build.ps1`（CMake + Ninja + LLVM-MinGW，输出 `build/host`）。参考及基础测试命令和结果见 `PLAN.md`、`docs/TERMINAL.md`。不要将其他平台写成已验证。

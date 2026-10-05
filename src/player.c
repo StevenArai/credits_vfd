@@ -36,3 +36,19 @@ int player_step(Player *p,double now,unsigned keys,int active) {
     }
     return render;
 }
+
+int player_sync(Player *p,double now,double media,unsigned keys,int active,int last) {
+    if (!isfinite(media) || media<0) credits_fail("invalid media position");
+    /* Suppress wall integration; retain the reference input cadence and latches. */
+    p->position=media;
+    double elapsed=now-p->last_time;
+    if (elapsed<0) credits_fail("nonmonotonic host time");
+    if (!p->paused) p->position-=elapsed;
+    int result=player_step(p,now,keys,active);
+    if (result==2 || !p->active) return result;
+    while (p->animation->scheduler.beat<last &&
+           p->position-5.492>(p->beat-1)*player_delay()) {
+        credits_next(p->animation,1); p->beat++; result=1;
+    }
+    return result;
+}
