@@ -154,3 +154,11 @@
 - [x] `./tools/build.ps1 -BuildDir build/layout60 -SDL` 构建；原 Python 回归及布局/像素/SDL 检查通过，详见 docs/LAYOUT60.md。
 - [x] 19527 帧完整布局运行和相关 ASan/UBSan 检查通过。新增布局状态 4804 字节，无新增堆分配；最多滚出 6 行。
 - [ ] 用户目视检查文字完整性、场景覆盖和阅读体验。此项尚未完成，不将构建通过当作内容完整性通过。
+
+
+## 字形编辑器（2026-10-05）
+
+- 新增离线单文件 `tools/font-editor.html`，提供整套 JSON 导出及当前字形剪贴板复制、JSON/单字导入、撤销重做、缓存和 60×20 预览。
+- 项目字体正式数据为 `tools/font-editor-data.json`；导入器支持 ASCII 和额外 BMP 字形，原始 3x5fonts.html 保留。当前仍为原始 95 字形，度数符号未代替用户设计。
+- Node DOM 替身逻辑测试通过；临时目录单字导入后实际 C 编译/渲染通过，未修改项目字形。真实浏览器 UI 未验收：自动浏览器禁止 file: URL。
+- 操作说明见 docs/FONT_EDITOR.md。

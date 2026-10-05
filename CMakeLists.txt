@@ -69,3 +69,9 @@ add_test(NAME exported_font COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/to
 add_executable(layout60_test tests/layout60_test.c)
 target_link_libraries(layout60_test PRIVATE credits_core)
 add_test(NAME layout60 COMMAND layout60_test)
+
+find_program(CREDITS_NODE_EXECUTABLE node)
+if(CREDITS_NODE_EXECUTABLE)
+  add_test(NAME font_editor_logic COMMAND ${CREDITS_NODE_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/font_editor_test.cjs)
+  set_tests_properties(font_editor_logic PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif()

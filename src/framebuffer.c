@@ -3,6 +3,14 @@
 static const uint16_t font[95]={
 #include "font_generated.inc"
 };
+static const struct { uint16_t code,bits; } extra_font[]={
+#include "font_extra_generated.inc"
+};
+static uint16_t glyph_bits(uint32_t ch,unsigned *missing) {
+    if (ch>=32 && ch<=126) return font[ch-32];
+    for (int i=0;extra_font[i].code;i++) if (extra_font[i].code==ch) return extra_font[i].bits;
+    (*missing)++; return font['?'-32];
+}
 int framebuffer_pixel(const Framebuffer *f,int x,int y) {
     if (x<0 || x>=FB_WIDTH || y<0 || y>=FB_HEIGHT) return 0;
     return (f->bits[y*FB_STRIDE+x/8]>>(7-x%8))&1;
@@ -24,12 +32,12 @@ static unsigned render_grid(Framebuffer *f,const uint32_t *cells,int width,int h
         uint32_t cell=cells[i],ch=cell&65535;
         if (uppercase && ch>='a' && ch<='z') ch=ch-'a'+'A';
         if (ch==160) ch=32; /* NBSP has space semantics. */
-        if (ch<32 || ch>126) { ch='?'; missing++; }
+        uint16_t glyph=glyph_bits(ch,&missing);
         unsigned fg=(cell>>16)&63,bg=(cell>>22)&63,style=cell>>28;
         /* Nonblack colors become on; bright black remains visible. */
         int ink=fg!=30 || style==1, paper=bg!=40 && bg!=49;
         for (int y=0;y<5;y++) for (int x=0;x<3;x++) {
-            int stroke=(font[ch-32]>>(14-y*3-x))&1;
+            int stroke=(glyph>>(14-y*3-x))&1;
             if (stroke ? ink:paper) {
                 int px=8+(i%width)*step_x+x,py=4+(i/width)*step_y+y;
                 f->bits[py*FB_STRIDE+px/8]|=(uint8_t)(128>>(px%8));

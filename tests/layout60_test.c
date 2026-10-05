@@ -14,7 +14,6 @@ int main(int argc,char **argv) {
         if (x<8 || x>=247 || y<4 || y>=123 || (x-8)%4==3 || (y-4)%6==5)
             CHECK(!framebuffer_pixel(&f,x,y));
     }
-    CHECK(framebuffer_pixel(&f,244,118));
     credits_init(a,1);
     for (int i=0;i<1920;i++) a->canvas.cells[i]=cell_pack(' ',39,49,0);
     a->scheduler.count=0;

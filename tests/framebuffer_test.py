@@ -1,8 +1,8 @@
 """Independent pixel oracle from original Python's rendered ANSI cells."""
 from pathlib import Path
-import subprocess, sys, tempfile, struct, re
+import subprocess, sys, tempfile, struct, re, json
 root = Path(__file__).resolve().parents[1]
-patterns = re.search(r"saveData\s*=\s*'([01,]+)'", (root/'3x5fonts.html').read_text(encoding='utf-8')).group(1).split(',')
+patterns = {int(c):b for c,b in json.loads((root/'tools/font-editor-data.json').read_text(encoding='utf-8'))['glyphs'].items()}
 with tempfile.TemporaryDirectory() as d:
     frames=Path(d)/'frames'; pixels=Path(d)/'pixels'
     subprocess.run([sys.executable,str(root/'tests/reference.py'),'--last','6508','--out',str(frames)],check=True,capture_output=True)
@@ -25,8 +25,8 @@ with tempfile.TemporaryDirectory() as d:
                 ch=c&65535
                 if uppercase and ord('a')<=ch<=ord('z'): ch-=32
                 if ch==160: ch=32
-                if not 32<=ch<=126: ch=ord('?')
-                for bit,stroke in enumerate(patterns[ch-32]):
+                if ch not in patterns: ch=ord('?')
+                for bit,stroke in enumerate(patterns[ch]):
                     on=((c>>16)&63)!=30 or c>>28==1 if stroke=='1' else ((c>>22)&63) not in (40,49)
                     if on:
                         x=8+i%80*3+bit%3; y=4+i//80*5+bit//3
