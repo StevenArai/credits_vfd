@@ -32,4 +32,4 @@ with tempfile.TemporaryDirectory() as d:
                         x=8+i%80*3+bit%3; y=4+i//80*5+bit//3
                         expected[y*32+x//8]|=128>>(x%8)
             assert output[frame*4096:(frame+1)*4096]==expected,frame
-    print('pixel frames',len(selected)//size,'missing', [f'U+{c:04X}' for c in sorted(codepoints) if not 32<=c<=126 and c!=160])
+    print('pixel frames',len(selected)//size,'missing', [f'U+{c:04X}' for c in sorted(codepoints) if c not in patterns and c!=160])
