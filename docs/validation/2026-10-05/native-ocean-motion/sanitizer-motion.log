@@ -1,0 +1,19 @@
+Start testing: Oct 05 23:47 中国标准时间
+----------------------------------------------------------
+29/29 Testing: ocean60_motion
+29/29 Test: ocean60_motion
+Command: "D:/credits_vfd/build/direct60-sanitize/ocean60_test.exe"
+Directory: D:/credits_vfd/build/direct60-sanitize
+"ocean60_motion" start time: Oct 05 23:47 中国标准时间
+Output:
+----------------------------------------------------------
+4800 updates; 2265600 exact one-column translations; continuous eight-row coast; repeatable glitches; no frame allocations
+<end of output>
+Test time =   0.32 sec
+----------------------------------------------------------
+Test Passed.
+"ocean60_motion" end time: Oct 05 23:47 中国标准时间
+"ocean60_motion" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 05 23:47 中国标准时间

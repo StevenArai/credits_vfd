@@ -1,4 +1,4 @@
-"""Native/reference business replay and explicitly scoped visual comparisons."""
+"""Native/reference deterministic controls and explicitly scoped visual comparisons."""
 import json
 from pathlib import Path
 import subprocess
@@ -22,15 +22,15 @@ def main():
             equal = 0
             for x, y in zip(a, b):
                 beat = int(x[0])
-                assert x[:2] == y[:2], ('business state', seed, jump, beat, x[:2], y[:2])
+                assert x[:2] == y[:2], ('controls/text/history', seed, jump, beat, x[:2], y[:2])
                 equal += x[6] == y[6]
                 # Layout may change, but these established regions must not.
                 if 1080 <= beat <= 1843 and jump <= 2:
                     assert x[6] == y[6], ('title pixels', seed, jump, beat)
                     title += 1
                 if 60 <= beat <= 1078 or 3376 <= beat <= 3379 or 3896 <= beat <= 4459:
-                    # Contour-preserving reduction intentionally differs from the
-                    # old row-dropping layout. ocean60_test checks its full oracle.
+                    # Native geometry/RNG differs intentionally. ocean60_motion
+                    # checks exact translation and continuity across updates.
                     ocean_changed += x[3] != y[3]
                     ocean += 1
                 if 1080 <= beat <= 1843:
@@ -45,7 +45,7 @@ def main():
     folder.mkdir(parents=True, exist_ok=True)
     (folder / 'direct60-comparison.json').write_text(json.dumps(report, indent=2))
     print(json.dumps({k:v for k,v in report.items() if k != 'runs'}))
-    print('All business hashes match; changed layouts are reported, not called identical.')
+    print('Deterministic controls/text/history hashes match; ocean/RNG/weather/random progress intentionally excluded.')
 
 if __name__ == '__main__':
     main()

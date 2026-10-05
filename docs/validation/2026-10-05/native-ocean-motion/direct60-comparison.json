@@ -1,0 +1,137 @@
+{
+  "frames": 72132,
+  "exact_pixel_frames": 8660,
+  "changed_pixel_frames": 63472,
+  "title_pixel_frames": 4584,
+  "ocean_cell_frames": 11802,
+  "ocean_changed_frames": 10860,
+  "block_cell_frames": 4806,
+  "runs": [
+    {
+      "seed": 0,
+      "jump": 1,
+      "frames": 6509,
+      "exact_pixel_frames": 1021,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=39 animation_layout_ms=104.991 pixels_ms=979.271 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 2,
+      "frames": 5509,
+      "exact_pixel_frames": 1108,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=73.880 pixels_ms=826.195 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 3,
+      "frames": 4739,
+      "exact_pixel_frames": 343,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=72.019 pixels_ms=707.318 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 4,
+      "frames": 3469,
+      "exact_pixel_frames": 164,
+      "resources": "state=10776 canvas=4812 heap_peak=24670 calls=38 animation_layout_ms=42.098 pixels_ms=492.506 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 5,
+      "frames": 2729,
+      "exact_pixel_frames": 173,
+      "resources": "state=10776 canvas=4812 heap_peak=19880 calls=34 animation_layout_ms=29.417 pixels_ms=412.425 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 0,
+      "jump": 6,
+      "frames": 1089,
+      "exact_pixel_frames": 81,
+      "resources": "state=10776 canvas=4812 heap_peak=17621 calls=30 animation_layout_ms=4.663 pixels_ms=135.774 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 1,
+      "frames": 6509,
+      "exact_pixel_frames": 1016,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=39 animation_layout_ms=135.769 pixels_ms=1159.827 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 2,
+      "frames": 5509,
+      "exact_pixel_frames": 1106,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=69.084 pixels_ms=774.479 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 3,
+      "frames": 4739,
+      "exact_pixel_frames": 341,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=65.795 pixels_ms=657.272 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 4,
+      "frames": 3469,
+      "exact_pixel_frames": 166,
+      "resources": "state=10776 canvas=4812 heap_peak=24712 calls=38 animation_layout_ms=74.709 pixels_ms=703.214 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 5,
+      "frames": 2729,
+      "exact_pixel_frames": 169,
+      "resources": "state=10776 canvas=4812 heap_peak=19880 calls=34 animation_layout_ms=32.882 pixels_ms=418.869 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 1,
+      "jump": 6,
+      "frames": 1089,
+      "exact_pixel_frames": 81,
+      "resources": "state=10776 canvas=4812 heap_peak=17621 calls=30 animation_layout_ms=5.624 pixels_ms=142.592 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 1,
+      "frames": 6509,
+      "exact_pixel_frames": 1018,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=39 animation_layout_ms=99.743 pixels_ms=956.952 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 2,
+      "frames": 5509,
+      "exact_pixel_frames": 1111,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=70.159 pixels_ms=825.400 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 3,
+      "frames": 4739,
+      "exact_pixel_frames": 346,
+      "resources": "state=10776 canvas=4812 heap_peak=25184 calls=37 animation_layout_ms=66.056 pixels_ms=675.495 scrolled=44 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 4,
+      "frames": 3469,
+      "exact_pixel_frames": 168,
+      "resources": "state=10776 canvas=4812 heap_peak=24679 calls=38 animation_layout_ms=42.806 pixels_ms=508.123 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 5,
+      "frames": 2729,
+      "exact_pixel_frames": 167,
+      "resources": "state=10776 canvas=4812 heap_peak=19880 calls=34 animation_layout_ms=31.246 pixels_ms=409.293 scrolled=0 clipped=0 live=0"
+    },
+    {
+      "seed": 42,
+      "jump": 6,
+      "frames": 1089,
+      "exact_pixel_frames": 81,
+      "resources": "state=10776 canvas=4812 heap_peak=17621 calls=30 animation_layout_ms=5.070 pixels_ms=130.175 scrolled=0 clipped=0 live=0"
+    }
+  ]
+}

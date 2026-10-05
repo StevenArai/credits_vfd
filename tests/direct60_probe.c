@@ -14,19 +14,15 @@ static void bytes(const void *data,size_t n) {
 }
 static void string(const char *s) { if (s) bytes(s,strlen(s)+1); else bytes("",1); }
 #define HASH(v) bytes(&(v),sizeof(v))
-static uint64_t business(const Credits *a) {
+static uint64_t controls(const Credits *a) {
     digest=UINT64_C(14695981039346656037);
-    HASH(a->random); HASH(a->ocean_time); HASH(a->scheduler.beat); HASH(a->scheduler.count);
+    /* Native sea now uses its own RNG/geometry. Compare deterministic controls,
+       not the intentionally different ocean, weather, or random progress. */
+    HASH(a->scheduler.beat); HASH(a->scheduler.count);
     bytes(a->active,(size_t)a->scheduler.count*sizeof(int)); HASH(a->scenes);
-    HASH(a->progress); HASH(a->access_counter); HASH(a->access_block); HASH(a->beat_toggle);
+    HASH(a->access_counter); HASH(a->access_block); HASH(a->beat_toggle);
     HASH(a->refresh); HASH(a->events_executed);
     for (int i=0;i<14;i++) { HASH(a->typers[i].offset); HASH(a->typers[i].line); string(a->typers[i].characters); string(a->typers[i].colour); }
-    for (int i=0;i<3;i++) { HASH(a->oceans[i].cells); HASH(a->oceans[i].glitch); string(a->oceans[i].colour); }
-    for (int i=0;i<5;i++) {
-        HASH(a->weather[i].precip); HASH(a->weather[i].temp); HASH(a->weather[i].wind);
-        HASH(a->weather[i].gust); HASH(a->weather[i].humidity); HASH(a->weather[i].days);
-        HASH(a->weather[i].wind_dir); string(a->weather[i].name);
-    }
     for (int i=0;i<3;i++) {
         HASH(a->history[i].count);
         for (int j=0;j<a->history[i].count;j++) {
@@ -61,7 +57,7 @@ int main(int argc,char **argv) {
         double mid=host_seconds(); framebuffer_render60(&fb,cells,1);
         compute+=mid-start; pixels+=host_seconds()-mid;
         printf("%d %016llx %016llx %016llx %016llx %016llx",a.scheduler.beat,
-            (unsigned long long)business(&a),(unsigned long long)region(cells,0,0,60,20),
+            (unsigned long long)controls(&a),(unsigned long long)region(cells,0,0,60,20),
             (unsigned long long)region(cells,0,12,60,8),(unsigned long long)region(cells,32,11,28,7),
             (unsigned long long)region(cells,26,7,8,4));
         digest=UINT64_C(14695981039346656037); bytes(fb.bits,sizeof(fb.bits));

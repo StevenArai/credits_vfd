@@ -6,7 +6,12 @@
 #include "scheduler.h"
 #include "weather.h"
 typedef struct { const Text *words; const char *characters; int offset,line; const char *colour; } Typewriter;
+#ifdef CREDITS_DIRECT60
+/* Native cells move one column per update; phase/noise belong to each ocean. */
+typedef struct { uint8_t cells[60*8]; int glitch; const char *colour; int phase; uint32_t noise; } Ocean;
+#else
 typedef struct { uint32_t cells[800]; int glitch; const char *colour; } Ocean;
+#endif
 typedef struct { const WordLine *line; const char *colour; const char *prefix; } HistoryEntry;
 typedef struct { HistoryEntry *entries; int count,capacity,peak; } History;
 typedef struct Credits {

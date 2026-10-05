@@ -10,7 +10,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 CORE = 'memory random canvas scheduler data credits ocean text scene_init scenes weather player framebuffer layout60'.split()
-NATIVE = 'memory random scheduler data credits ocean text scene_init scenes60 weather player framebuffer charbuf60 text60'.split()
+NATIVE = 'memory random scheduler data credits ocean60 text scene_init scenes60 weather player framebuffer charbuf60 text60'.split()
 LIBCALLS = 'memcpy memmove memset strlen strcmp strchr memchr strncmp snprintf sscanf sin cos pow floor'.split()
 
 
