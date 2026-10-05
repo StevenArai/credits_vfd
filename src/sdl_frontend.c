@@ -7,6 +7,9 @@
 #include <math.h>
 #include <stdio.h>
 #include <limits.h>
+#ifdef CREDITS_EMBEDDED_AUDIO
+#include <windows.h>
+#endif
 
 /* Host owns decoded WAV and SDL's bounded queue. Core never sees SDL objects. */
 typedef struct {
@@ -83,7 +86,7 @@ static long number(const char *value,long low,long high) {
     return n;
 }
 int main(int argc,char **argv) {
-    const char *wav="credits.wav",*snapshot=NULL;
+    const char *wav=NULL,*snapshot=NULL;
     int jump=1,limit=0,scripted=0,hidden=0,uppercase=1; uint64_t seed=1;
     for (int i=1;i<argc;i++) {
         if (!strcmp(argv[i],"--help")) {
@@ -107,7 +110,25 @@ int main(int argc,char **argv) {
     SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS,"permonitorv2");
     if (SDL_Init(SDL_INIT_VIDEO|SDL_INIT_AUDIO|SDL_INIT_TIMER)) fail("SDL init");
     Audio audio={0};
-    if (!SDL_LoadWAV(wav,&audio.spec,&audio.data,&audio.length)) fail("load WAV");
+#ifdef CREDITS_EMBEDDED_AUDIO
+    if (!wav) {
+        HMODULE module=GetModuleHandleW(NULL);
+        HRSRC resource=FindResourceW(module,MAKEINTRESOURCEW(101),MAKEINTRESOURCEW(10));
+        HGLOBAL loaded=resource ? LoadResource(module,resource):NULL;
+        const void *bytes=loaded ? LockResource(loaded):NULL;
+        DWORD size=resource ? SizeofResource(module,resource):0;
+        if (!bytes || !size || size>INT_MAX) {
+            SDL_SetError("embedded WAV resource missing or too large"); fail("load WAV resource");
+        }
+        SDL_RWops *stream=SDL_RWFromConstMem(bytes,(int)size);
+        if (!stream || !SDL_LoadWAV_RW(stream,1,&audio.spec,&audio.data,&audio.length)) fail("load embedded WAV");
+        wav="embedded";
+    } else
+#endif
+    {
+        if (!wav) wav="credits.wav";
+        if (!SDL_LoadWAV(wav,&audio.spec,&audio.data,&audio.length)) fail("load WAV");
+    }
     audio.spec.samples=512; audio.spec.callback=NULL;
     audio.device=SDL_OpenAudioDevice(NULL,0,&audio.spec,NULL,0);
     if (!audio.device) fail("open audio device");

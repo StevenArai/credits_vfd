@@ -1,0 +1,27 @@
+Start testing: Oct 06 00:15 中国标准时间
+----------------------------------------------------------
+19/30 Testing: sdl_audio_transport
+19/30 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/ocean-overlay/credits_sdl.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"sdl_audio_transport" start time: Oct 06 00:15 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmpr2zh_0d4\tone.wav backend=dummy rate=44100 duration=7.000000 wav_bytes=617400 queue_limit=16384 device_frames=512 host_pixels=1658880 core=10776 framebuffer=4096
+display_readback=matched 864x480
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=49 beat=96 audio_position=7.000000 wall_seconds=4.910484 max_compute_ms=0.275 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+core_peak=17116 core_live=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   5.37 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 06 00:15 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:05
+----------------------------------------------------------
+
+End testing: Oct 06 00:15 中国标准时间

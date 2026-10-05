@@ -9,6 +9,10 @@
 
 ## 构建与运行
 
+单文件 Windows 版本：`build/standalone/credits_sdl.exe`，内嵌原始 WAV 并静态链接 SDL，无需旁置 `credits.wav` 或 `SDL2.dll`。仍依赖 Windows 系统组件/UCRT。默认播放内嵌音乐，`--audio 文件路径` 可覆盖。
+
+重建单文件版本：`./tools/build.ps1 -BuildDir build/standalone -Standalone`。CMake 对应 `CREDITS_SDL=ON`、`CREDITS_STANDALONE=ON`，可用 `CREDITS_WAV` 指定要内嵌的 WAV。此 Windows 资源加载只在主机前端，不进入可移植核心；WAV 与 EXE 不提交 Git。
+
 实际验证平台：**Windows x64、Clang/LLVM-MinGW、CMake、Ninja、SDL2 2.32.10**。其他平台未实测；核心不依赖 SDL 或操作系统。
 
 本机已有工具链，项目根目录运行：

@@ -1,5 +1,13 @@
 # 重建实施计划与实际进度
 
+## 自包含 WAV 的 Windows EXE（2026-10-06）
+
+- 用户授权构建单文件EXE。增加可选CREDITS_STANDALONE：WAV以Windows RCDATA嵌入，通过只读资源流交给SDL_LoadWAV_RW，不落盘解包；SDL静态链接。默认使用内嵌音频，显式--audio仍读取外部文件。普通动态SDL构建保留，不改核心/动画。
+- build/standalone/credits_sdl.exe 实际Release构建成功，62130688 B（约59.25 MiB），其中源WAV49188474 B逐字节存在于EXE。SHA256：726926fc4055bc68d4f25d756147a471c95a6c651f09f02010c813ed1270f316。
+- 隔离测试仅复制一个EXE到临时目录、PATH仅含Windows System32：默认内嵌音频加载、长度/时长、音频消费进度、退出live=0通过，未产生解包文件（2.49秒）。静态版本外部音频暂停/恢复/跳转/EOF/像素回读通过（5.65秒）；普通动态版本重建及同项回归通过（5.38秒）。使用SDL dummy音视频，未进行物理扬声器听音验收；未重跑无关核心测试。
+- llvm-readobj导入审计无SDL2或工具链DLL，仅Windows系统DLL/UCRT接口。依然需要系统运行环境，不承诺所有Windows版本。可移植核心RAM不变；宿主增加约49MB只读资源，SDL仍分配解码后的PCM，不能将EXE资源大小计入MCU RAM。
+- 隔离测试初稿环境键大小写及--seconds小数参数与现有整数解析不符，按诊断修正后通过。复现入口tools/build.ps1 -Standalone，证据见docs/validation/2026-10-06/standalone。WAV和EXE保持Git忽略。
+
 ## 临时乱码每节拍刷新（2026-10-06）
 
 - 按用户要求，原生海洋B/C的发生器每拍执行；偶数拍平移并绘制，奇数拍仅重新抽样临时乱码。D原本每拍平移，维持不变。临时层约23.87Hz，B/C波形仍约11.93格/秒；SDL不参与业务调度。原80×24参考调度未修改。

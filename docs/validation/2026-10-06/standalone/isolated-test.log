@@ -1,0 +1,26 @@
+Start testing: Oct 06 00:16 中国标准时间
+----------------------------------------------------------
+19/31 Testing: sdl_standalone
+19/31 Test: sdl_standalone
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/standalone_test.py" "D:/credits_vfd/build/standalone/credits_sdl.exe" "D:/credits_vfd/credits.wav"
+Directory: D:/credits_vfd/build/standalone
+"sdl_standalone" start time: Oct 06 00:16 中国标准时间
+Output:
+----------------------------------------------------------
+audio=embedded backend=dummy rate=44100 duration=278.845170 wav_bytes=49188288 queue_limit=32768 device_frames=512 host_pixels=1658880 core=10776 framebuffer=4096
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=time-limit
+phosphor=#00E89B uppercase=1
+presented=1 beat=-1 audio_position=0.986848 wall_seconds=1.004180 max_compute_ms=0.017 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=0 underruns=0
+core_peak=17030 core_live=0
+
+EXE-only launch, embedded WAV bytes, duration and audio progress passed
+<end of output>
+Test time =   2.49 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_standalone" end time: Oct 06 00:16 中国标准时间
+"sdl_standalone" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Oct 06 00:16 中国标准时间
