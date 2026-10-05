@@ -1,0 +1,85 @@
+{
+  "baseline": "18f5cf36a10a7e95aa20d4bf31fd79a5895ccdb0",
+  "files": {
+    "CLIRender/classes.py": {
+      "sha256": "fb47658ac892d5f9ffbebe3198c95423b5d2469fbdb3cf3ac131740615e81192",
+      "git_blob": "33679764ffd3e55921e0bb11e673449dcf11d1db"
+    },
+    "CLIRender/dat.py": {
+      "sha256": "e116626ce8bd98c7605a9e061f5ed9a07726333be254f509ecfb54835cb1bd8b",
+      "git_blob": "57f6eeb74f1048f8c4e0e96b0dbf25d2b7b11018"
+    },
+    "README.md": {
+      "sha256": "8f13d06fcc5fa40df1a9891dcb3aa8ea936a1b808d30fbde8342f6fd1f1591e1",
+      "git_blob": "bac02cda8fdcad767c9ded38de5327f0a3b4f900"
+    },
+    "animation_classes.py": {
+      "sha256": "8f33db8c76bbb185744e873c02ef0b069a08b26bf0782d4a4548026b5ff3982c",
+      "git_blob": "56cff9ce771c1d632534f7a24f6e9f82547736bf"
+    },
+    "animation_functions.py": {
+      "sha256": "d509968305d2ce2cd2d2ee53b56c83159bf483f49e214bf6aec2d08b059502b9",
+      "git_blob": "9cd55450d63fa85444dc1f663e59a0c82c665393"
+    },
+    "animation_scenes.py": {
+      "sha256": "032d16cf9cb57ca6544a002863b51c58264b18e4695d9031f84195c7d24cdddf",
+      "git_blob": "3112a6e8dddd3fc4dd3d5c51f3810ecd85b4633b"
+    },
+    "animator.py": {
+      "sha256": "5fc4d10152b979ac827ee177f1bcc3e9b2314cb6a4b139c0630bce27627aba48",
+      "git_blob": "53e85465ce6feb59d700762bb4f3f01343ac0c0b"
+    },
+    "colorama/__init__.py": {
+      "sha256": "21aeb7d09002d2b0e03fd4430d45c35803f0d2fd1c7f87e8c148e65bcb9d2db2",
+      "git_blob": "670e6b3970b77529fd65f002a1afda6d28873cce"
+    },
+    "colorama/ansi.py": {
+      "sha256": "721dc31b602472c7eea0bf696dbdb059b0d23daf5729d24e1b685cbd695ca11a",
+      "git_blob": "78776588db9410924d8e4af0922fbc3960a37624"
+    },
+    "colorama/ansitowin32.py": {
+      "sha256": "ae64d3e49a6d62bd782d28b25662b47e5b28518e50fc663ab9c1d50851cec4e3",
+      "git_blob": "b7ff6f2136eec3530563c0fedf226b4b00c52d9d"
+    },
+    "colorama/initialise.py": {
+      "sha256": "468adeb91b940cbdad38cffd9604b68c2c137bfecc2608af367281a92a8e587f",
+      "git_blob": "834962a35f76f903c56bf921605b7fe3938088a4"
+    },
+    "colorama/win32.py": {
+      "sha256": "bd009029a4b62df8626f35908a7bdcd0795dd9777ac0b120350066a032d1f7e6",
+      "git_blob": "3d1d2f2d91867ecd8663a2870fededa15b2b9c89"
+    },
+    "colorama/winterm.py": {
+      "sha256": "1cb5a7a0e62066857493789ead954b8da9712009e729164ea4c61d9f0d662726",
+      "git_blob": "60309d3c07aa4c1a66388d0d2530e7086d46f091"
+    },
+    "credits.py": {
+      "sha256": "7742072194dce5ea2f899202c3e7f536200399b1f38cf0f9483105b4879ac958",
+      "git_blob": "9bcc5c360d57db1fbb6a5e7e6182aae2f8c68d35"
+    },
+    "credits_pynput.py": {
+      "sha256": "12c36554f3506acbca6d08f180b4b32720d15b10eef0d275a9e2dc3f32504d24",
+      "git_blob": "5c0ec51b133911a926e46b912a3f99b03a7e31f0"
+    },
+    "media/README.txt": {
+      "sha256": "68838473e1d125bc8c839b639d4ff70adb1cddc0bc0ea8bff3c255dab470dbf4",
+      "git_blob": "6fb1a8df5f695d998f246c4955c3987e39030ee5"
+    },
+    "media/credits.txt": {
+      "sha256": "0db3a5e9b9abab634f5738d03aa77a471d0220654a5ad76c6ead7291684570f4",
+      "git_blob": "67ac42c7dd24c64752efd6277286829b85d98fc4"
+    },
+    "ocean.py": {
+      "sha256": "42126ba29712484c116accc33aa6adc57b16af2093eaf17243d69c5a30d2702a",
+      "git_blob": "68c02bf83254b1144c2577dcd378d16d523753f1"
+    },
+    "requirements.txt": {
+      "sha256": "48fd61b68373da37fe9aa153d379a70f1c49d57ba10f2b7dad154ac211d00c9e",
+      "git_blob": "05504baa8b0cb45c2f63be4abdb6a419d8ea90eb"
+    },
+    "string_defs.py": {
+      "sha256": "3293fedfe0204e73893f5eb167990d2aa37f078173c860d4f96a7e018dd7e3b4",
+      "git_blob": "6b96d220bc04f0d2688879d863d2f5fade3451d4"
+    }
+  }
+}

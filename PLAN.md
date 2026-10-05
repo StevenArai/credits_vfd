@@ -183,3 +183,16 @@
 - 用户本次明确授权 build、commit、push，目标为 origin 的 codex/layout-60x20 分支。
 - `./tools/build.ps1 -BuildDir build/font-preview -SDL` 配置/构建成功，**24/24 CTest 通过**（65.56 秒），包含新增度数字形后的字体像素、布局、音频交互、编辑器以及全部 Python 对照。
 - 60×20 内容完整性仍以用户目视检查为准；上述自动检查不替代视觉验收。
+
+
+## 主分支目录善后（2026-10-05）
+
+- 原始 Python 播放器、CLIRender、colorama、依赖和媒体说明迁移至 archive/python/；原 README 一并保留，原字体 HTML 位于 archive/fonts/。
+- 迁移前后 20 个原始文件逐字节 SHA-256 一致，规范化 Git blob 与 18f5cf3 基线相同；新增 reference_archive 持续检查。独立测试驱动及数据导出改读归档，不修改原代码。
+- 从干净 build/host 执行 `./tools/build.ps1 -SDL`：构建成功，**25/25 测试通过，76.37 秒**。原始 80×24 对照、60×20 布局、音频交互、字体和归档验证均通过。
+- 根目录 README 重写为当前 C/SDL 项目指南，包含运行、工具链条件、字体编辑、目录、现有视觉限制和原作者/音乐致谢。
+- 批量永久删除被自动安全策略拒绝，改用项目外可恢复归档：`D:/credits_vfd_cleanup/2026-10-05`。第一批旧构建、压缩包、缓存共 2067444250 字节（69 项）；验证后再移走新生成的 test-artifacts。此举清理项目目录但不释放磁盘空间。
+- 保留 .tools 内安装好的工具链、根目录 credits.wav、当前 build/host，以及用户正在运行的 build/font-preview（未中断进程）。关键计时、整曲和本次测试日志在 docs/validation/2026-10-05。
+- 后续回放数据统一生成到 build/test-artifacts，构建脚本禁止生成 Python 字节码缓存。60×20 内容完整性仍待用户目视验收。
+
+- 重新生成的验证数据另归档 1771149928 字节；两批合计 3838594178 字节。归档原 README 的既有尾随空格保留，以免改变原件；排除只读归档后的 staged diff whitespace 检查通过。

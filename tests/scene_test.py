@@ -9,7 +9,7 @@ from compare import compare
 
 def one(exe,name,at,frames):
     scope=load(42);controller=scope['controller'];controller.events={};canvas=scope['canvas'];terminal=Terminal()
-    folder=ROOT/'build/scenes';folder.mkdir(parents=True,exist_ok=True)
+    folder=ROOT/'build/test-artifacts/scenes';folder.mkdir(parents=True,exist_ok=True)
     py=folder/f'{name}-{at}-python.bin';c=folder/f'{name}-{at}-c.bin'
     controller.start_scene(name,at)
     with py.open('wb') as output:

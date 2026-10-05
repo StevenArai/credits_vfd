@@ -1,0 +1,669 @@
+Start testing: Oct 05 22:13 中国标准时间
+----------------------------------------------------------
+1/25 Testing: smoke
+1/25 Test: smoke
+Command: "D:/credits_vfd/build/host/credits.exe" "--self-test"
+Directory: D:/credits_vfd/build/host
+"smoke" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+C99 host baseline: 80 x 24 cells
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"smoke" end time: Oct 05 22:13 中国标准时间
+"smoke" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/25 Testing: ansi_oracle
+2/25 Test: ansi_oracle
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/ansi_test.py"
+Directory: D:/credits_vfd/build/host
+"ansi_oracle" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+ANSI parser: hand-checked Unicode, SGR inheritance, CRLF boundary and footer clipping pass
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"ansi_oracle" end time: Oct 05 22:13 中国标准时间
+"ansi_oracle" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/25 Testing: canvas_random
+3/25 Test: canvas_random
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/semantics.py" "D:/credits_vfd/build/host/semantics_probe.exe"
+Directory: D:/credits_vfd/build/host
+"canvas_random" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+RNG: 5000 mixed API sequences identical; canvas: 168 ANSI frames and C ANSI roundtrips identical
+canvas=7720 random=2512 peak_dynamic=46688 groups=76 string=1930 live=0
+<end of output>
+Test time =   1.09 sec
+----------------------------------------------------------
+Test Passed.
+"canvas_random" end time: Oct 05 22:13 中国标准时间
+"canvas_random" time elapsed: 00:00:01
+----------------------------------------------------------
+
+4/25 Testing: scheduler
+4/25 Test: scheduler
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/scheduler_test.py" "D:/credits_vfd/build/host/scheduler_probe.exe"
+Directory: D:/credits_vfd/build/host
+"scheduler" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+Scheduler: 48 lifecycle/event records identical
+<end of output>
+Test time =   0.13 sec
+----------------------------------------------------------
+Test Passed.
+"scheduler" end time: Oct 05 22:13 中国标准时间
+"scheduler" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/25 Testing: exported_data
+5/25 Test: exported_data
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tools/export_data.py" "--check"
+Directory: D:/credits_vfd/build/host
+"exported_data" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+{"text_count": 18, "source_bytes": 11332, "max_text_bytes": 1818, "scene_count": 22, "generator_count": 79}
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"exported_data" end time: Oct 05 22:13 中国标准时间
+"exported_data" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/25 Testing: exported_events
+6/25 Test: exported_events
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tools/export_events.py" "--check"
+Directory: D:/credits_vfd/build/host
+"exported_events" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+85 ordered events exported; runtime random colour retained
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"exported_events" end time: Oct 05 22:13 中国标准时间
+"exported_events" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/25 Testing: initialized_data
+7/25 Test: initialized_data
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/data_test.py" "D:/credits_vfd/build/host/credits.exe" "1"
+Directory: D:/credits_vfd/build/host
+"initialized_data" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+seed=1: all 18 initialized texts, empty tokens/repetition and import-time RNG state identical
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"initialized_data" end time: Oct 05 22:13 中国标准时间
+"initialized_data" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/25 Testing: ocean_text
+8/25 Test: ocean_text
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/compare.py" "D:/credits_vfd/build/host/credits.exe" "--last" "1079" "--seeds" "0,1,42"
+Directory: D:/credits_vfd/build/host
+"ocean_text" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+seed=0 jump=1: 1080 frames / 2073600 cells / 28 events identical; final RNG and scene state identical
+frames=1080 events=28 state=21808 readonly_data=13867 dynamic_peak=66842 allocations=23342 max_groups=255 max_string=1920 history_peaks=0,0,0 mean_us=6.980 max_us=245.000
+seed=1 jump=1: 1080 frames / 2073600 cells / 28 events identical; final RNG and scene state identical
+frames=1080 events=28 state=21808 readonly_data=13867 dynamic_peak=66550 allocations=23314 max_groups=245 max_string=1920 history_peaks=0,0,0 mean_us=7.782 max_us=246.200
+seed=42 jump=1: 1080 frames / 2073600 cells / 28 events identical; final RNG and scene state identical
+frames=1080 events=28 state=21808 readonly_data=13867 dynamic_peak=66110 allocations=23300 max_groups=243 max_string=1920 history_peaks=0,0,0 mean_us=6.985 max_us=206.500
+<end of output>
+Test time =   3.91 sec
+----------------------------------------------------------
+Test Passed.
+"ocean_text" end time: Oct 05 22:13 中国标准时间
+"ocean_text" time elapsed: 00:00:03
+----------------------------------------------------------
+
+9/25 Testing: terminal_ansi
+9/25 Test: terminal_ansi
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/ansi_replay_test.py" "D:/credits_vfd/build/host/credits.exe"
+Directory: D:/credits_vfd/build/host
+"terminal_ansi" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+C terminal adapter: 81 complete emitted ANSI frames match core cells, including bottom 10 ocean rows
+<end of output>
+Test time =   0.39 sec
+----------------------------------------------------------
+Test Passed.
+"terminal_ansi" end time: Oct 05 22:13 中国标准时间
+"terminal_ansi" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/25 Testing: full_timeline
+10/25 Test: full_timeline
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/compare.py" "D:/credits_vfd/build/host/credits.exe" "--last" "6508" "--seeds" "0,1,42" "--jumps" "1,2,3,4,5,6"
+Directory: D:/credits_vfd/build/host
+"full_timeline" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+seed=0 jump=1: 6509 frames / 12497280 cells / 85 events identical; final RNG and scene state identical
+frames=6509 events=85 state=21808 readonly_data=13867 dynamic_peak=100128 allocations=90186 max_groups=482 max_string=1920 history_peaks=173,28,13 mean_us=4.316 max_us=2265.900
+seed=0 jump=2: 5509 frames / 10577280 cells / 67 events identical; final RNG and scene state identical
+frames=5509 events=67 state=21808 readonly_data=13867 dynamic_peak=99804 allocations=66936 max_groups=483 max_string=1920 history_peaks=173,28,13 mean_us=3.913 max_us=1905.400
+seed=0 jump=3: 4739 frames / 9098880 cells / 55 events identical; final RNG and scene state identical
+frames=4739 events=55 state=21808 readonly_data=13867 dynamic_peak=99804 allocations=64979 max_groups=483 max_string=1920 history_peaks=173,28,13 mean_us=4.571 max_us=2142.700
+seed=0 jump=4: 3469 frames / 6660480 cells / 40 events identical; final RNG and scene state identical
+frames=3469 events=40 state=21808 readonly_data=13867 dynamic_peak=49998 allocations=17343 max_groups=20 max_string=1920 history_peaks=173,28,13 mean_us=1.958 max_us=60.200
+seed=0 jump=5: 2729 frames / 5239680 cells / 28 events identical; final RNG and scene state identical
+frames=2729 events=28 state=21808 readonly_data=13867 dynamic_peak=45208 allocations=11554 max_groups=20 max_string=1920 history_peaks=87,0,0 mean_us=2.027 max_us=75.700
+seed=0 jump=6: 1089 frames / 2090880 cells / 10 events identical; final RNG and scene state identical
+frames=1089 events=10 state=21808 readonly_data=13867 dynamic_peak=41078 allocations=3175 max_groups=9 max_string=1920 history_peaks=9,0,0 mean_us=0.805 max_us=38.000
+seed=1 jump=1: 6509 frames / 12497280 cells / 85 events identical; final RNG and scene state identical
+frames=6509 events=85 state=21808 readonly_data=13867 dynamic_peak=100284 allocations=90225 max_groups=484 max_string=1920 history_peaks=173,28,13 mean_us=4.341 max_us=1923.400
+seed=1 jump=2: 5509 frames / 10577280 cells / 67 events identical; final RNG and scene state identical
+frames=5509 events=67 state=21808 readonly_data=13867 dynamic_peak=100392 allocations=66942 max_groups=496 max_string=1920 history_peaks=173,28,13 mean_us=4.108 max_us=2299.400
+seed=1 jump=3: 4739 frames / 9098880 cells / 55 events identical; final RNG and scene state identical
+frames=4739 events=55 state=21808 readonly_data=13867 dynamic_peak=100392 allocations=64985 max_groups=496 max_string=1920 history_peaks=173,28,13 mean_us=3.681 max_us=1986.700
+seed=1 jump=4: 3469 frames / 6660480 cells / 40 events identical; final RNG and scene state identical
+frames=3469 events=40 state=21808 readonly_data=13867 dynamic_peak=50040 allocations=17342 max_groups=20 max_string=1920 history_peaks=173,28,13 mean_us=2.013 max_us=67.900
+seed=1 jump=5: 2729 frames / 5239680 cells / 28 events identical; final RNG and scene state identical
+frames=2729 events=28 state=21808 readonly_data=13867 dynamic_peak=45208 allocations=11554 max_groups=20 max_string=1920 history_peaks=87,0,0 mean_us=2.074 max_us=47.900
+seed=1 jump=6: 1089 frames / 2090880 cells / 10 events identical; final RNG and scene state identical
+frames=1089 events=10 state=21808 readonly_data=13867 dynamic_peak=41078 allocations=3175 max_groups=9 max_string=1920 history_peaks=9,0,0 mean_us=1.379 max_us=71.100
+seed=42 jump=1: 6509 frames / 12497280 cells / 85 events identical; final RNG and scene state identical
+frames=6509 events=85 state=21808 readonly_data=13867 dynamic_peak=100472 allocations=90227 max_groups=485 max_string=1920 history_peaks=173,28,13 mean_us=3.961 max_us=1750.800
+seed=42 jump=2: 5509 frames / 10577280 cells / 67 events identical; final RNG and scene state identical
+frames=5509 events=67 state=21808 readonly_data=13867 dynamic_peak=100576 allocations=66916 max_groups=492 max_string=1920 history_peaks=173,28,13 mean_us=5.746 max_us=3234.300
+seed=42 jump=3: 4739 frames / 9098880 cells / 55 events identical; final RNG and scene state identical
+frames=4739 events=55 state=21808 readonly_data=13867 dynamic_peak=100576 allocations=64959 max_groups=492 max_string=1920 history_peaks=173,28,13 mean_us=3.937 max_us=2149.000
+seed=42 jump=4: 3469 frames / 6660480 cells / 40 events identical; final RNG and scene state identical
+frames=3469 events=40 state=21808 readonly_data=13867 dynamic_peak=50007 allocations=17342 max_groups=20 max_string=1920 history_peaks=173,28,13 mean_us=2.291 max_us=161.200
+seed=42 jump=5: 2729 frames / 5239680 cells / 28 events identical; final RNG and scene state identical
+frames=2729 events=28 state=21808 readonly_data=13867 dynamic_peak=45208 allocations=11554 max_groups=20 max_string=1920 history_peaks=87,0,0 mean_us=2.371 max_us=726.500
+seed=42 jump=6: 1089 frames / 2090880 cells / 10 events identical; final RNG and scene state identical
+frames=1089 events=10 state=21808 readonly_data=13867 dynamic_peak=41078 allocations=3175 max_groups=9 max_string=1920 history_peaks=9,0,0 mean_us=0.854 max_us=72.700
+<end of output>
+Test time =  29.50 sec
+----------------------------------------------------------
+Test Passed.
+"full_timeline" end time: Oct 05 22:13 中国标准时间
+"full_timeline" time elapsed: 00:00:29
+----------------------------------------------------------
+
+11/25 Testing: all_scenes
+11/25 Test: all_scenes
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/scene_test.py" "D:/credits_vfd/build/host/scene_probe.exe"
+Directory: D:/credits_vfd/build/host
+"all_scenes" start time: Oct 05 22:13 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+All 22 registered scenes plus five nonzero-start/condition boundaries match original ANSI frames
+<end of output>
+Test time =   6.48 sec
+----------------------------------------------------------
+Test Passed.
+"all_scenes" end time: Oct 05 22:14 中国标准时间
+"all_scenes" time elapsed: 00:00:06
+----------------------------------------------------------
+
+12/25 Testing: player_1
+12/25 Test: player_1
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/player_test.py" "D:/credits_vfd/build/host/player_probe.exe" "--seed" "1" "--jump" "1"
+Directory: D:/credits_vfd/build/host
+"player_1" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+player seed=1 jump=1: 7602 time/input states and 6313 rendered/clear frames identical
+<end of output>
+Test time =   3.22 sec
+----------------------------------------------------------
+Test Passed.
+"player_1" end time: Oct 05 22:14 中国标准时间
+"player_1" time elapsed: 00:00:03
+----------------------------------------------------------
+
+13/25 Testing: player_2
+13/25 Test: player_2
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/player_test.py" "D:/credits_vfd/build/host/player_probe.exe" "--seed" "1" "--jump" "2"
+Directory: D:/credits_vfd/build/host
+"player_2" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+player seed=1 jump=2: 7602 time/input states and 6444 rendered/clear frames identical
+<end of output>
+Test time =   2.52 sec
+----------------------------------------------------------
+Test Passed.
+"player_2" end time: Oct 05 22:14 中国标准时间
+"player_2" time elapsed: 00:00:02
+----------------------------------------------------------
+
+14/25 Testing: player_3
+14/25 Test: player_3
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/player_test.py" "D:/credits_vfd/build/host/player_probe.exe" "--seed" "1" "--jump" "3"
+Directory: D:/credits_vfd/build/host
+"player_3" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+player seed=1 jump=3: 7602 time/input states and 6444 rendered/clear frames identical
+<end of output>
+Test time =   2.39 sec
+----------------------------------------------------------
+Test Passed.
+"player_3" end time: Oct 05 22:14 中国标准时间
+"player_3" time elapsed: 00:00:02
+----------------------------------------------------------
+
+15/25 Testing: player_4
+15/25 Test: player_4
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/player_test.py" "D:/credits_vfd/build/host/player_probe.exe" "--seed" "1" "--jump" "4"
+Directory: D:/credits_vfd/build/host
+"player_4" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+player seed=1 jump=4: 7602 time/input states and 6444 rendered/clear frames identical
+<end of output>
+Test time =   2.08 sec
+----------------------------------------------------------
+Test Passed.
+"player_4" end time: Oct 05 22:14 中国标准时间
+"player_4" time elapsed: 00:00:02
+----------------------------------------------------------
+
+16/25 Testing: player_5
+16/25 Test: player_5
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/player_test.py" "D:/credits_vfd/build/host/player_probe.exe" "--seed" "1" "--jump" "5"
+Directory: D:/credits_vfd/build/host
+"player_5" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+player seed=1 jump=5: 7602 time/input states and 6444 rendered/clear frames identical
+<end of output>
+Test time =   1.73 sec
+----------------------------------------------------------
+Test Passed.
+"player_5" end time: Oct 05 22:14 中国标准时间
+"player_5" time elapsed: 00:00:01
+----------------------------------------------------------
+
+17/25 Testing: player_6
+17/25 Test: player_6
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/player_test.py" "D:/credits_vfd/build/host/player_probe.exe" "--seed" "1" "--jump" "6"
+Directory: D:/credits_vfd/build/host
+"player_6" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+D:\credits_vfd\archive\python\CLIRender\classes.py:326: SyntaxWarning: invalid escape sequence '\~'
+  20 + (80 * yval), "|---------" if ind % 2 == 0 else "\~~~~~~~~~", "\033[{}m".format(32)
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:49: SyntaxWarning: invalid escape sequence '\['
+  ANSI_CSI_RE = re.compile('\001?\033\[((?:\d|;)*)([a-zA-Z])\002?')     # Control Sequence Introducer
+D:\credits_vfd\archive\python\colorama\ansitowin32.py:50: SyntaxWarning: invalid escape sequence '\]'
+  ANSI_OSC_RE = re.compile('\001?\033\]((?:.|;)*?)(\x07)\002?')         # Operating System Command
+player seed=1 jump=6: 7602 time/input states and 6444 rendered/clear frames identical
+<end of output>
+Test time =   1.12 sec
+----------------------------------------------------------
+Test Passed.
+"player_6" end time: Oct 05 22:14 中国标准时间
+"player_6" time elapsed: 00:00:01
+----------------------------------------------------------
+
+18/25 Testing: windows_console
+18/25 Test: windows_console
+Command: "D:/credits_vfd/build/host/console_test.exe" "D:/credits_vfd/build/host/credits.exe" "D:/credits_vfd/build/host/console-finish.ansi" "D:/credits_vfd/build/host/console-stop.ansi"
+Directory: D:/credits_vfd/build/host
+"windows_console" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+ConPTY stop=0: exit=0, captured 41280 ANSI bytes
+ConPTY stop=1: exit=0, captured 27768 ANSI bytes
+<end of output>
+Test time =   2.02 sec
+----------------------------------------------------------
+Test Passed.
+"windows_console" end time: Oct 05 22:14 中国标准时间
+"windows_console" time elapsed: 00:00:02
+----------------------------------------------------------
+
+19/25 Testing: sdl_audio_transport
+19/25 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/host/credits_sdl.exe"
+Directory: D:/credits_vfd/build/host
+"sdl_audio_transport" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmpj0ijsmqs\tone.wav backend=dummy rate=44100 duration=7.000000 wav_bytes=617400 queue_limit=16384 device_frames=512 host_pixels=1658880 core=21808 framebuffer=4096
+display_readback=matched 864x480
+layout=60x20 layout_bytes=4804 max_scrolled_rows=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=48 beat=96 audio_position=7.000000 wall_seconds=4.838426 max_compute_ms=1.057 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+core_peak=66550 core_live=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   5.57 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 05 22:14 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:05
+----------------------------------------------------------
+
+20/25 Testing: audio_clock_sync
+20/25 Test: audio_clock_sync
+Command: "D:/credits_vfd/build/host/sync_test.exe"
+Directory: D:/credits_vfd/build/host
+"audio_clock_sync" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+3900 jitter/pause/seek samples match drained reference player, cells, RNG and events
+<end of output>
+Test time =   0.10 sec
+----------------------------------------------------------
+Test Passed.
+"audio_clock_sync" end time: Oct 05 22:14 中国标准时间
+"audio_clock_sync" time elapsed: 00:00:00
+----------------------------------------------------------
+
+21/25 Testing: framebuffer_pixels
+21/25 Test: framebuffer_pixels
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/framebuffer_test.py" "D:/credits_vfd/build/host/framebuffer_probe.exe"
+Directory: D:/credits_vfd/build/host
+"framebuffer_pixels" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+pixel frames 344 missing []
+<end of output>
+Test time =  11.32 sec
+----------------------------------------------------------
+Test Passed.
+"framebuffer_pixels" end time: Oct 05 22:14 中国标准时间
+"framebuffer_pixels" time elapsed: 00:00:11
+----------------------------------------------------------
+
+22/25 Testing: exported_font
+22/25 Test: exported_font
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tools/export_font.py" "--check"
+Directory: D:/credits_vfd/build/host
+"exported_font" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+96 glyphs verified
+<end of output>
+Test time =   0.12 sec
+----------------------------------------------------------
+Test Passed.
+"exported_font" end time: Oct 05 22:14 中国标准时间
+"exported_font" time elapsed: 00:00:00
+----------------------------------------------------------
+
+23/25 Testing: layout60
+23/25 Test: layout60
+Command: "D:/credits_vfd/build/host/layout60_test.exe"
+Directory: D:/credits_vfd/build/host
+"layout60" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+19527 layout frames; max scrolled rows=6; layout=4804 bytes; gutters and bounds passed
+<end of output>
+Test time =   0.38 sec
+----------------------------------------------------------
+Test Passed.
+"layout60" end time: Oct 05 22:14 中国标准时间
+"layout60" time elapsed: 00:00:00
+----------------------------------------------------------
+
+24/25 Testing: font_editor_logic
+24/25 Test: font_editor_logic
+Command: "C:/Program Files/nodejs/node.exe" "D:/credits_vfd/tests/font_editor_test.cjs"
+Directory: D:/credits_vfd
+"font_editor_logic" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+Editor logic: edit, undo/redo, add degree, clipboard JSON, reimport, autosave, validation passed (DOM stub; no browser UI).
+<end of output>
+Test time =   0.17 sec
+----------------------------------------------------------
+Test Passed.
+"font_editor_logic" end time: Oct 05 22:14 中国标准时间
+"font_editor_logic" time elapsed: 00:00:00
+----------------------------------------------------------
+
+25/25 Testing: reference_archive
+25/25 Test: reference_archive
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/archive_test.py"
+Directory: D:/credits_vfd/build/host
+"reference_archive" start time: Oct 05 22:14 中国标准时间
+Output:
+----------------------------------------------------------
+20 archived reference blobs unchanged
+<end of output>
+Test time =   1.35 sec
+----------------------------------------------------------
+Test Passed.
+"reference_archive" end time: Oct 05 22:14 中国标准时间
+"reference_archive" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Oct 05 22:14 中国标准时间

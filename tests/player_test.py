@@ -10,7 +10,7 @@ import struct
 import subprocess
 import sys
 import types
-from reference import ROOT,Terminal,load
+from reference import ROOT,REFERENCE_ROOT,Terminal,load
 from compare import compare
 
 class Playback:
@@ -26,7 +26,7 @@ def replay(seed,jump,folder):
     scope=load(seed);terminal=Terminal();playback=Playback();clock=[0.0];pressed={str(jump)}
     scope.update(playback=playback,time=types.SimpleNamespace(time=lambda:clock[0],sleep=lambda _:None),
                  keyboard=types.SimpleNamespace(is_pressed=lambda key:key in pressed),time_menu=0.0)
-    tree=ast.parse((ROOT/'credits.py').read_text(encoding='utf-8'))
+    tree=ast.parse((REFERENCE_ROOT/'credits.py').read_text(encoding='utf-8'))
     loops=[n for n in tree.body if isinstance(n,ast.While)]
     menu=next(n for n in loops if isinstance(n.test,ast.Compare))
     loop=next(n for n in loops if isinstance(n.test,ast.Attribute))
@@ -75,7 +75,7 @@ def replay(seed,jump,folder):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('exe',type=Path);p.add_argument('--seed',type=int,default=1);p.add_argument('--jump',type=int,default=1);args=p.parse_args()
-    folder=ROOT/f'build/player-{args.seed}-{args.jump}';folder.mkdir(parents=True,exist_ok=True)
+    folder=ROOT/f'build/test-artifacts/player-{args.seed}-{args.jump}';folder.mkdir(parents=True,exist_ok=True)
     replay(args.seed,args.jump,folder)
     subprocess.run([args.exe.resolve(),str(args.seed),str(args.jump),folder/'input.txt',folder/'c.bin',folder/'c.txt'],check=True)
     count=compare(folder/'python.bin',folder/'c.bin')

@@ -12,7 +12,7 @@ from CLIRender.dat import Vector2
 
 def main():
     exe = Path(sys.argv[1]).resolve()
-    dest = ROOT/'build/semantics'
+    dest = ROOT/'build/test-artifacts/semantics'
     dest.mkdir(parents=True, exist_ok=True)
     for seed in (0, 1, 42, 0xffffffff, 0x123456789abcdef0):
         rng = random.Random(seed)

@@ -75,3 +75,5 @@ if(CREDITS_NODE_EXECUTABLE)
   add_test(NAME font_editor_logic COMMAND ${CREDITS_NODE_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/font_editor_test.cjs)
   set_tests_properties(font_editor_logic PROPERTIES WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif()
+
+add_test(NAME reference_archive COMMAND ${Python3_EXECUTABLE} ${CMAKE_SOURCE_DIR}/tests/archive_test.py)

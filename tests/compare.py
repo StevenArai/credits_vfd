@@ -27,7 +27,7 @@ def compare(expected,actual):
     return index
 
 def run(exe,seed,last,jump=1):
-    folder=ROOT/f'build/compare-{seed}-{jump}-{last}'; folder.mkdir(parents=True,exist_ok=True)
+    folder=ROOT/f'build/test-artifacts/compare-{seed}-{jump}-{last}'; folder.mkdir(parents=True,exist_ok=True)
     py=folder/'python.bin'; c=folder/'c.bin'
     subprocess.run([sys.executable,ROOT/'tests/reference.py','--seed',str(seed),'--last',str(last),'--jump',str(jump),'--out',py],check=True,capture_output=True,text=True)
     cmd=[exe,'--seed',str(seed),'--last',str(last),'--replay',c,'--state',folder/'c.json','--trace',folder/'events.txt']

@@ -9,7 +9,7 @@ from reference import ROOT,load
 def main():
     exe=Path(sys.argv[1]).resolve();seed=int(sys.argv[2]) if len(sys.argv)>2 else 1
     scope=load(seed)
-    folder=ROOT/'build/data';folder.mkdir(parents=True,exist_ok=True)
+    folder=ROOT/'build/test-artifacts/data';folder.mkdir(parents=True,exist_ok=True)
     path=folder/f'{seed}.bin';state=folder/f'{seed}.json'
     subprocess.run([exe,'--seed',str(seed),'--last','-1','--dump-data',path,'--state',state],check=True,capture_output=True)
     data=path.read_bytes(); ocean_time=struct.unpack_from('<i',data)[0];offset=4

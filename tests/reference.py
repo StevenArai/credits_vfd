@@ -15,10 +15,12 @@ import random
 import re
 import struct
 import sys
+sys.dont_write_bytecode = True
 import types
 
 ROOT = Path(__file__).resolve().parents[1]
-sys.path.insert(0, str(ROOT))
+REFERENCE_ROOT = ROOT / 'archive' / 'python'
+sys.path.insert(0, str(REFERENCE_ROOT))
 VERSION = (3, 13, 11)
 
 
@@ -84,7 +86,7 @@ def load(seed):
     sys.modules['just_playback'] = types.SimpleNamespace(Playback=object)
     import CLIRender.classes
     CLIRender.classes.enable_ansi = lambda: None
-    source = ast.parse((ROOT / 'credits.py').read_text(encoding='utf-8'))
+    source = ast.parse((REFERENCE_ROOT / 'credits.py').read_text(encoding='utf-8'))
     body = []
     for node in source.body:
         if isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and t.id == 'playback' for t in node.targets):
@@ -100,21 +102,21 @@ def inventory(scope):
     scenes = scope['all_scenes']
     events = scope['controller'].events
     strings = scope['data_strings']
-    source = ast.parse((ROOT / 'credits.py').read_text(encoding='utf-8'))
+    source = ast.parse((REFERENCE_ROOT / 'credits.py').read_text(encoding='utf-8'))
     return {
         'python': sys.version, 'baseline': '18f5cf36a10a7e95aa20d4bf31fd79a5895ccdb0',
         'scenes': [{'name': s.name, 'generators': len(s.generators),
                     'starts': [g.start_beat for g in s.generators]} for s in scenes],
         'defined_but_excluded': [s.name for s in vars(animation_scenes).values()
                                 if isinstance(s, scope['am'].Scene) and s not in scenes],
-        'events': [{'beat': b, 'actions': [ast.get_source_segment((ROOT/'credits.py').read_text(encoding='utf-8'),
+        'events': [{'beat': b, 'actions': [ast.get_source_segment((REFERENCE_ROOT/'credits.py').read_text(encoding='utf-8'),
                     next(n for n in ast.walk(source) if isinstance(n, ast.Lambda) and n.lineno == e.do.__code__.co_firstlineno))
                     if e.do.__code__.co_filename == 'credits.py' else list(e.do.__closure__[i].cell_contents for i in range(len(e.do.__closure__ or ())))
                     for e in ev]} for b, ev in events.items()],
         'strings': {k: {'kind': 'string' if isinstance(v, str) else 'words', 'characters': len(v) if isinstance(v, str) else sum(len(w) for line in v for w in line),
                          'lines': len(v.split('\n')) if isinstance(v, str) else len(v),
                          'words': None if isinstance(v, str) else sum(len(line) for line in v)} for k, v in strings.items()},
-        'random_calls': {name: [{'line': n.lineno, 'call': ast.unparse(n)} for n in ast.walk(ast.parse((ROOT/name).read_text(encoding='utf-8')))
+        'random_calls': {name: [{'line': n.lineno, 'call': ast.unparse(n)} for n in ast.walk(ast.parse((REFERENCE_ROOT/name).read_text(encoding='utf-8')))
                                if isinstance(n, ast.Call) and isinstance(n.func, ast.Attribute) and isinstance(n.func.value, ast.Name) and n.func.value.id == 'random']
                          for name in ('ocean.py', 'animation_functions.py', 'animation_classes.py', 'animation_scenes.py', 'credits.py')}
     }
@@ -162,7 +164,7 @@ def main():
     parser.add_argument('--seed', type=int, default=1)
     parser.add_argument('--last', type=int, default=6508)
     parser.add_argument('--jump', type=int, default=1, choices=range(1, 7))
-    parser.add_argument('--out', type=Path, default=ROOT/'build/reference.bin')
+    parser.add_argument('--out', type=Path, default=ROOT/'build/test-artifacts/reference.bin')
     args = parser.parse_args()
     args.out.parent.mkdir(parents=True, exist_ok=True)
     scope = load(args.seed)

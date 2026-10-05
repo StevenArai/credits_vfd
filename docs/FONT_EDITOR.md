@@ -19,7 +19,7 @@ python tools/export_font.py --input "D:/你的字体文件.json"
 ./build/font-preview/credits_sdl.exe --audio ./credits.wav
 ```
 
-导入器更新 `tools/font-editor-data.json`、编辑器内嵌默认字体和两个 C 字形表；95 个 ASCII 必须齐全。部分字形合并，含完整 ASCII 的文件整体替换。附加字形进入 `font_extra_generated.inc`，不再显示问号。原始 `3x5fonts.html` 保留不变。浏览器已存的编辑草稿仍优先，可通过导入新文件或“恢复原字”选取新的默认值。
+导入器更新 `tools/font-editor-data.json`、编辑器内嵌默认字体和两个 C 字形表；95 个 ASCII 必须齐全。部分字形合并，含完整 ASCII 的文件整体替换。附加字形进入 `font_extra_generated.inc`，不再显示问号。原始 `archive/fonts/3x5fonts.html` 保留不变。浏览器已存的编辑草稿仍优先，可通过导入新文件或“恢复原字”选取新的默认值。
 
 已实际验证：Node 下的编辑/撤销/重做/添加/复制/导入/缓存/非法数据检查（DOM 替身）；临时目录单字 JSON 导入、保留 ASCII、导出一致性、实际编译并渲染新增度数字形；C 字体像素和布局回归。测试用度数字形没有写入项目，仍待用户设计。
 

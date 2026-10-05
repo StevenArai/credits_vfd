@@ -1,0 +1,4 @@
+audio=credits.wav backend=wasapi rate=44100 duration=278.845170 wav_bytes=49188288 queue_limit=32768 device_frames=512 host_pixels=1658880 core=21808 framebuffer=4096
+exit_reason=audio-eof
+presented=6587 beat=6584 audio_position=278.845170 wall_seconds=278.833986 max_compute_ms=1.647 max_backlog_ms=0.000 missing_glyph_cells=1231 script_stage=0 underruns=0
+core_peak=100284 core_live=0

@@ -7,12 +7,12 @@
 - 使用 C；语言标准默认 C99，主机工具链优先 Clang + MinGW-w64。业务代码可读性优先。
 - 先在系统终端还原 Python 行为，再生成 256×128 单色 framebuffer，最后接 SDL2 显示前端。
 - 动画、排版、字体光栅化和像素合成都属于可移植核心。SDL2 只提供窗口、接收 framebuffer 并显示，以及主机音频播放。
-- 字体使用用户提供的 `3x5fonts.html`；缺字列入 `docs/GLYPH_TODO.md`。尚无指定 MCU、RAM/Flash 上限或额外帧率指标。
+- 正式字体在 `tools/font-editor-data.json`；最初字体归档于 `archive/fonts/3x5fonts.html`；缺字列入 `docs/GLYPH_TODO.md`。尚无指定 MCU、RAM/Flash 上限或额外帧率指标。
 - 内存须有明确归属、边界和测量结果。避免不必要的分配与大对象复制；热点优化以 profiling 为依据。
 
 ## 实现和验收
 
-- 根目录 Python 文件、`CLIRender/`、`colorama/` 是参考基线，保持原样；测试适配放在独立目录。
+- `archive/python/` 内的 Python 文件、`CLIRender/`、`colorama/` 是参考基线，保持原样；测试适配放在独立目录。
 - 参考基线提交：`18f5cf36a10a7e95aa20d4bf31fd79a5895ccdb0`。
 - 原始可见画布是 80×24 字符，Python 坐标映射、跨行写入、清除和渲染顺序必须先有对照证据。
 - 固定 Python 版本、初始化 seed、输入和时间序列建立可重放参考；随机初始化也必须受控。

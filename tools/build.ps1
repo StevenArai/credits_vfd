@@ -1,5 +1,6 @@
 param([string]$BuildDir = 'build/host', [string]$BuildType = 'Release', [switch]$Sanitize, [switch]$SDL)
 $ErrorActionPreference = 'Stop'
+$env:PYTHONDONTWRITEBYTECODE = '1'
 $root = Split-Path $PSScriptRoot -Parent
 $compilerBin = (Join-Path $root '.tools/llvm-mingw-20260922-ucrt-x86_64/bin').Replace('\', '/')
 $cmake = 'C:/Users/Steve/.espressif/tools/cmake/3.24.0/bin/cmake.exe'
