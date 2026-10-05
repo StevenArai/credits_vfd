@@ -30,6 +30,31 @@ int main(int argc,char **argv) {
     a->canvas.cells[20*80+79]=cell_pack('W',39,49,0);
     layout60_render(&layout,a); CHECK((layout.cells[17*60+59]&65535)=='W');
     credits_destroy(a);
+    /* Real title timeline: verify all 32 block cells through both blink modes,
+       and labels only once the original scene has revealed each line. */
+    credits_init(a,1);
+    unsigned labels_seen=0;
+    for (int beat=0;beat<=1843;beat++) {
+        credits_next(a,1);
+        if (beat<1080) continue;
+        layout60_render(&layout,a);
+        for (int y=0;y<4;y++) for (int x=0;x<8;x++)
+            CHECK(layout.cells[(7+y)*60+26+x]==a->canvas.cells[(11+y)*80+36+x]);
+        const char *old[]={"running pure Python 3.6","in the command line"};
+        const char *updated[]={"Modded by StevenArai","On the VFD Panel"};
+        for (int line=0;line<2;line++) {
+            int row=4+line,visible=1;
+            for (size_t i=0;old[line][i];i++)
+                if ((a->canvas.cells[row*80+2+i]&65535)!=(unsigned char)old[line][i]) visible=0;
+            if (visible) {
+                labels_seen|=1u<<line;
+                for (size_t i=0;updated[line][i];i++)
+                    CHECK((layout.cells[row*60+2+i]&65535)==(unsigned char)updated[line][i]);
+                CHECK((layout.cells[row*60+2+strlen(updated[line])]&65535)==' ');
+            }
+        }
+    }
+    CHECK(labels_seen==3); credits_destroy(a);
     unsigned peak=0; FILE *previews=argc==2 ? fopen(argv[1],"wb"):NULL;
     for (int seed=0;seed<3;seed++) {
         credits_init(a,(uint64_t)seed);
@@ -40,7 +65,7 @@ int main(int argc,char **argv) {
             CHECK(!memcmp(&before,&a->random,sizeof(before)));
             if (layout.scrolled_rows>peak) peak=layout.scrolled_rows;
             framebuffer_render60(&f,layout.cells,1);
-            if (previews && seed==1 && (beat==250 || beat==1200 || beat==2200 || beat==3400 || beat==4200 || beat==5600)) {
+            if (previews && seed==1 && (beat==250 || beat==1600 || beat==2200 || beat==3400 || beat==4200 || beat==5600)) {
                 fwrite(&beat,sizeof(beat),1,previews); fwrite(f.bits,1,sizeof(f.bits),previews);
             }
         }

@@ -50,6 +50,14 @@ static void graphic(Layout60 *out,const uint32_t *cells,Rect src,Rect dst) {
     for (int y=0;y<dst.h;y++) for (int x=0;x<dst.w;x++)
         out->cells[(dst.y+y)*60+dst.x+x]=cells[(src.y+y*(src.h-1)/(dst.h-1))*80+src.x+x*(src.w-1)/(dst.w-1)];
 }
+static void title_label(Layout60 *out,const uint32_t *cells,int row,const char *original,const char *replacement) {
+    /* Keep the source scene's reveal timing and colour; customize only VFD copy. */
+    const uint32_t *source=cells+row*80+2;
+    for (size_t i=0;original[i];i++) if ((source[i]&65535)!=(unsigned char)original[i]) return;
+    uint32_t style=source[0]&0xffff0000u;
+    for (int x=0;x<60;x++) out->cells[row*60+x]=blank();
+    for (size_t i=0;replacement[i];i++) out->cells[row*60+2+i]=style|(unsigned char)replacement[i];
+}
 void layout60_render(Layout60 *out,const Credits *a) {
     const uint32_t *cells=a->canvas.cells;
     for (int i=0;i<60*20;i++) out->cells[i]=blank();
@@ -73,7 +81,10 @@ void layout60_render(Layout60 *out,const Credits *a) {
             flow(out,cells,(Rect){0,0,52,20},(Rect){0,0,31,18});
         } else {
             flow(out,cells,(Rect){0,0,80,7},(Rect){0,0,60,7});
-            graphic(out,cells,(Rect){36,11,8,4},(Rect){26,8,8,4});
+            title_label(out,cells,4,"running pure Python 3.6","Modded by StevenArai");
+            title_label(out,cells,5,"in the command line","On the VFD Panel");
+            /* End at row 10: weather begins at (32,11), including blank cells. */
+            graphic(out,cells,(Rect){36,11,8,4},(Rect){26,7,8,4});
         }
         /* Weather panel keeps all 28 columns and seven rows, without resampling. */
         graphic(out,cells,(Rect){52,14,28,7},(Rect){32,11,28,7});
