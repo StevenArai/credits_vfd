@@ -1,6 +1,6 @@
 # 重建实施计划与实际进度
 
-更新日期：2026-10-05。当前仅完成现场清理和方案整理，尚未实现或构建新版 C 动画。
+更新日期：2026-10-05。P0–P1 已实际构建并通过对照，正在进入 P2。
 
 ## 当前状态
 
@@ -9,8 +9,8 @@
 - [x] 将旧 src/、tools/、SPEC.md、todo.md、失效锁和缓存移出工作目录。
 - [x] 确认平台无关 C、终端优先、256×128 单色及 SDL2 的边界。
 - [x] 写入新版 SPEC.md、AGENTS.md、事故摘要与本计划。
-- [ ] P0：建立可运行的参考驱动与 C 构建基线。
-- [ ] P1：验证字符画布、节拍引擎和随机接口。
+- [x] P0：建立可运行的参考驱动与 C 构建基线。
+- [x] P1：验证字符画布、节拍引擎和随机接口。
 - [ ] P2：通过文字与海洋的端到端对照。
 - [ ] P3：完成全部终端动画和交互验收。
 - [ ] P4：生成核心内的单色 framebuffer。
@@ -77,9 +77,24 @@
 
 文档和代理报告不能替代运行结果。同一失败重复出现时检查原因与落盘状态，不反复提交原命令。只有满足阶段通过条件才勾选完成。
 
-## 下一次实施聊天的交接
+## P0–P1 验证记录（2026-10-05）
 
-先读取 `AGENTS.md`、`SPEC.md`、本文件；按 P0 开始实施。事故原始日志不需要重新读取。用户尚未要求本轮开始写动画代码。
+- Windows x64，CPython 3.13.11（Anaconda），Clang 23.1.2 / LLVM-MinGW UCRT 20260922，CMake 3.24.0，Ninja 1.11.1。仅此主机构建已验证。
+- 工具链来源和 SHA-256 见 `docs/TERMINAL.md`；安装于被 Git 忽略的 `.tools/`，未修改系统 PATH。
+- `./tools/build.ps1`：实际配置、编译、链接和 CTest smoke 通过。首次配置的反斜杠转义问题已修复，使用独立 `build/host`。
+- `python tests/reference.py --last 80 --out build/p0-a.bin` 及独立进程重复回放：81 帧 SHA-256 均为 `f34fb6cc257d933c7bd5128dcf34db14943ce61461d8451d5f1f450c54bf75fc`。
+- `python tests/reference.py --out build/reference-full.bin`：seed 1，6509 帧，85 个事件，SHA-256 `c50d517f248447e7b5e3ef414a12cb8cfa85551179160219d6fdd1a90ca2ebbd`。此处仅是 Python 参考全程，不代表 C 全程验收。
+- `python tests/ansi_test.py`：手算 Unicode、SGR、边界换行、清除和第 27 行光标处理通过。80×24 可见区域、至少 28 行的终端，不产生滚屏；LF 按主机文本 CRLF 处理。
+- `python tests/semantics.py build/host/semantics_probe.exe`：5 个种子（0、1、42、4294967295、1311768467463790320），共 5000 组 random/randint/randrange/choice/getrandbits 混合序列一致；168 组实际 ANSI 画布帧及 C ANSI 输出回读一致。
+- `python tests/scheduler_test.py build/host/scheduler_probe.exe`：48 条 create/clear/request/event/active 记录一致，含同拍多次 start、layer/remove、非零起拍和 render=False。
+- `python tools/export_data.py --check`、`python tools/export_events.py --check` 通过。18 份文本、22 个场景、79 个发生器、85 个事件；未加入 all_scenes 的 beats_side 单列。`docs/reference-inventory.json` 是实际导出的清单。
+- P1 实测：Canvas 7720 字节，Random 2512 字节；画布对照动态峰值 46688 字节、76 个分组、最长内部字符串 1930 个字符，销毁后 live=0。编译器 `.su` 显示核心最大单函数栈为 canvas_clear 7736 字节（非调用链峰值）。完整业务状态、只读数据及帧耗时待 P2/P3 测量。
+- 测试探针最初因 1 MB 局部测试数据表触发栈溢出，已移至有归属的堆内存并重跑通过；没有将其误报为核心通过。
+- `git diff 18f5cf36a10a7e95aa20d4bf31fd79a5895ccdb0 -- '*.py' CLIRender colorama` 为空。未执行其他 OS、MCU、GCC 或音频播放验证。
+
+## 后续实施交接
+
+先读取 `AGENTS.md`、`SPEC.md`、本文件；用户已授权持续完成 P0–P3。按勾选状态和实际证据继续，勿重读事故或恢复旧实现。
 
 建议交接指令：
 

@@ -1,0 +1,911 @@
+{
+  "python": "3.13.11 | packaged by Anaconda, Inc. | (main, Dec 10 2025, 21:21:58) [MSC v.1929 64 bit (AMD64)]",
+  "baseline": "18f5cf36a10a7e95aa20d4bf31fd79a5895ccdb0",
+  "scenes": [
+    {
+      "name": "wipe",
+      "generators": 1,
+      "starts": [
+        0
+      ]
+    },
+    {
+      "name": "clear_wipe",
+      "generators": 1,
+      "starts": [
+        0
+      ]
+    },
+    {
+      "name": "clear",
+      "generators": 1,
+      "starts": [
+        0
+      ]
+    },
+    {
+      "name": "ocean_b",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ocean_c",
+      "generators": 5,
+      "starts": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "ocean_d",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "typewrite",
+      "generators": 1,
+      "starts": [
+        0
+      ]
+    },
+    {
+      "name": "title",
+      "generators": 12,
+      "starts": [
+        64,
+        128,
+        192,
+        256,
+        320,
+        384,
+        448,
+        512,
+        576,
+        640,
+        704,
+        768
+      ]
+    },
+    {
+      "name": "beats",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "beats_lr",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "funding",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "dates",
+      "generators": 5,
+      "starts": [
+        0,
+        512,
+        764,
+        772,
+        1024
+      ]
+    },
+    {
+      "name": "weather",
+      "generators": 5,
+      "starts": [
+        0,
+        512,
+        764,
+        772,
+        1024
+      ]
+    },
+    {
+      "name": "redraw_ui",
+      "generators": 8,
+      "starts": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "loadingbar",
+      "generators": 7,
+      "starts": [
+        0,
+        1,
+        0,
+        240,
+        0,
+        240,
+        0
+      ]
+    },
+    {
+      "name": "fastload",
+      "generators": 4,
+      "starts": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "error",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "fundingx2",
+      "generators": 4,
+      "starts": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "accesspoints",
+      "generators": 5,
+      "starts": [
+        0,
+        20,
+        0,
+        80,
+        968
+      ]
+    },
+    {
+      "name": "fdg_single",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "fdg_down",
+      "generators": 2,
+      "starts": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "poweroff",
+      "generators": 4,
+      "starts": [
+        3,
+        2,
+        1,
+        0
+      ]
+    }
+  ],
+  "defined_but_excluded": [
+    "beats_side"
+  ],
+  "events": [
+    {
+      "beat": 0,
+      "actions": [
+        [
+          0,
+          "wipe"
+        ]
+      ]
+    },
+    {
+      "beat": 58,
+      "actions": [
+        [
+          0,
+          "clear"
+        ]
+      ]
+    },
+    {
+      "beat": 60,
+      "actions": [
+        [
+          0,
+          "ocean_b"
+        ],
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 1, \"text\", data_strings[\"ocean_b_0\"]\n    )"
+      ]
+    },
+    {
+      "beat": 310,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 1,\n        \"text\", \"[##CLEAR|60;6\"\n    )",
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 3\n    )",
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.NORMAL + Fore.BLUE\n    )"
+      ]
+    },
+    {
+      "beat": 312,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.BRIGHT + Fore.BLUE\n    )"
+      ]
+    },
+    {
+      "beat": 314,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.NORMAL + Fore.BLUE\n    )"
+      ]
+    },
+    {
+      "beat": 320,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 1, \"text\", data_strings[\"ocean_b_1\"], \"offset\", 0\n    )"
+      ]
+    },
+    {
+      "beat": 590,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.BRIGHT + Fore.BLACK\n    )"
+      ]
+    },
+    {
+      "beat": 646,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 1,\n        \"text\", \"[##CLEAR|60;8\"\n    )"
+      ]
+    },
+    {
+      "beat": 652,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 1,\n        \"text\", data_strings[\"ocean_b_2\"], \"offset\", 0\n    )"
+      ]
+    },
+    {
+      "beat": 656,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.NORMAL + Fore.YELLOW\n    )"
+      ]
+    },
+    {
+      "beat": 666,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.BRIGHT + Fore.YELLOW\n    )",
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 6\n    )"
+      ]
+    },
+    {
+      "beat": 850,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.NORMAL + Fore.YELLOW\n    )"
+      ]
+    },
+    {
+      "beat": 999,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 1,\n        \"text\", \"[##CLEAR|60;10\"\n    )"
+      ]
+    },
+    {
+      "beat": 1000,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_col\", Style.BRIGHT + Fore.BLACK\n    )",
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 13\n    )",
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 1,\n        \"text\", data_strings[\"ocean_b_3\"],\n        \"offset\", 0\n    )"
+      ]
+    },
+    {
+      "beat": 1044,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 102\n    )"
+      ]
+    },
+    {
+      "beat": 1048,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 230\n    )"
+      ]
+    },
+    {
+      "beat": 1052,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 500\n    )"
+      ]
+    },
+    {
+      "beat": 1056,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 760\n    )"
+      ]
+    },
+    {
+      "beat": 1060,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 1600\n    )"
+      ]
+    },
+    {
+      "beat": 1064,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_b\", 0, \"ocean_glitch\", 2500\n    )"
+      ]
+    },
+    {
+      "beat": 1079,
+      "actions": [
+        [
+          0,
+          "clear"
+        ]
+      ]
+    },
+    {
+      "beat": 1080,
+      "actions": [
+        [
+          0,
+          "beats"
+        ],
+        [
+          0,
+          "title"
+        ],
+        [
+          0,
+          "beats"
+        ]
+      ]
+    },
+    {
+      "beat": 1336,
+      "actions": [
+        [
+          0,
+          "beats_lr"
+        ]
+      ]
+    },
+    {
+      "beat": 1844,
+      "actions": [
+        [
+          "title"
+        ]
+      ]
+    },
+    {
+      "beat": 1848,
+      "actions": [
+        [
+          0,
+          "funding"
+        ],
+        [
+          0,
+          "dates"
+        ],
+        [
+          0,
+          "weather"
+        ],
+        "lambda c: c.set_data(\n        \"history\", [], \"refresh\", True\n    )",
+        "lambda c: c.set_generator_data(\n        \"funding\", 0, \"text\", data_strings[\"funding_0\"]\n    )"
+      ]
+    },
+    {
+      "beat": 2348,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"funding\", 0, \"text\", (('',), ('',))\n    )",
+        "lambda c: c.set_data(\n        \"history\", [], \"refresh\", True\n    )"
+      ]
+    },
+    {
+      "beat": 2352,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"funding\", 0, \"text\", data_strings[\"funding_1\"], \"offset\", 0, \"lineno\", 0\n    )"
+      ]
+    },
+    {
+      "beat": 2976,
+      "actions": [
+        [
+          "dates"
+        ],
+        [
+          "weather"
+        ],
+        [
+          0,
+          "clear_wipe"
+        ]
+      ]
+    },
+    {
+      "beat": 3007,
+      "actions": [
+        [
+          0,
+          "clear"
+        ]
+      ]
+    },
+    {
+      "beat": 3132,
+      "actions": [
+        [
+          0,
+          "loadingbar"
+        ],
+        "lambda c: c.set_generator_data(\n        \"loadingbar\", 6, \"text\", data_strings[\"funding_2\"]\n    )"
+      ]
+    },
+    {
+      "beat": 3376,
+      "actions": [
+        [
+          0,
+          "ocean_d"
+        ]
+      ]
+    },
+    {
+      "beat": 3380,
+      "actions": [
+        [
+          0,
+          "clear"
+        ],
+        [
+          0,
+          "fastload"
+        ]
+      ]
+    },
+    {
+      "beat": 3388,
+      "actions": [
+        [
+          0,
+          "clear"
+        ]
+      ]
+    },
+    {
+      "beat": 3390,
+      "actions": [
+        [
+          0,
+          "error"
+        ],
+        [
+          0,
+          "fundingx2"
+        ],
+        "lambda c: c.set_data(\n        \"history\", [], \"refresh\", True\n    )",
+        "lambda c: c.set_generator_data(\n        \"fundingx2\", 0,\n        \"text\", data_strings[\"fundingx2_0\"]\n    )",
+        "lambda c: c.set_generator_data(\n        \"fundingx2\", 1,\n        \"text\", data_strings[\"fundingx2_1\"]\n    )",
+        "lambda c: c.set_generator_data(\n        \"fundingx2\", 3,\n        \"text\", data_strings[\"fundingx2_2\"]\n    )"
+      ]
+    },
+    {
+      "beat": 3895,
+      "actions": [
+        [
+          "fundingx2"
+        ],
+        [
+          0,
+          "clear"
+        ]
+      ]
+    },
+    {
+      "beat": 3896,
+      "actions": [
+        [
+          0,
+          "ocean_c"
+        ],
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 1, \"text\", data_strings[\"ocean_c_0\"]\n        )",
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 2, \"text\", data_strings[\"ocean_c_1\"]\n        )",
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 3, \"text\", data_strings[\"ocean_c_2\"]\n        )",
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 4, \"text\", data_strings[\"ocean_c_3\"]\n        )"
+      ]
+    },
+    {
+      "beat": 4400,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_c\", 1,\n        \"text\", \"[##CLEAR|60;10\"\n    )"
+      ]
+    },
+    {
+      "beat": 4401,
+      "actions": [
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 0, \"ocean_col\", random.choice((Style.BRIGHT, Style.NORMAL)) + Fore.BLACK\n        )"
+      ]
+    },
+    {
+      "beat": 4403,
+      "actions": [
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 0, \"ocean_col\", random.choice((Style.BRIGHT, Style.NORMAL)) + Fore.BLACK\n        )"
+      ]
+    },
+    {
+      "beat": 4405,
+      "actions": [
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 0, \"ocean_col\", random.choice((Style.BRIGHT, Style.NORMAL)) + Fore.BLACK\n        )"
+      ]
+    },
+    {
+      "beat": 4407,
+      "actions": [
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 0, \"ocean_col\", random.choice((Style.BRIGHT, Style.NORMAL)) + Fore.BLACK\n        )"
+      ]
+    },
+    {
+      "beat": 4409,
+      "actions": [
+        "lambda c: c.set_generator_data(\n            \"ocean_c\", 0, \"ocean_col\", random.choice((Style.BRIGHT, Style.NORMAL)) + Fore.BLACK\n        )"
+      ]
+    },
+    {
+      "beat": 4411,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"ocean_c\", 0, \"ocean_col\", Style.NORMAL + Fore.BLACK\n    )"
+      ]
+    },
+    {
+      "beat": 4413,
+      "actions": [
+        [
+          0,
+          "clear"
+        ]
+      ]
+    },
+    {
+      "beat": 4460,
+      "actions": [
+        [
+          0,
+          "accesspoints"
+        ],
+        [
+          0,
+          "fdg_single"
+        ]
+      ]
+    },
+    {
+      "beat": 4534,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"fdg_single\", 1, \"text\", data_strings[\"fdg_single_0\"]\n    )"
+      ]
+    },
+    {
+      "beat": 5500,
+      "actions": [
+        [
+          "fdg_single"
+        ],
+        [
+          0,
+          "clear"
+        ],
+        [
+          0,
+          "beats"
+        ],
+        [
+          0,
+          "fdg_down"
+        ]
+      ]
+    },
+    {
+      "beat": 5788,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"fdg_down\", 0, \"text\", data_strings[\"fdg_down_0\"]\n    )"
+      ]
+    },
+    {
+      "beat": 5916,
+      "actions": [
+        "lambda c: c.set_generator_data(\n        \"fdg_down\", 0,\n        \"text\", data_strings[\"fdg_down_1\"], \"lineno\", 0, \"offset\", 0\n    )",
+        "lambda c: c.set_generator_data(\n        \"fdg_down\", 1,\n        \"text\", data_strings[\"fdg_down_2\"]\n    )"
+      ]
+    },
+    {
+      "beat": 6270,
+      "actions": [
+        [
+          0,
+          "beats_lr"
+        ]
+      ]
+    },
+    {
+      "beat": 6508,
+      "actions": [
+        [
+          "fdg_down"
+        ],
+        [
+          0,
+          "clear"
+        ]
+      ]
+    }
+  ],
+  "strings": {
+    "ocean_b_0": {
+      "kind": "string",
+      "characters": 242,
+      "lines": 5,
+      "words": null
+    },
+    "ocean_b_1": {
+      "kind": "string",
+      "characters": 324,
+      "lines": 8,
+      "words": null
+    },
+    "ocean_b_2": {
+      "kind": "string",
+      "characters": 343,
+      "lines": 9,
+      "words": null
+    },
+    "ocean_b_3": {
+      "kind": "string",
+      "characters": 137,
+      "lines": 4,
+      "words": null
+    },
+    "ocean_c_0": {
+      "kind": "string",
+      "characters": 520,
+      "lines": 11,
+      "words": null
+    },
+    "ocean_c_1": {
+      "kind": "string",
+      "characters": 520,
+      "lines": 11,
+      "words": null
+    },
+    "ocean_c_2": {
+      "kind": "string",
+      "characters": 520,
+      "lines": 11,
+      "words": null
+    },
+    "ocean_c_3": {
+      "kind": "string",
+      "characters": 520,
+      "lines": 11,
+      "words": null
+    },
+    "funding_0": {
+      "kind": "words",
+      "characters": 984,
+      "lines": 74,
+      "words": 440
+    },
+    "funding_1": {
+      "kind": "words",
+      "characters": 929,
+      "lines": 94,
+      "words": 890
+    },
+    "funding_2": {
+      "kind": "words",
+      "characters": 169,
+      "lines": 10,
+      "words": 227
+    },
+    "fundingx2_0": {
+      "kind": "words",
+      "characters": 649,
+      "lines": 86,
+      "words": 403
+    },
+    "fundingx2_1": {
+      "kind": "words",
+      "characters": 483,
+      "lines": 28,
+      "words": 462
+    },
+    "fundingx2_2": {
+      "kind": "words",
+      "characters": 385,
+      "lines": 13,
+      "words": 487
+    },
+    "fdg_single_0": {
+      "kind": "words",
+      "characters": 930,
+      "lines": 78,
+      "words": 881
+    },
+    "fdg_down_0": {
+      "kind": "words",
+      "characters": 101,
+      "lines": 3,
+      "words": 94
+    },
+    "fdg_down_1": {
+      "kind": "words",
+      "characters": 101,
+      "lines": 3,
+      "words": 106
+    },
+    "fdg_down_2": {
+      "kind": "words",
+      "characters": 101,
+      "lines": 3,
+      "words": 106
+    }
+  },
+  "random_calls": {
+    "ocean.py": [
+      {
+        "line": 8,
+        "call": "random.random()"
+      },
+      {
+        "line": 30,
+        "call": "random.random()"
+      },
+      {
+        "line": 47,
+        "call": "random.random()"
+      },
+      {
+        "line": 74,
+        "call": "random.random()"
+      },
+      {
+        "line": 31,
+        "call": "random.random()"
+      },
+      {
+        "line": 75,
+        "call": "random.random()"
+      },
+      {
+        "line": 48,
+        "call": "random.random()"
+      }
+    ],
+    "animation_functions.py": [
+      {
+        "line": 9,
+        "call": "random.randrange(16 ** length)"
+      },
+      {
+        "line": 62,
+        "call": "random.randint(0, c.dimensions.x - 1)"
+      },
+      {
+        "line": 62,
+        "call": "random.randint(0, c.dimensions.y - 1)"
+      },
+      {
+        "line": 64,
+        "call": "random.choice(chars)"
+      },
+      {
+        "line": 64,
+        "call": "random.choice(colours)"
+      },
+      {
+        "line": 122,
+        "call": "random.choice(fucks)"
+      },
+      {
+        "line": 13,
+        "call": "random.randint(0, 100)"
+      },
+      {
+        "line": 121,
+        "call": "random.randint(1, 1000)"
+      }
+    ],
+    "animation_classes.py": [
+      {
+        "line": 65,
+        "call": "random.randint(-100, 100)"
+      },
+      {
+        "line": 71,
+        "call": "random.randint(-100, 100)"
+      },
+      {
+        "line": 77,
+        "call": "random.randint(-100, 100)"
+      },
+      {
+        "line": 81,
+        "call": "random.randint(-100, 100)"
+      },
+      {
+        "line": 66,
+        "call": "random.randint(0, int(100 * abs(0.33 - self.precip)))"
+      },
+      {
+        "line": 69,
+        "call": "random.randint(-3, 3)"
+      },
+      {
+        "line": 72,
+        "call": "random.randint(0, int(abs(15 - self.wind)))"
+      },
+      {
+        "line": 78,
+        "call": "random.randint(0, int(abs(temp_target - self.temp)))"
+      },
+      {
+        "line": 82,
+        "call": "random.randint(0, int(abs(0.2 - self.humidity)))"
+      },
+      {
+        "line": 85,
+        "call": "random.randint(210, 260)"
+      }
+    ],
+    "animation_scenes.py": [
+      {
+        "line": 410,
+        "call": "random.randint(64 * 12 + b * 8, 64 * 12 + b * 24)"
+      },
+      {
+        "line": 599,
+        "call": "random.randint(40, 70)"
+      },
+      {
+        "line": 655,
+        "call": "random.randint(4, 6)"
+      },
+      {
+        "line": 743,
+        "call": "random.randint(0, max(1, 32 - int(b ** 1.2)))"
+      }
+    ],
+    "credits.py": [
+      {
+        "line": 163,
+        "call": "random.choice((Style.BRIGHT, Style.NORMAL))"
+      }
+    ]
+  }
+}

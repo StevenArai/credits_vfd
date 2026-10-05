@@ -27,4 +27,6 @@
 
 旧移植已移出工作目录，事故摘要见 `docs/INCIDENT.md`。外部恢复目录中的旧 SPEC、todo 和源码仅为历史证据，不是当前约定。
 
-当前请求完成清理和重建方案，不包含动画实现。下一次收到实施指令后，从 `PLAN.md` 的 P0 开始。构建命令在 P0 真正建立并验证后再补入本文。
+当前请求已授权完成 `PLAN.md` 的 P0–P3；暂不实施 framebuffer 和 SDL2。阶段通过后建立本地 Git 提交，不推送。
+
+已实际验证的 Windows 主机构建：`./tools/build.ps1`（CMake + Ninja + LLVM-MinGW，输出 `build/host`）。参考及基础测试命令和结果见 `PLAN.md`、`docs/TERMINAL.md`。不要将其他平台写成已验证。
