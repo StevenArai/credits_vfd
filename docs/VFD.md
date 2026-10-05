@@ -1,5 +1,7 @@
 > 当前入口见根目录 [README](../README.md)。当前主机构建为 `build/host`；60×20 布局已合并 main，内容完整性仍待用户目视验收。下文保留此前 80×24 阶段技术说明，布局细节以 [LAYOUT60.md](LAYOUT60.md) 为准。
 
+> 阶段资料：本文的测量、路径和“当前/待办”措辞仅适用于所述版本，不是继续开发指令。现行接入见 [ANIMATOR_API.md](ANIMATOR_API.md)，最新资源与调试边界见 [HANDOFF.md](HANDOFF.md)。
+
 # VFD 显示与音频
 
 在项目根目录构建并运行：

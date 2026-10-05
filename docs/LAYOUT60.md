@@ -1,5 +1,7 @@
 # 60×20 布局实验
 
+> 阶段资料：本文的测量、路径和“当前/待办”措辞仅适用于所述版本，不是继续开发指令。现行接入见 [ANIMATOR_API.md](ANIMATOR_API.md)，最新资源与调试边界见 [HANDOFF.md](HANDOFF.md)。
+
 分支：`codex/layout-60x20`，起点 `5a463dc`。本轮完成构建和基本验证；内容完整性由用户目视检查，尚未通过视觉验收。
 
 ```powershell

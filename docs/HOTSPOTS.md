@@ -1,5 +1,7 @@
 # 原生核心热点复核 — 2026-10-06
 
+> 阶段资料：本文的测量、路径和“当前/待办”措辞仅适用于所述版本，不是继续开发指令。现行接入见 [ANIMATOR_API.md](ANIMATOR_API.md)，最新资源与调试边界见 [HANDOFF.md](HANDOFF.md)。
+
 基线48d2204。本轮只修改profiling工具和文档，未修改生产算法。Windows CRT、SDL、PCM、EXE内嵌WAV不计入MCU核心预算。
 
 ## 方法和边界
