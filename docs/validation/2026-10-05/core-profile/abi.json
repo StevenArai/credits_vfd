@@ -1,0 +1,30 @@
+{
+  "host": {
+    "Credits": 23728,
+    "Canvas": 9640,
+    "Section": 40,
+    "Characters": 16,
+    "WordLine": 16,
+    "HistoryEntry": 24,
+    "Text": 32,
+    "Random": 2512,
+    "Ocean": 3216,
+    "Weather": 56,
+    "Layout60": 4804,
+    "Framebuffer": 4096
+  },
+  "arm": {
+    "Credits": 23208,
+    "Canvas": 9628,
+    "Section": 28,
+    "Characters": 12,
+    "WordLine": 12,
+    "HistoryEntry": 12,
+    "Text": 20,
+    "Random": 2512,
+    "Ocean": 3208,
+    "Weather": 56,
+    "Layout60": 4804,
+    "Framebuffer": 4096
+  }
+}

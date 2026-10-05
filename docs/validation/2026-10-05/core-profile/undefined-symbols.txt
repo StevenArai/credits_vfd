@@ -1,0 +1,133 @@
+
+memory.c.obj:
+         U __imp___acrt_iob_func
+         U abort
+         U fprintf
+         U free
+         U realloc
+
+random.c.obj:
+         U credits_fail
+
+canvas.c.obj:
+         U ___chkstk_ms
+         U credits_fail
+         U mem_free
+         U mem_resize
+         U memcpy
+         U memmove
+         U memset
+         U strcmp
+         U strlen
+
+scheduler.c.obj:
+         U credits_fail
+         U memmove
+         U memset
+
+data.c.obj:
+         U credits_fail
+         U mem_free
+         U mem_resize
+         U memchr
+         U memcpy
+         U random_below
+         U random_int
+         U strchr
+         U strlen
+
+credits.c.obj:
+         U canvas_destroy
+         U canvas_init
+         U canvas_render
+         U credits_create_generator
+         U credits_fail
+         U credits_history_destroy
+         U credits_request_generator
+         U data_destroy
+         U data_init
+         U floor
+         U mem_free
+         U mem_resize
+         U memset
+         U random_below
+         U random_seed
+         U random_unit
+         U scene_definitions
+         U scene_due
+         U scheduler_init
+         U scheduler_next
+         U scheduler_remove
+         U scheduler_start
+         U weather_init
+
+ocean.c.obj:
+         U canvas_chars
+         U cos
+         U floor
+         U memmove
+         U random_unit
+         U sin
+
+text.c.obj:
+         U canvas_chars
+         U canvas_string
+         U canvas_string_cursor
+         U credits_fail
+         U credits_scratch
+         U mem_free
+         U mem_resize
+         U memmove
+         U memset
+         U sscanf
+         U strchr
+         U strlen
+         U strncmp
+
+scenes.c.obj:
+         U canvas_char
+         U canvas_clear
+         U canvas_string
+         U canvas_string_cursor
+         U corrupt_text
+         U credits_date
+         U credits_fail
+         U credits_multiline
+         U credits_ocean_begin
+         U credits_ocean_update
+         U credits_scratch
+         U credits_type_characters
+         U credits_type_words
+         U credits_typer
+         U credits_weather
+         U credits_write_history
+         U memcpy
+         U memset
+         U pow
+         U random_below
+         U random_int
+         U snprintf
+         U strlen
+
+weather.c.obj:
+         U canvas_string
+         U credits_fail
+         U memcpy
+         U memset
+         U random_int
+         U sin
+         U snprintf
+         U strlen
+
+player.c.obj:
+         U cell_pack
+         U credits_fail
+         U credits_jump
+         U credits_next
+
+framebuffer.c.obj:
+         U memset
+
+layout60.c.obj:
+         U cell_pack
+         U memmove
