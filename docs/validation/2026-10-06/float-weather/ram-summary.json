@@ -1,0 +1,763 @@
+{
+  "abi": {
+    "host": {
+      "objects": {
+        "CreditsAnimator": {
+          "bytes": 40504,
+          "members": [
+            {
+              "member": "_core",
+              "offset": 0,
+              "bytes": 36296
+            },
+            {
+              "member": "_player",
+              "offset": 36296,
+              "bytes": 72
+            },
+            {
+              "member": "_fb",
+              "offset": 36368,
+              "bytes": 4096
+            },
+            {
+              "member": "_config",
+              "offset": 40464,
+              "bytes": 16
+            },
+            {
+              "member": "_generation",
+              "offset": 40480,
+              "bytes": 8
+            },
+            {
+              "member": "_missing",
+              "offset": 40488,
+              "bytes": 4
+            },
+            {
+              "member": "_initialized",
+              "offset": 40492,
+              "bytes": 4
+            },
+            {
+              "member": "_dirty",
+              "offset": 40496,
+              "bytes": 4
+            },
+            {
+              "member": "_finished",
+              "offset": 40500,
+              "bytes": 4
+            }
+          ],
+          "padding": 0
+        },
+        "Credits": {
+          "bytes": 36296,
+          "members": [
+            {
+              "member": "memory",
+              "offset": 0,
+              "bytes": 48
+            },
+            {
+              "member": "canvas",
+              "offset": 48,
+              "bytes": 4812
+            },
+            {
+              "member": "random",
+              "offset": 4864,
+              "bytes": 2512
+            },
+            {
+              "member": "scheduler",
+              "offset": 7376,
+              "bytes": 96
+            },
+            {
+              "member": "scenes",
+              "offset": 7472,
+              "bytes": 176
+            },
+            {
+              "member": "active",
+              "offset": 7648,
+              "bytes": 88
+            },
+            {
+              "member": "texts",
+              "offset": 7736,
+              "bytes": 576
+            },
+            {
+              "member": "typers",
+              "offset": 8312,
+              "bytes": 448
+            },
+            {
+              "member": "oceans",
+              "offset": 8760,
+              "bytes": 1512
+            },
+            {
+              "member": "ocean_time",
+              "offset": 10272,
+              "bytes": 4
+            },
+            {
+              "member": "weather",
+              "offset": 10280,
+              "bytes": 200
+            },
+            {
+              "member": "history",
+              "offset": 10480,
+              "bytes": 72
+            },
+            {
+              "member": "refresh",
+              "offset": 10552,
+              "bytes": 4
+            },
+            {
+              "member": "progress",
+              "offset": 10556,
+              "bytes": 88
+            },
+            {
+              "member": "access_counter",
+              "offset": 10644,
+              "bytes": 4
+            },
+            {
+              "member": "access_block",
+              "offset": 10648,
+              "bytes": 4
+            },
+            {
+              "member": "beat_toggle",
+              "offset": 10652,
+              "bytes": 16
+            },
+            {
+              "member": "jump",
+              "offset": 10668,
+              "bytes": 4
+            },
+            {
+              "member": "scratch",
+              "offset": 10672,
+              "bytes": 8
+            },
+            {
+              "member": "scratch_capacity",
+              "offset": 10680,
+              "bytes": 8
+            },
+            {
+              "member": "frames",
+              "offset": 10688,
+              "bytes": 4
+            },
+            {
+              "member": "events_executed",
+              "offset": 10692,
+              "bytes": 4
+            },
+            {
+              "member": "trace_event",
+              "offset": 10696,
+              "bytes": 8
+            },
+            {
+              "member": "trace_context",
+              "offset": 10704,
+              "bytes": 8
+            },
+            {
+              "member": "draw_scene",
+              "offset": 10712,
+              "bytes": 4
+            },
+            {
+              "member": "draw_generator",
+              "offset": 10716,
+              "bytes": 4
+            },
+            {
+              "member": "storage",
+              "offset": 10720,
+              "bytes": 25576
+            }
+          ],
+          "padding": 8
+        }
+      },
+      "types": {
+        "WordLine": 16,
+        "HistoryEntry": 24,
+        "Text": 32,
+        "Ocean": 504,
+        "Weather": 40,
+        "Random": 2512
+      },
+      "pointer_bytes": 8
+    },
+    "cortex-m3": {
+      "objects": {
+        "CreditsAnimator": {
+          "bytes": 34752,
+          "members": [
+            {
+              "member": "_core",
+              "offset": 0,
+              "bytes": 30544
+            },
+            {
+              "member": "_player",
+              "offset": 30544,
+              "bytes": 72
+            },
+            {
+              "member": "_fb",
+              "offset": 30616,
+              "bytes": 4096
+            },
+            {
+              "member": "_config",
+              "offset": 34712,
+              "bytes": 16
+            },
+            {
+              "member": "_generation",
+              "offset": 34728,
+              "bytes": 8
+            },
+            {
+              "member": "_missing",
+              "offset": 34736,
+              "bytes": 4
+            },
+            {
+              "member": "_initialized",
+              "offset": 34740,
+              "bytes": 4
+            },
+            {
+              "member": "_dirty",
+              "offset": 34744,
+              "bytes": 4
+            },
+            {
+              "member": "_finished",
+              "offset": 34748,
+              "bytes": 4
+            }
+          ],
+          "padding": 0
+        },
+        "Credits": {
+          "bytes": 30544,
+          "members": [
+            {
+              "member": "memory",
+              "offset": 0,
+              "bytes": 24
+            },
+            {
+              "member": "canvas",
+              "offset": 24,
+              "bytes": 4812
+            },
+            {
+              "member": "random",
+              "offset": 4840,
+              "bytes": 2512
+            },
+            {
+              "member": "scheduler",
+              "offset": 7352,
+              "bytes": 52
+            },
+            {
+              "member": "scenes",
+              "offset": 7404,
+              "bytes": 176
+            },
+            {
+              "member": "active",
+              "offset": 7580,
+              "bytes": 88
+            },
+            {
+              "member": "texts",
+              "offset": 7668,
+              "bytes": 360
+            },
+            {
+              "member": "typers",
+              "offset": 8028,
+              "bytes": 280
+            },
+            {
+              "member": "oceans",
+              "offset": 8308,
+              "bytes": 1488
+            },
+            {
+              "member": "ocean_time",
+              "offset": 9796,
+              "bytes": 4
+            },
+            {
+              "member": "weather",
+              "offset": 9800,
+              "bytes": 160
+            },
+            {
+              "member": "history",
+              "offset": 9960,
+              "bytes": 48
+            },
+            {
+              "member": "refresh",
+              "offset": 10008,
+              "bytes": 4
+            },
+            {
+              "member": "progress",
+              "offset": 10012,
+              "bytes": 88
+            },
+            {
+              "member": "access_counter",
+              "offset": 10100,
+              "bytes": 4
+            },
+            {
+              "member": "access_block",
+              "offset": 10104,
+              "bytes": 4
+            },
+            {
+              "member": "beat_toggle",
+              "offset": 10108,
+              "bytes": 16
+            },
+            {
+              "member": "jump",
+              "offset": 10124,
+              "bytes": 4
+            },
+            {
+              "member": "scratch",
+              "offset": 10128,
+              "bytes": 4
+            },
+            {
+              "member": "scratch_capacity",
+              "offset": 10132,
+              "bytes": 4
+            },
+            {
+              "member": "frames",
+              "offset": 10136,
+              "bytes": 4
+            },
+            {
+              "member": "events_executed",
+              "offset": 10140,
+              "bytes": 4
+            },
+            {
+              "member": "trace_event",
+              "offset": 10144,
+              "bytes": 4
+            },
+            {
+              "member": "trace_context",
+              "offset": 10148,
+              "bytes": 4
+            },
+            {
+              "member": "draw_scene",
+              "offset": 10152,
+              "bytes": 4
+            },
+            {
+              "member": "draw_generator",
+              "offset": 10156,
+              "bytes": 4
+            },
+            {
+              "member": "storage",
+              "offset": 10160,
+              "bytes": 20384
+            }
+          ],
+          "padding": 4
+        }
+      },
+      "types": {
+        "WordLine": 12,
+        "HistoryEntry": 12,
+        "Text": 20,
+        "Ocean": 496,
+        "Weather": 32,
+        "Random": 2512
+      },
+      "pointer_bytes": 4
+    }
+  },
+  "workspace": {
+    "host": {
+      "reservations": [
+        {
+          "name": "ocean_b_0.raw",
+          "offset": 0,
+          "bytes": 243
+        },
+        {
+          "name": "ocean_b_1.raw",
+          "offset": 248,
+          "bytes": 325
+        },
+        {
+          "name": "ocean_b_2.raw",
+          "offset": 576,
+          "bytes": 344
+        },
+        {
+          "name": "ocean_b_3.raw",
+          "offset": 920,
+          "bytes": 138
+        },
+        {
+          "name": "ocean_c_0.raw",
+          "offset": 1064,
+          "bytes": 521
+        },
+        {
+          "name": "ocean_c_1.raw",
+          "offset": 1592,
+          "bytes": 521
+        },
+        {
+          "name": "ocean_c_2.raw",
+          "offset": 2120,
+          "bytes": 521
+        },
+        {
+          "name": "ocean_c_3.raw",
+          "offset": 2648,
+          "bytes": 521
+        },
+        {
+          "name": "funding_0.raw",
+          "offset": 3176,
+          "bytes": 712
+        },
+        {
+          "name": "funding_0.lines",
+          "offset": 3888,
+          "bytes": 592
+        },
+        {
+          "name": "funding_1.raw",
+          "offset": 4480,
+          "bytes": 1819
+        },
+        {
+          "name": "funding_1.lines",
+          "offset": 6304,
+          "bytes": 1504
+        },
+        {
+          "name": "funding_2.raw",
+          "offset": 7808,
+          "bytes": 396
+        },
+        {
+          "name": "funding_2.lines",
+          "offset": 8208,
+          "bytes": 160
+        },
+        {
+          "name": "fundingx2_0.raw",
+          "offset": 8368,
+          "bytes": 1052
+        },
+        {
+          "name": "fundingx2_0.lines",
+          "offset": 9424,
+          "bytes": 1376
+        },
+        {
+          "name": "fundingx2_1.raw",
+          "offset": 10800,
+          "bytes": 945
+        },
+        {
+          "name": "fundingx2_1.lines",
+          "offset": 11752,
+          "bytes": 448
+        },
+        {
+          "name": "fundingx2_2.raw",
+          "offset": 12200,
+          "bytes": 872
+        },
+        {
+          "name": "fundingx2_2.lines",
+          "offset": 13072,
+          "bytes": 208
+        },
+        {
+          "name": "fdg_single_0.raw",
+          "offset": 13280,
+          "bytes": 1811
+        },
+        {
+          "name": "fdg_single_0.lines",
+          "offset": 15096,
+          "bytes": 1248
+        },
+        {
+          "name": "fdg_down_0.raw",
+          "offset": 16344,
+          "bytes": 195
+        },
+        {
+          "name": "fdg_down_0.lines",
+          "offset": 16544,
+          "bytes": 48
+        },
+        {
+          "name": "fdg_down_1.raw",
+          "offset": 16592,
+          "bytes": 207
+        },
+        {
+          "name": "fdg_down_1.lines",
+          "offset": 16800,
+          "bytes": 48
+        },
+        {
+          "name": "fdg_down_2.raw",
+          "offset": 16848,
+          "bytes": 207
+        },
+        {
+          "name": "fdg_down_2.lines",
+          "offset": 17056,
+          "bytes": 48
+        },
+        {
+          "name": "scratch",
+          "offset": 17104,
+          "bytes": 1024
+        },
+        {
+          "name": "history[0]",
+          "offset": 18128,
+          "bytes": 5760
+        },
+        {
+          "name": "history[1]",
+          "offset": 23888,
+          "bytes": 1152
+        },
+        {
+          "name": "history[2]",
+          "offset": 25040,
+          "bytes": 384
+        }
+      ],
+      "payload": 25350,
+      "used": 25424,
+      "internal_alignment": 74,
+      "storage_bytes": 25576,
+      "unused_storage": 152
+    },
+    "cortex-m3": {
+      "reservations": [
+        {
+          "name": "ocean_b_0.raw",
+          "offset": 0,
+          "bytes": 243
+        },
+        {
+          "name": "ocean_b_1.raw",
+          "offset": 244,
+          "bytes": 325
+        },
+        {
+          "name": "ocean_b_2.raw",
+          "offset": 572,
+          "bytes": 344
+        },
+        {
+          "name": "ocean_b_3.raw",
+          "offset": 916,
+          "bytes": 138
+        },
+        {
+          "name": "ocean_c_0.raw",
+          "offset": 1056,
+          "bytes": 521
+        },
+        {
+          "name": "ocean_c_1.raw",
+          "offset": 1580,
+          "bytes": 521
+        },
+        {
+          "name": "ocean_c_2.raw",
+          "offset": 2104,
+          "bytes": 521
+        },
+        {
+          "name": "ocean_c_3.raw",
+          "offset": 2628,
+          "bytes": 521
+        },
+        {
+          "name": "funding_0.raw",
+          "offset": 3152,
+          "bytes": 712
+        },
+        {
+          "name": "funding_0.lines",
+          "offset": 3864,
+          "bytes": 444
+        },
+        {
+          "name": "funding_1.raw",
+          "offset": 4308,
+          "bytes": 1819
+        },
+        {
+          "name": "funding_1.lines",
+          "offset": 6128,
+          "bytes": 1128
+        },
+        {
+          "name": "funding_2.raw",
+          "offset": 7256,
+          "bytes": 396
+        },
+        {
+          "name": "funding_2.lines",
+          "offset": 7652,
+          "bytes": 120
+        },
+        {
+          "name": "fundingx2_0.raw",
+          "offset": 7772,
+          "bytes": 1052
+        },
+        {
+          "name": "fundingx2_0.lines",
+          "offset": 8824,
+          "bytes": 1032
+        },
+        {
+          "name": "fundingx2_1.raw",
+          "offset": 9856,
+          "bytes": 945
+        },
+        {
+          "name": "fundingx2_1.lines",
+          "offset": 10804,
+          "bytes": 336
+        },
+        {
+          "name": "fundingx2_2.raw",
+          "offset": 11140,
+          "bytes": 872
+        },
+        {
+          "name": "fundingx2_2.lines",
+          "offset": 12012,
+          "bytes": 156
+        },
+        {
+          "name": "fdg_single_0.raw",
+          "offset": 12168,
+          "bytes": 1811
+        },
+        {
+          "name": "fdg_single_0.lines",
+          "offset": 13980,
+          "bytes": 936
+        },
+        {
+          "name": "fdg_down_0.raw",
+          "offset": 14916,
+          "bytes": 195
+        },
+        {
+          "name": "fdg_down_0.lines",
+          "offset": 15112,
+          "bytes": 36
+        },
+        {
+          "name": "fdg_down_1.raw",
+          "offset": 15148,
+          "bytes": 207
+        },
+        {
+          "name": "fdg_down_1.lines",
+          "offset": 15356,
+          "bytes": 36
+        },
+        {
+          "name": "fdg_down_2.raw",
+          "offset": 15392,
+          "bytes": 207
+        },
+        {
+          "name": "fdg_down_2.lines",
+          "offset": 15600,
+          "bytes": 36
+        },
+        {
+          "name": "scratch",
+          "offset": 15636,
+          "bytes": 1024
+        },
+        {
+          "name": "history[0]",
+          "offset": 16660,
+          "bytes": 2880
+        },
+        {
+          "name": "history[1]",
+          "offset": 19540,
+          "bytes": 576
+        },
+        {
+          "name": "history[2]",
+          "offset": 20116,
+          "bytes": 192
+        }
+      ],
+      "payload": 20282,
+      "used": 20308,
+      "internal_alignment": 26,
+      "storage_bytes": 20384,
+      "unused_storage": 76
+    }
+  },
+  "replays": 18,
+  "frames": 72132,
+  "scratch_requested_peak": 551,
+  "history_peak": [
+    173,
+    28,
+    13
+  ],
+  "history_concurrent_peak": 214
+}

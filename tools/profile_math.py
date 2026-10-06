@@ -13,7 +13,7 @@ out = (ROOT / a.out).resolve()
 out.mkdir(parents=True, exist_ok=True)
 common = [a.cc, '-std=c99', '-O3', '-ffp-contract=off', '-DCREDITS_DIRECT60=1', '-I', str(ROOT/'src'), '-I', str(out)]
 sources = [str(ROOT/'src'/f'{m}.c') for m in NATIVE]
-for module in ('scenes60', 'weather', 'player_fixed', 'ocean60', 'framebuffer'):
+for module in ('scenes60', 'weather60', 'player_fixed', 'ocean60', 'framebuffer'):
     subprocess.run(common + ['-S', '-emit-llvm', str(ROOT/'src'/f'{module}.c'), '-o', str(out/f'{module}.ll')], check=True)
 
 # Link-time wrappers count calls AFTER compiler optimization, not source macros.

@@ -1,0 +1,457 @@
+[
+  {
+    "function": "src/scenes60.c:140:credits_request_generator",
+    "bytes": 440,
+    "kind": "static"
+  },
+  {
+    "function": "src/weather60.c:93:credits_weather",
+    "bytes": 392,
+    "kind": "static"
+  },
+  {
+    "function": "src/weather60.c:36:weather_mutate",
+    "bytes": 232,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:83:canvas60_line",
+    "bytes": 200,
+    "kind": "static"
+  },
+  {
+    "function": "src/text60.c:4:credits60_characters",
+    "bytes": 200,
+    "kind": "static"
+  },
+  {
+    "function": "src/data.c:13:data_init",
+    "bytes": 184,
+    "kind": "static"
+  },
+  {
+    "function": "src/text60.c:62:credits60_words",
+    "bytes": 168,
+    "kind": "static"
+  },
+  {
+    "function": "src/scenes60.c:103:access_ping",
+    "bytes": 152,
+    "kind": "static"
+  },
+  {
+    "function": "src/text60.c:76:credits60_history",
+    "bytes": 152,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:73:canvas60_newline",
+    "bytes": 136,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:62:timeline",
+    "bytes": 136,
+    "kind": "static"
+  },
+  {
+    "function": "src/framebuffer.c:32:render_grid",
+    "bytes": 136,
+    "kind": "static"
+  },
+  {
+    "function": "src/scenes60.c:123:noise",
+    "bytes": 120,
+    "kind": "static"
+  },
+  {
+    "function": "src/text.c:90:credits_type_words",
+    "bytes": 120,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:7:canvas60_style",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:43:canvas_string_cursor",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:53:canvas_string",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:56:canvas_char",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:69:canvas60_flow",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/scheduler.c:11:scheduler_frame",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/scheduler.c:22:scheduler_start",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/scheduler.c:38:scheduler_next",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:17:credits_animator_sync",
+    "bytes": 88,
+    "kind": "static"
+  },
+  {
+    "function": "src/data.c:4:corrupt_text",
+    "bytes": 88,
+    "kind": "static"
+  },
+  {
+    "function": "src/data.c:51:data_readonly_size",
+    "bytes": 88,
+    "kind": "static"
+  },
+  {
+    "function": "src/ocean60.c:41:credits_ocean_render",
+    "bytes": 88,
+    "kind": "static"
+  },
+  {
+    "function": "src/player_fixed.c:45:step",
+    "bytes": 88,
+    "kind": "static"
+  },
+  {
+    "function": "src/player_fixed.c:79:fixed_player_sync",
+    "bytes": 88,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:39:canvas_chars",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:89:credits_init",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/data.c:44:data_destroy",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:15:math_sin_degrees",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:34:math_weather_target",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/player_fixed.c:36:fixed_player_init",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/random.c:76:random_int",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/scene_init.c:9:credits_create_generator",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/weather60.c:59:credits_date",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:7:credits_animator_init",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:41:credits_animator_update",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:61:canvas60_clear_region",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:28:credits_scratch",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:121:credits_jump",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:43:math_ocean_text",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:51:math_noise_count",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/ocean60.c:28:credits_ocean_begin",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/ocean60.c:20:column",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/ocean60.c:35:credits_ocean_update",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/player_fixed.c:18:fixed_time_ratio",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/random.c:37:random_bits",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/random.c:46:random_scaled",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/random.c:68:random_below",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/scenes60.c:7:ui",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/text.c:149:credits_history_destroy",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:67:credits_animator_destroy",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:66:canvas_init",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:12:credits_typer",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:127:credits_next",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:131:credits_destroy",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:39:math_ocean_height",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:47:math_access_limit",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:55:math_poweroff_height",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/memory.c:4:credits_fail",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/memory.c:13:mem_resize",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/player_fixed.c:76:fixed_player_step",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/scheduler.c:33:scheduler_remove",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/weather60.c:26:weather_init",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "src/random.c:9:random_seed",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:4:credits_time_from_counter",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:51:credits_animator_frame",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:56:credits_animator_stats",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/animator.c:62:credits_animator_set_uppercase",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:4:cell_pack",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:34:canvas60_put",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:65:canvas_clear",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:67:canvas_render",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/charbuf60.c:68:canvas_destroy",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:83:native_scene_due",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/credits.c:78:no_clear",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/data_generated.inc:132:scene_due",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/framebuffer.c:14:framebuffer_pixel",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/framebuffer.c:18:framebuffer_render",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/framebuffer.c:22:framebuffer_render_case",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/framebuffer.c:29:framebuffer_render60",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/math_lookup.c:59:math_lookup_bytes",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/memory.c:31:mem_free",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/player_fixed.c:15:fixed_beat_deadline",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/random.c:24:random_u32",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/scheduler.c:4:scheduler_init",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/text.c:8:credits_type_characters",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/text.c:47:credits_multiline",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "src/text.c:121:credits_write_history",
+    "bytes": 0,
+    "kind": "static"
+  }
+]

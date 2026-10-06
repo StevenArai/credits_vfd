@@ -42,7 +42,7 @@ static TextRegion words_region(const Credits *a,int x,int y) {
     case SC_FUNDINGX2:
         return a->draw_generator==0 ? (TextRegion){x,2,60-x,3}:
                a->draw_generator==1 ? (TextRegion){x,19,60-x,1}:(TextRegion){x,5,60-x,6};
-    case SC_FDG_SINGLE: return (TextRegion){x,17,60-x,3};
+    case SC_FDG_SINGLE: return (TextRegion){x,18,60-x,1};
     case SC_FDG_DOWN: return a->draw_generator ? (TextRegion){x,16,60-x,4}:(TextRegion){x,1,60-x,5};
     default: return (TextRegion){x,y,60-x,20-y};
     }

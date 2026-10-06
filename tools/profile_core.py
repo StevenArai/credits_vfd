@@ -10,7 +10,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 CORE = 'memory random canvas scheduler data credits ocean text scene_init scenes weather player framebuffer layout60'.split()
-NATIVE = 'memory random scheduler data credits ocean60 math_lookup text scene_init scenes60 weather player_fixed animator framebuffer charbuf60 text60'.split()
+NATIVE = 'memory random scheduler data credits ocean60 math_lookup text scene_init scenes60 weather60 player_fixed animator framebuffer charbuf60 text60'.split()
 LIBCALLS = 'memcpy memmove memset strlen strcmp strchr memchr strncmp snprintf sscanf sin cos pow floor fabs'.split()
 
 
@@ -67,7 +67,7 @@ def main():
             lines[line_number-1] = re.sub(r'\b(sin|cos|pow|floor|fabs|snprintf|sscanf)\(', hot, line)
         source = ''.join(lines)
         for marker, label in ([('int remove=random_int', 'character_float_compare'),
-                               ('for (int i=0;i<steps;i++) {', 'mutation_step')] if module == 'weather' else []):
+                               ('for (int i=0;i<steps;i++) {', 'mutation_step')] if module in ('weather','weather60') else []):
             index = len(hotspots)
             hotspots.append(f'{module}:{label}')
             replacement = (f'profile_hit({index}); ' + marker if marker.startswith('int')

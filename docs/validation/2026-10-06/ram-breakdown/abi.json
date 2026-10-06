@@ -1,0 +1,412 @@
+{
+  "host": {
+    "objects": {
+      "CreditsAnimator": {
+        "bytes": 40584,
+        "members": [
+          {
+            "member": "_core",
+            "offset": 0,
+            "bytes": 36376
+          },
+          {
+            "member": "_player",
+            "offset": 36376,
+            "bytes": 72
+          },
+          {
+            "member": "_fb",
+            "offset": 36448,
+            "bytes": 4096
+          },
+          {
+            "member": "_config",
+            "offset": 40544,
+            "bytes": 16
+          },
+          {
+            "member": "_generation",
+            "offset": 40560,
+            "bytes": 8
+          },
+          {
+            "member": "_missing",
+            "offset": 40568,
+            "bytes": 4
+          },
+          {
+            "member": "_initialized",
+            "offset": 40572,
+            "bytes": 4
+          },
+          {
+            "member": "_dirty",
+            "offset": 40576,
+            "bytes": 4
+          },
+          {
+            "member": "_finished",
+            "offset": 40580,
+            "bytes": 4
+          }
+        ],
+        "padding": 0
+      },
+      "Credits": {
+        "bytes": 36376,
+        "members": [
+          {
+            "member": "memory",
+            "offset": 0,
+            "bytes": 48
+          },
+          {
+            "member": "canvas",
+            "offset": 48,
+            "bytes": 4812
+          },
+          {
+            "member": "random",
+            "offset": 4864,
+            "bytes": 2512
+          },
+          {
+            "member": "scheduler",
+            "offset": 7376,
+            "bytes": 96
+          },
+          {
+            "member": "scenes",
+            "offset": 7472,
+            "bytes": 176
+          },
+          {
+            "member": "active",
+            "offset": 7648,
+            "bytes": 88
+          },
+          {
+            "member": "texts",
+            "offset": 7736,
+            "bytes": 576
+          },
+          {
+            "member": "typers",
+            "offset": 8312,
+            "bytes": 448
+          },
+          {
+            "member": "oceans",
+            "offset": 8760,
+            "bytes": 1512
+          },
+          {
+            "member": "ocean_time",
+            "offset": 10272,
+            "bytes": 4
+          },
+          {
+            "member": "weather",
+            "offset": 10280,
+            "bytes": 280
+          },
+          {
+            "member": "history",
+            "offset": 10560,
+            "bytes": 72
+          },
+          {
+            "member": "refresh",
+            "offset": 10632,
+            "bytes": 4
+          },
+          {
+            "member": "progress",
+            "offset": 10636,
+            "bytes": 88
+          },
+          {
+            "member": "access_counter",
+            "offset": 10724,
+            "bytes": 4
+          },
+          {
+            "member": "access_block",
+            "offset": 10728,
+            "bytes": 4
+          },
+          {
+            "member": "beat_toggle",
+            "offset": 10732,
+            "bytes": 16
+          },
+          {
+            "member": "jump",
+            "offset": 10748,
+            "bytes": 4
+          },
+          {
+            "member": "scratch",
+            "offset": 10752,
+            "bytes": 8
+          },
+          {
+            "member": "scratch_capacity",
+            "offset": 10760,
+            "bytes": 8
+          },
+          {
+            "member": "frames",
+            "offset": 10768,
+            "bytes": 4
+          },
+          {
+            "member": "events_executed",
+            "offset": 10772,
+            "bytes": 4
+          },
+          {
+            "member": "trace_event",
+            "offset": 10776,
+            "bytes": 8
+          },
+          {
+            "member": "trace_context",
+            "offset": 10784,
+            "bytes": 8
+          },
+          {
+            "member": "draw_scene",
+            "offset": 10792,
+            "bytes": 4
+          },
+          {
+            "member": "draw_generator",
+            "offset": 10796,
+            "bytes": 4
+          },
+          {
+            "member": "storage",
+            "offset": 10800,
+            "bytes": 25576
+          }
+        ],
+        "padding": 8
+      }
+    },
+    "types": {
+      "WordLine": 16,
+      "HistoryEntry": 24,
+      "Text": 32,
+      "Ocean": 504,
+      "Weather": 56,
+      "Random": 2512
+    },
+    "pointer_bytes": 8
+  },
+  "cortex-m3": {
+    "objects": {
+      "CreditsAnimator": {
+        "bytes": 34872,
+        "members": [
+          {
+            "member": "_core",
+            "offset": 0,
+            "bytes": 30664
+          },
+          {
+            "member": "_player",
+            "offset": 30664,
+            "bytes": 72
+          },
+          {
+            "member": "_fb",
+            "offset": 30736,
+            "bytes": 4096
+          },
+          {
+            "member": "_config",
+            "offset": 34832,
+            "bytes": 16
+          },
+          {
+            "member": "_generation",
+            "offset": 34848,
+            "bytes": 8
+          },
+          {
+            "member": "_missing",
+            "offset": 34856,
+            "bytes": 4
+          },
+          {
+            "member": "_initialized",
+            "offset": 34860,
+            "bytes": 4
+          },
+          {
+            "member": "_dirty",
+            "offset": 34864,
+            "bytes": 4
+          },
+          {
+            "member": "_finished",
+            "offset": 34868,
+            "bytes": 4
+          }
+        ],
+        "padding": 0
+      },
+      "Credits": {
+        "bytes": 30664,
+        "members": [
+          {
+            "member": "memory",
+            "offset": 0,
+            "bytes": 24
+          },
+          {
+            "member": "canvas",
+            "offset": 24,
+            "bytes": 4812
+          },
+          {
+            "member": "random",
+            "offset": 4840,
+            "bytes": 2512
+          },
+          {
+            "member": "scheduler",
+            "offset": 7352,
+            "bytes": 52
+          },
+          {
+            "member": "scenes",
+            "offset": 7404,
+            "bytes": 176
+          },
+          {
+            "member": "active",
+            "offset": 7580,
+            "bytes": 88
+          },
+          {
+            "member": "texts",
+            "offset": 7668,
+            "bytes": 360
+          },
+          {
+            "member": "typers",
+            "offset": 8028,
+            "bytes": 280
+          },
+          {
+            "member": "oceans",
+            "offset": 8308,
+            "bytes": 1488
+          },
+          {
+            "member": "ocean_time",
+            "offset": 9796,
+            "bytes": 4
+          },
+          {
+            "member": "weather",
+            "offset": 9800,
+            "bytes": 280
+          },
+          {
+            "member": "history",
+            "offset": 10080,
+            "bytes": 48
+          },
+          {
+            "member": "refresh",
+            "offset": 10128,
+            "bytes": 4
+          },
+          {
+            "member": "progress",
+            "offset": 10132,
+            "bytes": 88
+          },
+          {
+            "member": "access_counter",
+            "offset": 10220,
+            "bytes": 4
+          },
+          {
+            "member": "access_block",
+            "offset": 10224,
+            "bytes": 4
+          },
+          {
+            "member": "beat_toggle",
+            "offset": 10228,
+            "bytes": 16
+          },
+          {
+            "member": "jump",
+            "offset": 10244,
+            "bytes": 4
+          },
+          {
+            "member": "scratch",
+            "offset": 10248,
+            "bytes": 4
+          },
+          {
+            "member": "scratch_capacity",
+            "offset": 10252,
+            "bytes": 4
+          },
+          {
+            "member": "frames",
+            "offset": 10256,
+            "bytes": 4
+          },
+          {
+            "member": "events_executed",
+            "offset": 10260,
+            "bytes": 4
+          },
+          {
+            "member": "trace_event",
+            "offset": 10264,
+            "bytes": 4
+          },
+          {
+            "member": "trace_context",
+            "offset": 10268,
+            "bytes": 4
+          },
+          {
+            "member": "draw_scene",
+            "offset": 10272,
+            "bytes": 4
+          },
+          {
+            "member": "draw_generator",
+            "offset": 10276,
+            "bytes": 4
+          },
+          {
+            "member": "storage",
+            "offset": 10280,
+            "bytes": 20384
+          }
+        ],
+        "padding": 4
+      }
+    },
+    "types": {
+      "WordLine": 12,
+      "HistoryEntry": 12,
+      "Text": 20,
+      "Ocean": 496,
+      "Weather": 56,
+      "Random": 2512
+    },
+    "pointer_bytes": 4
+  }
+}

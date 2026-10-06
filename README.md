@@ -36,15 +36,19 @@ framebuffer 为 **256×128、1bpp、每行32字节、共4096字节，字节内�
 
 ### 资源与验证范围
 
+原生单精度、小表正弦及其画面差异见 [NATIVE_FLOAT.md](docs/NATIVE_FLOAT.md)。
+
+逐项RAM拆分、实测使用量及STM32F103C8T6适配余量见 [RAM_USAGE.md](docs/RAM_USAGE.md)。
+
 | 项目 | 当前结果 |
 | --- | --- |
-| ARM ABI / Cortex-M0 编译探针：整个 Animator | **34872 B，约34.05 KiB** |
-| Windows x64：整个 Animator | 40584 B |
+| ARM ABI / Cortex-M3 编译探针：整个 Animator | **34752 B，约33.94 KiB** |
+| Windows x64：整个 Animator | 40504 B |
 | 已包含的存储 | 场景状态、工作区、60×20字符画布、播放器、4096 B framebuffer |
 | 核心分配行为 | 32次初始化工作区预留，播放期间零预留，无显式堆分配 |
-| 数值路径 | 原生 pow/cos 已消除，使用查表；时间使用 Q32.32；天气仍有浮点和 sin |
+| 数值路径 | 原生 pow/cos 已消除，使用查表；时间使用 Q32.32；天气为float＋小表正弦，无运行时sin调用 |
 
-对象大小不含调用栈、板端驱动和目标运行库开销；不要再加一遍内部工作区。32 KiB RAM 无法容纳当前完整对象。仍依赖 C99 libc/libm，包括浮点格式化；核心无堆调用不保证目标 libc 内部无分配。XIP 的实际 ROM 大小需目标工程链接后测量。
+对象大小不含调用栈、板端驱动和目标运行库开销；不要再加一遍内部工作区。32 KiB RAM 无法容纳当前完整对象。仍依赖 C99 libc，包括整数格式化/扫描；原生核心已无直接 libm 调用。核心无堆调用不保证目标 libc 内部无分配。XIP 的实际 ROM 大小需目标工程链接后测量。
 
 已通过18组完整无音乐时钟回放、单头/多文件输出一致性及相关 ASan/UBSan 检查。MCU 示例目前仅编译为主机目标文件，尚未完成真实 MCU 链接、栈或周期测量。[验证记录](docs/validation/2026-10-06/animator-library/README.md)。
 

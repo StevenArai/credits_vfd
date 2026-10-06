@@ -1,0 +1,1 @@
+sine max error 3.76085159e-05; target max error 0.00149934726 F; 68513 exact integer-phase samples; percent formatting passed

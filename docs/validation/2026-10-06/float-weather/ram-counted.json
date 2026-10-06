@@ -1,0 +1,3170 @@
+[
+  {
+    "seed": 0,
+    "jump": 1,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "a5cad9f587aa9688",
+    "frames": 6509,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 0,
+    "jump": 2,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "9faf5bdd4721e722",
+    "frames": 5509,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 0,
+    "jump": 3,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "3f056dc20a3f8ff5",
+    "frames": 4739,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 0,
+    "jump": 4,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "7bfd16d005573376",
+    "frames": 3469,
+    "scratch_requested_peak": 329,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 0,
+    "jump": 5,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "71844d29fc6e5bb3",
+    "frames": 2729,
+    "scratch_requested_peak": 150,
+    "history_peak": [
+      87,
+      0,
+      0
+    ],
+    "history_concurrent_peak": 87,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      87,
+      0,
+      0
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 0,
+    "jump": 6,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "e276b40d11304f40",
+    "frames": 1089,
+    "scratch_requested_peak": 143,
+    "history_peak": [
+      9,
+      0,
+      0
+    ],
+    "history_concurrent_peak": 9,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      9,
+      0,
+      0
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 1,
+    "jump": 1,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "f58729fa6c553a52",
+    "frames": 6509,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 1,
+    "jump": 2,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "9fe12840bec5020c",
+    "frames": 5509,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 1,
+    "jump": 3,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "a5d15faced8b50de",
+    "frames": 4739,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 1,
+    "jump": 4,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "a3d53448fbcd47f3",
+    "frames": 3469,
+    "scratch_requested_peak": 303,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 1,
+    "jump": 5,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "292ad89f97014dab",
+    "frames": 2729,
+    "scratch_requested_peak": 150,
+    "history_peak": [
+      87,
+      0,
+      0
+    ],
+    "history_concurrent_peak": 87,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      87,
+      0,
+      0
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 1,
+    "jump": 6,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "47acef232ae850fb",
+    "frames": 1089,
+    "scratch_requested_peak": 143,
+    "history_peak": [
+      9,
+      0,
+      0
+    ],
+    "history_concurrent_peak": 9,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      9,
+      0,
+      0
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 42,
+    "jump": 1,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "90b76f65829f225c",
+    "frames": 6509,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 42,
+    "jump": 2,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "820f31a9b599c76b",
+    "frames": 5509,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 42,
+    "jump": 3,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "ab56e172c06bd081",
+    "frames": 4739,
+    "scratch_requested_peak": 551,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 42,
+    "jump": 4,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "917cbeae41ce6217",
+    "frames": 3469,
+    "scratch_requested_peak": 308,
+    "history_peak": [
+      173,
+      28,
+      13
+    ],
+    "history_concurrent_peak": 214,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      173,
+      28,
+      13
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 42,
+    "jump": 5,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "bbf898c9ff12e1c5",
+    "frames": 2729,
+    "scratch_requested_peak": 150,
+    "history_peak": [
+      87,
+      0,
+      0
+    ],
+    "history_concurrent_peak": 87,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      87,
+      0,
+      0
+    ],
+    "live_after_destroy": 0
+  },
+  {
+    "seed": 42,
+    "jump": 6,
+    "texts": [
+      {
+        "name": "ocean_b_0",
+        "raw_bytes": 243,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 0,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_1",
+        "raw_bytes": 325,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 248,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_2",
+        "raw_bytes": 344,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 576,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_b_3",
+        "raw_bytes": 138,
+        "lines": 0,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 920,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_0",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 10,
+        "raw_offset": 1064,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_1",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 1592,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_2",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2120,
+        "lines_offset": 0
+      },
+      {
+        "name": "ocean_c_3",
+        "raw_bytes": 521,
+        "lines": 0,
+        "randomized_segment_bytes": 520,
+        "raw_offset": 2648,
+        "lines_offset": 0
+      },
+      {
+        "name": "funding_0",
+        "raw_bytes": 712,
+        "lines": 37,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 3176,
+        "lines_offset": 3888
+      },
+      {
+        "name": "funding_1",
+        "raw_bytes": 1819,
+        "lines": 94,
+        "randomized_segment_bytes": 381,
+        "raw_offset": 4480,
+        "lines_offset": 6304
+      },
+      {
+        "name": "funding_2",
+        "raw_bytes": 396,
+        "lines": 10,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 7808,
+        "lines_offset": 8208
+      },
+      {
+        "name": "fundingx2_0",
+        "raw_bytes": 1052,
+        "lines": 86,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 8368,
+        "lines_offset": 9424
+      },
+      {
+        "name": "fundingx2_1",
+        "raw_bytes": 945,
+        "lines": 28,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 10800,
+        "lines_offset": 11752
+      },
+      {
+        "name": "fundingx2_2",
+        "raw_bytes": 872,
+        "lines": 13,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 12200,
+        "lines_offset": 13072
+      },
+      {
+        "name": "fdg_single_0",
+        "raw_bytes": 1811,
+        "lines": 78,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 13280,
+        "lines_offset": 15096
+      },
+      {
+        "name": "fdg_down_0",
+        "raw_bytes": 195,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16344,
+        "lines_offset": 16544
+      },
+      {
+        "name": "fdg_down_1",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16592,
+        "lines_offset": 16800
+      },
+      {
+        "name": "fdg_down_2",
+        "raw_bytes": 207,
+        "lines": 3,
+        "randomized_segment_bytes": 0,
+        "raw_offset": 16848,
+        "lines_offset": 17056
+      }
+    ],
+    "workspace_capacity": 25574,
+    "workspace_used": 25424,
+    "reserved_payload": 25350,
+    "reservations": 32,
+    "scratch_capacity": 1024,
+    "history_capacity": [
+      240,
+      48,
+      16
+    ],
+    "digest": "1929ec7a1caae177",
+    "frames": 1089,
+    "scratch_requested_peak": 143,
+    "history_peak": [
+      9,
+      0,
+      0
+    ],
+    "history_concurrent_peak": 9,
+    "history_concurrent_beat": 6025,
+    "history_at_concurrent_peak": [
+      9,
+      0,
+      0
+    ],
+    "live_after_destroy": 0
+  }
+]

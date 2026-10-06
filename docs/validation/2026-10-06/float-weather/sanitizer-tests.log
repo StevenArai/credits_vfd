@@ -1,0 +1,68 @@
+Start testing: Oct 06 15:16 中国标准时间
+----------------------------------------------------------
+25/37 Testing: charbuf60
+25/37 Test: charbuf60
+Command: "D:/credits_vfd/build/float-weather/sanitize/charbuf60_test.exe"
+Directory: D:/credits_vfd/build/float-weather/sanitize
+"charbuf60" start time: Oct 06 15:16 中国标准时间
+Output:
+----------------------------------------------------------
+access footer: 3120 frames preserve text/pixels; 1278 dot frames, 753 animation changes
+native char_buf bounds, wrap, scroll, cursor, title and stop passed; zero canvas allocations
+<end of output>
+Test time =   2.07 sec
+----------------------------------------------------------
+Test Passed.
+"charbuf60" end time: Oct 06 15:16 中国标准时间
+"charbuf60" time elapsed: 00:00:02
+----------------------------------------------------------
+
+31/37 Testing: native_float_math
+31/37 Test: native_float_math
+Command: "D:/credits_vfd/build/float-weather/sanitize/native_float_test.exe"
+Directory: D:/credits_vfd/build/float-weather/sanitize
+"native_float_math" start time: Oct 06 15:16 中国标准时间
+Output:
+----------------------------------------------------------
+sine max error 3.76085159e-05; target max error 0.00149934726 F; 68513 exact integer-phase samples; percent formatting passed
+<end of output>
+Test time =   0.09 sec
+----------------------------------------------------------
+Test Passed.
+"native_float_math" end time: Oct 06 15:16 中国标准时间
+"native_float_math" time elapsed: 00:00:00
+----------------------------------------------------------
+
+34/37 Testing: animator_clock_wrapper
+34/37 Test: animator_clock_wrapper
+Command: "D:/credits_vfd/build/float-weather/sanitize/animator_test.exe"
+Directory: D:/credits_vfd/build/float-weather/sanitize
+"animator_clock_wrapper" start time: Oct 06 15:16 中国标准时间
+Output:
+----------------------------------------------------------
+18 full clock-only replays, 32952 presented frames; object=40504 arena=25574 used=25424; no playback reservations
+<end of output>
+Test time =  20.27 sec
+----------------------------------------------------------
+Test Passed.
+"animator_clock_wrapper" end time: Oct 06 15:16 中国标准时间
+"animator_clock_wrapper" time elapsed: 00:00:20
+----------------------------------------------------------
+
+35/37 Testing: animator_single_header
+35/37 Test: animator_single_header
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/animator_distribution_test.py" "D:/credits_vfd/build/float-weather/sanitize/animator_single_test.exe" "D:/credits_vfd/build/float-weather/sanitize/animator_modular_test.exe"
+Directory: D:/credits_vfd/build/float-weather/sanitize
+"animator_single_header" start time: Oct 06 15:16 中国标准时间
+Output:
+----------------------------------------------------------
+Separate implementation/consumer TUs match modular library: 5c1f06a4b6e7eb09 16214 40504 25574 25424
+<end of output>
+Test time =   2.54 sec
+----------------------------------------------------------
+Test Passed.
+"animator_single_header" end time: Oct 06 15:16 中国标准时间
+"animator_single_header" time elapsed: 00:00:02
+----------------------------------------------------------
+
+End testing: Oct 06 15:16 中国标准时间

@@ -1,0 +1,98 @@
+Start testing: Oct 06 10:39 中国标准时间
+----------------------------------------------------------
+19/38 Testing: sdl_standalone
+19/38 Test: sdl_standalone
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/standalone_test.py" "D:/credits_vfd/build/standalone/credits_sdl.exe" "D:/credits_vfd/credits.wav"
+Directory: D:/credits_vfd/build/standalone
+"sdl_standalone" start time: Oct 06 10:39 中国标准时间
+Output:
+----------------------------------------------------------
+audio=embedded backend=dummy rate=44100 duration=278.845170 wav_bytes=49188288 queue_limit=32768 device_frames=512 host_pixels=1658880 core=40584 framebuffer=4096
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=time-limit
+phosphor=#00E89B uppercase=1
+presented=1 beat=-1 audio_position=1.010068 wall_seconds=1.002266 max_compute_ms=0.021 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=0 underruns=0
+workspace_used=25424 core_live=0 heap_bytes=0
+
+EXE-only launch, embedded WAV bytes, duration and audio progress passed
+<end of output>
+Test time =   1.98 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_standalone" end time: Oct 06 10:39 中国标准时间
+"sdl_standalone" time elapsed: 00:00:01
+----------------------------------------------------------
+
+20/38 Testing: sdl_audio_transport
+20/38 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/standalone/credits_sdl.exe"
+Directory: D:/credits_vfd/build/standalone
+"sdl_audio_transport" start time: Oct 06 10:39 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmpri5gvulc\tone.wav backend=dummy rate=44100 duration=7.000023 wav_bytes=617402 queue_limit=16384 device_frames=512 host_pixels=1658880 core=40584 framebuffer=4096
+display_readback=matched 864x480
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=48 beat=96 audio_position=7.000023 wall_seconds=4.805683 max_compute_ms=0.251 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+workspace_used=25424 core_live=0 heap_bytes=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   5.48 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 06 10:40 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:05
+----------------------------------------------------------
+
+27/38 Testing: charbuf60
+27/38 Test: charbuf60
+Command: "D:/credits_vfd/build/standalone/charbuf60_test.exe"
+Directory: D:/credits_vfd/build/standalone
+"charbuf60" start time: Oct 06 10:40 中国标准时间
+Output:
+----------------------------------------------------------
+access footer: 3120 frames preserve text/pixels; 1278 dot frames, 753 animation changes
+native char_buf bounds, wrap, scroll, cursor, title and stop passed; zero canvas allocations
+<end of output>
+Test time =   0.23 sec
+----------------------------------------------------------
+Test Passed.
+"charbuf60" end time: Oct 06 10:40 中国标准时间
+"charbuf60" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/38 Testing: animator_single_header
+36/38 Test: animator_single_header
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/animator_distribution_test.py" "D:/credits_vfd/build/standalone/animator_single_test.exe" "D:/credits_vfd/build/standalone/animator_modular_test.exe"
+Directory: D:/credits_vfd/build/standalone
+"animator_single_header" start time: Oct 06 10:40 中国标准时间
+Output:
+----------------------------------------------------------
+Separate implementation/consumer TUs match modular library: 7c05ee8454a51603 16214 40584 25574 25424
+<end of output>
+Test time =   0.53 sec
+----------------------------------------------------------
+Test Passed.
+"animator_single_header" end time: Oct 06 10:40 中国标准时间
+"animator_single_header" time elapsed: 00:00:00
+----------------------------------------------------------
+
+37/38 Testing: exported_animator_header
+37/38 Test: exported_animator_header
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tools/export_animator_header.py" "--check"
+Directory: D:/credits_vfd/build/standalone
+"exported_animator_header" start time: Oct 06 10:40 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.18 sec
+----------------------------------------------------------
+Test Passed.
+"exported_animator_header" end time: Oct 06 10:40 中国标准时间
+"exported_animator_header" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 06 10:40 中国标准时间

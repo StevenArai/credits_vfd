@@ -42,10 +42,29 @@ uint64_t random_bits(Random *r, unsigned bits) {
     uint64_t high = random_u32(r) >> (64-bits);
     return low | high << 32;
 }
+#ifdef CREDITS_DIRECT60
+uint32_t random_scaled(Random *r,uint32_t scale) {
+    if (!scale || scale>2048) credits_fail("random scale range");
+    uint64_t a=random_u32(r)>>5,b=random_u32(r)>>6;
+    uint64_t product=((a<<26)|b)*scale;
+    /* Emulate binary64's nearest-even product before floor, using integers.
+       At most 11 bits are rounded; the bounded scale prevents overflow. */
+    unsigned shift=0;
+    for (uint64_t high=product>>53;high;high>>=1) shift++;
+    if (shift) {
+        uint64_t half=UINT64_C(1)<<(shift-1),low=product&((half<<1)-1);
+        uint64_t whole=product>>shift;
+        if (low>half || (low==half && (whole&1))) whole++;
+        product=whole<<shift;
+    }
+    return (uint32_t)(product>>53);
+}
+#else
 double random_unit(Random *r) {
     uint32_t a = random_u32(r) >> 5, b = random_u32(r) >> 6;
     return (a * 67108864.0 + b) / 9007199254740992.0;
 }
+#endif
 uint64_t random_below(Random *r, uint64_t stop) {
     if (!stop) credits_fail("empty randrange");
     unsigned bits=0;

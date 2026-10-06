@@ -1,0 +1,20 @@
+Start testing: Oct 06 10:39 中国标准时间
+----------------------------------------------------------
+26/37 Testing: charbuf60
+26/37 Test: charbuf60
+Command: "D:/credits_vfd/build/ocean-overlay/charbuf60_test.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"charbuf60" start time: Oct 06 10:39 中国标准时间
+Output:
+----------------------------------------------------------
+access footer: 3120 frames preserve text/pixels; 1278 dot frames, 753 animation changes
+native char_buf bounds, wrap, scroll, cursor, title and stop passed; zero canvas allocations
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"charbuf60" end time: Oct 06 10:39 中国标准时间
+"charbuf60" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 06 10:39 中国标准时间

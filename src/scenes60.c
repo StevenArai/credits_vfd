@@ -48,7 +48,7 @@ static void weather_scene(Credits *a,int g,int b) {
     case 1: credits_weather(a,&a->weather[2],1,0); break;
     case 2: credits_weather(a,&a->weather[4],1,0); break;
     case 3: credits_weather(a,&a->weather[2],14,0); break;
-    case 4: credits_weather(a,&a->weather[3],1,b>1080 ? (b-1080)*2.2:0); break;
+    case 4: credits_weather(a,&a->weather[3],1,b>1080 ? (b-1080)*2.2f:0.0f); break;
     }
 }
 static void fatal_error(Credits *a) {
@@ -77,6 +77,10 @@ static void loading(Credits *a,int scene,int g) {
         canvas_string(&a->canvas,15,8,text,fast ? GREEN BRIGHT:g==5 ? RED BRIGHT:YELLOW BRIGHT);
     } else if (g==6) credits_type_words(a,credits_typer(a,scene,g),6,11,0);
 }
+/* Three visible rows; keep the hidden fourth row's RNG draws for replay. */
+static void access_tile(Credits *a,int block,const char *text,const char *colour) {
+    if (block<18) credits_multiline(a,10*(block%6)+2,1+4*(block/6),text,colour);
+}
 static void access_grid(Credits *a,int b,int randomize) {
     int limit=randomize ? math_access_limit(b):1;
     for (int block=0;block<4;block++) {
@@ -91,22 +95,21 @@ static void access_grid(Credits *a,int b,int randomize) {
                 memcpy(text+offset,item,7); offset+=7;
                 if (x<5) { memcpy(text+offset,"   ",3); offset+=3; }
             }
-            text[offset]=0; canvas_string(&a->canvas,2,1+block*4+line,text,randomize ? BLACK BRIGHT:RED NORMAL);
+            text[offset]=0;
+            if (block<3) canvas_string(&a->canvas,2,1+block*4+line,text,randomize ? BLACK BRIGHT:RED NORMAL);
         }
-        if (block<3) canvas_string(&a->canvas,2,1+block*4+3,"",randomize ? BLACK BRIGHT:RED NORMAL);
     }
 }
 static void access_ping(Credits *a) {
     char text[64]; int block=a->access_block,counter=a->access_counter;
-    int x=10*(block%6)+2,y=4*(block/6)+1;
     if (counter<8) {
         snprintf(text,sizeof(text),"  ###  \nPBS #%02d\nPing  %d",block+1,counter+1);
-        credits_multiline(a,x,y,text,YELLOW NORMAL); a->access_counter++;
+        access_tile(a,block,text,YELLOW NORMAL); a->access_counter++;
     } else {
         snprintf(text,sizeof(text),"  ...  \nPBS #%02d\n-------",block+1);
-        credits_multiline(a,x,y,text,BLACK BRIGHT);
+        access_tile(a,block,text,BLACK BRIGHT);
         snprintf(text,sizeof(text),"  ###  \nPBS #%02d\nPing  1",block+2);
-        credits_multiline(a,10*((block+1)%6)+2,4*((block+1)/6)+1,text,YELLOW NORMAL);
+        access_tile(a,block+1,text,YELLOW NORMAL);
         a->access_counter=1; a->access_block++;
     }
 }
@@ -179,13 +182,14 @@ void credits_request_generator(void *context,int scene,int g,int beat) {
         break;
     case SC_ACCESSPOINTS:
         if (g<2) access_grid(a,beat,g==0);
-        if (g==2) credits_multiline(a,2,17,"No access points are broadcasting.\nManual search in progress.\nLast search 27.02.2019 (532 days ago)",BLACK BRIGHT);
+        if (g==2) credits_multiline(a,2,13,"No access points are broadcasting.\nManual search in progress.\nLast search 27.02.2019 (532 days ago)",BLACK BRIGHT);
         if (g==3) access_ping(a);
-        if (g==4) credits_multiline(a,12,9,"  @@@  \nPBS #14\n Active",GREEN BRIGHT);
+        if (g==4) access_tile(a,13,"  @@@  \nPBS #14\n Active",GREEN BRIGHT);
         break;
     case SC_FDG_SINGLE:
-        if (!g) credits_multiline(a,0,16,"------------------------------------------------------------\n  Sending > ",WHITE BRIGHT);
-        else credits_type_words(a,credits_typer(a,scene,g),12,17,0);
+        /* Grid 1..11, gap 12, status 13..15, gap 16, divider 17, Sending 18. */
+        if (!g) credits_multiline(a,2,17,"---------------------------------------------------------\nSending > ",WHITE BRIGHT);
+        else credits_type_words(a,credits_typer(a,scene,g),12,18,0);
         break;
     case SC_FDG_DOWN: {
         Typewriter *t=credits_typer(a,scene,g); credits_type_words(a,t,2,g ? 16:1,0); break;

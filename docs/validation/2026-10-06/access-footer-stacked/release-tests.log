@@ -1,0 +1,92 @@
+Start testing: Oct 06 10:31 中国标准时间
+----------------------------------------------------------
+19/37 Testing: sdl_audio_transport
+19/37 Test: sdl_audio_transport
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/audio_test.py" "D:/credits_vfd/build/ocean-overlay/credits_sdl.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"sdl_audio_transport" start time: Oct 06 10:31 中国标准时间
+Output:
+----------------------------------------------------------
+audio=C:\Users\Steve\AppData\Local\Temp\tmpu42524dr\tone.wav backend=dummy rate=44100 duration=7.000023 wav_bytes=617402 queue_limit=16384 device_frames=512 host_pixels=1658880 core=40584 framebuffer=4096
+display_readback=matched 864x480
+layout=direct60 char_buf_bytes=4800 scrolled_rows=0 clipped_cells=0
+exit_reason=audio-eof
+phosphor=#00FFC0 uppercase=0
+presented=46 beat=96 audio_position=7.000023 wall_seconds=4.808163 max_compute_ms=0.594 max_backlog_ms=0.000 missing_glyph_cells=0 script_stage=2 underruns=0
+workspace_used=25424 core_live=0 heap_bytes=0
+
+SDL queue pause/resume/seek/EOF and RGB readback passed
+<end of output>
+Test time =   5.40 sec
+----------------------------------------------------------
+Test Passed.
+"sdl_audio_transport" end time: Oct 06 10:31 中国标准时间
+"sdl_audio_transport" time elapsed: 00:00:05
+----------------------------------------------------------
+
+26/37 Testing: charbuf60
+26/37 Test: charbuf60
+Command: "D:/credits_vfd/build/ocean-overlay/charbuf60_test.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"charbuf60" start time: Oct 06 10:31 中国标准时间
+Output:
+----------------------------------------------------------
+access footer: 3120 frames preserve text/pixels; 1278 dot frames, 753 animation changes
+native char_buf bounds, wrap, scroll, cursor, title and stop passed; zero canvas allocations
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"charbuf60" end time: Oct 06 10:31 中国标准时间
+"charbuf60" time elapsed: 00:00:00
+----------------------------------------------------------
+
+28/37 Testing: direct60_comparison
+28/37 Test: direct60_comparison
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/direct60_compare.py" "D:/credits_vfd/build/ocean-overlay/direct60_probe.exe" "D:/credits_vfd/build/ocean-overlay/layout_reference_probe.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"direct60_comparison" start time: Oct 06 10:31 中国标准时间
+Output:
+----------------------------------------------------------
+{"frames": 72132, "exact_pixel_frames": 8660, "changed_pixel_frames": 63472, "title_pixel_frames": 4584, "ocean_cell_frames": 11802, "ocean_changed_frames": 10860, "block_cell_frames": 4806}
+Deterministic controls/text/history hashes match; ocean/RNG/weather/random progress intentionally excluded.
+<end of output>
+Test time =   7.56 sec
+----------------------------------------------------------
+Test Passed.
+"direct60_comparison" end time: Oct 06 10:31 中国标准时间
+"direct60_comparison" time elapsed: 00:00:07
+----------------------------------------------------------
+
+35/37 Testing: animator_single_header
+35/37 Test: animator_single_header
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tests/animator_distribution_test.py" "D:/credits_vfd/build/ocean-overlay/animator_single_test.exe" "D:/credits_vfd/build/ocean-overlay/animator_modular_test.exe"
+Directory: D:/credits_vfd/build/ocean-overlay
+"animator_single_header" start time: Oct 06 10:31 中国标准时间
+Output:
+----------------------------------------------------------
+Separate implementation/consumer TUs match modular library: 14d232e73a4a3f83 16214 40584 25574 25424
+<end of output>
+Test time =   0.52 sec
+----------------------------------------------------------
+Test Passed.
+"animator_single_header" end time: Oct 06 10:31 中国标准时间
+"animator_single_header" time elapsed: 00:00:00
+----------------------------------------------------------
+
+36/37 Testing: exported_animator_header
+36/37 Test: exported_animator_header
+Command: "C:/ProgramData/miniconda3/python.exe" "D:/credits_vfd/tools/export_animator_header.py" "--check"
+Directory: D:/credits_vfd/build/ocean-overlay
+"exported_animator_header" start time: Oct 06 10:31 中国标准时间
+Output:
+----------------------------------------------------------
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"exported_animator_header" end time: Oct 06 10:31 中国标准时间
+"exported_animator_header" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 06 10:31 中国标准时间

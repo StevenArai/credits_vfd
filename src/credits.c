@@ -1,6 +1,8 @@
 #include "credits.h"
 #include "colours.h"
+#ifndef CREDITS_DIRECT60
 #include <math.h>
+#endif
 #include <string.h>
 enum EventKind { EV_SWAP,EV_LAYER,EV_REMOVE,EV_HISTORY_RESET,EV_REFRESH,EV_TEXT,EV_OFFSET,EV_LINENO,EV_OCEAN_GLITCH,EV_COLOUR,EV_RANDOM_COLOUR };
 typedef struct { enum EventKind kind; int scene,generator,number; const char *text; } EventAction;
@@ -92,7 +94,11 @@ void credits_init(Credits *a,uint64_t seed) {
 #endif
     canvas_init(&a->canvas,&a->memory);
     random_seed(&a->random,seed);
+#ifdef CREDITS_DIRECT60
+    a->ocean_time=(int)random_scaled(&a->random,2000);
+#else
     a->ocean_time=(int)floor(random_unit(&a->random)*2000);
+#endif
     data_init(a->texts,&a->memory,&a->random);
 #ifdef CREDITS_DIRECT60
     a->scratch_capacity=1024;

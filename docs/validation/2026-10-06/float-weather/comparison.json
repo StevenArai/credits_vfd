@@ -1,0 +1,317 @@
+{
+  "frames": 72132,
+  "runs": [
+    {
+      "seed": 0,
+      "jump": 1,
+      "frames": 6509,
+      "changed_frames": {
+        "rng": 3841,
+        "cells": 881,
+        "pixels": 868,
+        "weather": 6509
+      },
+      "first_changed_beat": {
+        "rng": 2652,
+        "cells": 2656,
+        "pixels": 2656,
+        "weather": 0
+      }
+    },
+    {
+      "seed": 0,
+      "jump": 2,
+      "frames": 5509,
+      "changed_frames": {
+        "rng": 4265,
+        "cells": 1298,
+        "pixels": 1290,
+        "weather": 5509
+      },
+      "first_changed_beat": {
+        "rng": 2168,
+        "cells": 2232,
+        "pixels": 2232,
+        "weather": 1000
+      }
+    },
+    {
+      "seed": 0,
+      "jump": 3,
+      "frames": 4739,
+      "changed_frames": {
+        "rng": 4265,
+        "cells": 1298,
+        "pixels": 1290,
+        "weather": 4739
+      },
+      "first_changed_beat": {
+        "rng": 2168,
+        "cells": 2232,
+        "pixels": 2232,
+        "weather": 1770
+      }
+    },
+    {
+      "seed": 0,
+      "jump": 4,
+      "frames": 3469,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 3469
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 3040
+      }
+    },
+    {
+      "seed": 0,
+      "jump": 5,
+      "frames": 2729,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 2729
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 3780
+      }
+    },
+    {
+      "seed": 0,
+      "jump": 6,
+      "frames": 1089,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 1089
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 5420
+      }
+    },
+    {
+      "seed": 1,
+      "jump": 1,
+      "frames": 6509,
+      "changed_frames": {
+        "rng": 4453,
+        "cells": 1427,
+        "pixels": 1418,
+        "weather": 6509
+      },
+      "first_changed_beat": {
+        "rng": 2040,
+        "cells": 2104,
+        "pixels": 2104,
+        "weather": 0
+      }
+    },
+    {
+      "seed": 1,
+      "jump": 2,
+      "frames": 5509,
+      "changed_frames": {
+        "rng": 3889,
+        "cells": 911,
+        "pixels": 908,
+        "weather": 5509
+      },
+      "first_changed_beat": {
+        "rng": 2620,
+        "cells": 2624,
+        "pixels": 2624,
+        "weather": 1000
+      }
+    },
+    {
+      "seed": 1,
+      "jump": 3,
+      "frames": 4739,
+      "changed_frames": {
+        "rng": 3889,
+        "cells": 911,
+        "pixels": 908,
+        "weather": 4739
+      },
+      "first_changed_beat": {
+        "rng": 2620,
+        "cells": 2624,
+        "pixels": 2624,
+        "weather": 1770
+      }
+    },
+    {
+      "seed": 1,
+      "jump": 4,
+      "frames": 3469,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 3469
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 3040
+      }
+    },
+    {
+      "seed": 1,
+      "jump": 5,
+      "frames": 2729,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 2729
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 3780
+      }
+    },
+    {
+      "seed": 1,
+      "jump": 6,
+      "frames": 1089,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 1089
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 5420
+      }
+    },
+    {
+      "seed": 42,
+      "jump": 1,
+      "frames": 6509,
+      "changed_frames": {
+        "rng": 3857,
+        "cells": 898,
+        "pixels": 893,
+        "weather": 6509
+      },
+      "first_changed_beat": {
+        "rng": 2640,
+        "cells": 2640,
+        "pixels": 2640,
+        "weather": 0
+      }
+    },
+    {
+      "seed": 42,
+      "jump": 2,
+      "frames": 5509,
+      "changed_frames": {
+        "rng": 320,
+        "cells": 340,
+        "pixels": 340,
+        "weather": 5509
+      },
+      "first_changed_beat": {
+        "rng": 2636,
+        "cells": 2632,
+        "pixels": 2632,
+        "weather": 1000
+      }
+    },
+    {
+      "seed": 42,
+      "jump": 3,
+      "frames": 4739,
+      "changed_frames": {
+        "rng": 320,
+        "cells": 340,
+        "pixels": 340,
+        "weather": 4739
+      },
+      "first_changed_beat": {
+        "rng": 2636,
+        "cells": 2632,
+        "pixels": 2632,
+        "weather": 1770
+      }
+    },
+    {
+      "seed": 42,
+      "jump": 4,
+      "frames": 3469,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 3469
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 3040
+      }
+    },
+    {
+      "seed": 42,
+      "jump": 5,
+      "frames": 2729,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 2729
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 3780
+      }
+    },
+    {
+      "seed": 42,
+      "jump": 6,
+      "frames": 1089,
+      "changed_frames": {
+        "rng": 0,
+        "cells": 0,
+        "pixels": 0,
+        "weather": 1089
+      },
+      "first_changed_beat": {
+        "rng": null,
+        "cells": null,
+        "pixels": null,
+        "weather": 5420
+      }
+    }
+  ],
+  "changed_frames": {
+    "rng": 29099,
+    "cells": 8304,
+    "pixels": 8255,
+    "weather": 72132
+  }
+}

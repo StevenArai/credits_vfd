@@ -148,7 +148,12 @@ typedef struct { uint32_t mt[624]; int index; uint64_t draws; } credits_private_
 void credits_private_random_seed(credits_private_Random *r, uint64_t seed);
 uint32_t credits_private_random_u32(credits_private_Random *r);
 uint64_t credits_private_random_bits(credits_private_Random *r, unsigned bits);
+#ifdef CREDITS_DIRECT60
+/* floor(random()*scale), preserving the reference's two draws and rounding. */
+uint32_t credits_private_random_scaled(credits_private_Random *r,uint32_t scale);
+#else
 double credits_private_random_unit(credits_private_Random *r);
+#endif
 uint64_t credits_private_random_below(credits_private_Random *r, uint64_t stop);
 int credits_private_random_int(credits_private_Random *r, int low, int high);
 #endif
@@ -200,8 +205,13 @@ size_t credits_private_data_readonly_size(void);
 #ifndef CREDITS_WEATHER_H
 #define CREDITS_WEATHER_H
 
+#ifdef CREDITS_DIRECT60
+typedef float credits_private_WeatherNumber;
+#else
+typedef double credits_private_WeatherNumber;
+#endif
 typedef struct {
-    double precip,temp,wind,gust,humidity;
+    credits_private_WeatherNumber precip,temp,wind,gust,humidity;
     int wind_dir,days;
     const char *name;
 } credits_private_Weather;
@@ -209,7 +219,7 @@ void credits_private_weather_init(credits_private_Weather *w);
 void credits_private_weather_mutate(credits_private_Weather *w,credits_private_Random *r,int steps);
 void credits_private_credits_date(char *out,int beat,int day_offset);
 struct credits_private_Credits;
-void credits_private_credits_weather(struct credits_private_Credits *a,credits_private_Weather *w,int mutations,double space_chance);
+void credits_private_credits_weather(struct credits_private_Credits *a,credits_private_Weather *w,int mutations,credits_private_WeatherNumber space_chance);
 #endif
 
 typedef struct { const credits_private_Text *words; const char *characters; int offset,line; const char *colour; } credits_private_Typewriter;
@@ -441,10 +451,29 @@ uint64_t credits_private_random_bits(credits_private_Random *r, unsigned bits) {
     uint64_t high = credits_private_random_u32(r) >> (64-bits);
     return low | high << 32;
 }
+#ifdef CREDITS_DIRECT60
+uint32_t credits_private_random_scaled(credits_private_Random *r,uint32_t scale) {
+    if (!scale || scale>2048) credits_private_credits_fail("random scale range");
+    uint64_t a=credits_private_random_u32(r)>>5,b=credits_private_random_u32(r)>>6;
+    uint64_t product=((a<<26)|b)*scale;
+    /* Emulate binary64's nearest-even product before floor, using integers.
+       At most 11 bits are rounded; the bounded scale prevents overflow. */
+    unsigned shift=0;
+    for (uint64_t high=product>>53;high;high>>=1) shift++;
+    if (shift) {
+        uint64_t half=UINT64_C(1)<<(shift-1),low=product&((half<<1)-1);
+        uint64_t whole=product>>shift;
+        if (low>half || (low==half && (whole&1))) whole++;
+        product=whole<<shift;
+    }
+    return (uint32_t)(product>>53);
+}
+#else
 double credits_private_random_unit(credits_private_Random *r) {
     uint32_t a = credits_private_random_u32(r) >> 5, b = credits_private_random_u32(r) >> 6;
     return (a * 67108864.0 + b) / 9007199254740992.0;
 }
+#endif
 uint64_t credits_private_random_below(credits_private_Random *r, uint64_t stop) {
     if (!stop) credits_private_credits_fail("empty randrange");
     unsigned bits=0;
@@ -842,7 +871,9 @@ size_t credits_private_data_readonly_size(void) {
 #define CREDITS_PRIVATE_WHITE "\033[37m"
 #endif
 
+#ifndef CREDITS_DIRECT60
 #include <math.h>
+#endif
 #include <string.h>
 enum credits_private_EventKind { EV_SWAP,EV_LAYER,EV_REMOVE,EV_HISTORY_RESET,EV_REFRESH,EV_TEXT,EV_OFFSET,EV_LINENO,EV_OCEAN_GLITCH,EV_COLOUR,EV_RANDOM_COLOUR };
 typedef struct { enum credits_private_EventKind kind; int scene,generator,number; const char *text; } credits_private_EventAction;
@@ -1119,7 +1150,11 @@ void credits_private_credits_init(credits_private_Credits *a,uint64_t seed) {
 #endif
     credits_private_canvas_init(&a->canvas,&a->memory);
     credits_private_random_seed(&a->random,seed);
+#ifdef CREDITS_DIRECT60
+    a->ocean_time=(int)credits_private_random_scaled(&a->random,2000);
+#else
     a->ocean_time=(int)floor(credits_private_random_unit(&a->random)*2000);
+#endif
     credits_private_data_init(a->texts,&a->memory,&a->random);
 #ifdef CREDITS_DIRECT60
     a->scratch_capacity=1024;
@@ -1372,63 +1407,76 @@ void credits_private_credits_create_generator(void *context,int scene,int g,int 
 }
 
 
-/* Module: weather.c */
+/* Module: weather60.c */
+/* Native single-precision weather; weather.c preserves the terminal oracle. */
 
 
-#include <math.h>
+#ifndef CREDITS_MATH_LOOKUP_H
+#define CREDITS_MATH_LOOKUP_H
+int credits_private_math_ocean_height(int phase);
+int credits_private_math_ocean_text(int beat,int generator);
+int credits_private_math_access_limit(int beat);
+int credits_private_math_noise_count(int beat,int wipe);
+int credits_private_math_poweroff_height(int adjusted);
+/* Bounded degree input [-360,360]; no libm call. */
+float credits_private_math_sin_degrees(float degrees);
+float credits_private_math_weather_target(int days);
+unsigned credits_private_math_lookup_bytes(void);
+#endif
+
 #include <stdio.h>
 #include <string.h>
-static const double credits_private_weather_pi=3.14159265358979323846;
-static double credits_private_weather_maximum(double a,double b) { return a>b ? a:b; }
-static double credits_private_weather_clamp(double x) { return x<0 ? 0:x>1 ? 1:x; }
-static const char *credits_private_weather_weather_name(const credits_private_Weather *w) {
-    if (w->humidity>0.5) {
-        if (w->precip>0.4) {
+static float credits_private_weather60_absolute(float x) { return x<0.0f ? -x:x; }
+static float credits_private_weather60_maximum(float a,float b) { return a>b ? a:b; }
+static float credits_private_weather60_clamp(float x) { return x<0 ? 0:x>1 ? 1:x; }
+static const char *credits_private_weather60_weather_name(const credits_private_Weather *w) {
+    if (w->humidity>0.5f) {
+        if (w->precip>0.4f) {
             if (w->wind>43) return w->temp<32 ? "Blizzard":"Hurricane";
             if (w->wind>25) return w->temp<32 ? "Snowstorm":"Storm";
             return w->temp<32 ? "Snow":"Rain";
         }
-        if (w->precip>0.25) return w->temp<32 ? "Sleet":"Drizzle";
-        if (w->humidity>0.8 || w->precip>0.5) return "Overcast";
-        if (w->humidity>0.65 || w->precip>0.3) return "Cloudy";
+        if (w->precip>0.25f) return w->temp<32 ? "Sleet":"Drizzle";
+        if (w->humidity>0.8f || w->precip>0.5f) return "Overcast";
+        if (w->humidity>0.65f || w->precip>0.3f) return "Cloudy";
         return "Partly cloudy";
     }
-    if (w->precip>0.4) return w->temp<32 ? "Snow":"Rain";
-    if (w->precip>0.2) return w->temp<32 ? "Sleet":"Drizzle";
-    return w->humidity<0.2 ? (w->humidity<0.1 ? "Sunny":"Partly sunny"):"Clear";
+    if (w->precip>0.4f) return w->temp<32 ? "Snow":"Rain";
+    if (w->precip>0.2f) return w->temp<32 ? "Sleet":"Drizzle";
+    return w->humidity<0.2f ? (w->humidity<0.1f ? "Sunny":"Partly sunny"):"Clear";
 }
 void credits_private_weather_init(credits_private_Weather *w) {
     const credits_private_Weather values[]={
-        {0.203,43,13,25,0.66,6,2,NULL}, {0.04,52,12,25,0.1,7,2,NULL},
-        {0.07,48,8,20,0.1,1,200,NULL}, {0.07,48,8,20,0.1,1,728,NULL},
+        {0.203f,43,13,25,0.66f,6,2,NULL}, {0.04f,52,12,25,0.1f,7,2,NULL},
+        {0.07f,48,8,20,0.1f,1,200,NULL}, {0.07f,48,8,20,0.1f,1,728,NULL},
         {-1,-1,-1,-1,-1,-1,2,NULL}
     };
     memcpy(w,values,sizeof(values));
-    for (int i=0;i<5;i++) w[i].name=credits_private_weather_weather_name(&w[i]);
+    for (int i=0;i<5;i++) w[i].name=credits_private_weather60_weather_name(&w[i]);
     w[4].name="Connection lost...      ";
 }
 void credits_private_weather_mutate(credits_private_Weather *w,credits_private_Random *r,int steps) {
     for (int i=0;i<steps;i++) {
-        double move=credits_private_random_int(r,-100,100)/400.0;
-        move+=(credits_private_random_int(r,0,(int)(100*fabs(0.33-w->precip)))/200.0)*(0.33-w->precip<0 ? -1:1);
-        w->precip=credits_private_weather_clamp(w->precip+move);
+        float move=credits_private_random_int(r,-100,100)/400.0f;
+        move+=(credits_private_random_int(r,0,(int)(100*credits_private_weather60_absolute(0.33f-w->precip)))/200.0f)*(0.33f-w->precip<0 ? -1:1);
+        w->precip=credits_private_weather60_clamp(w->precip+move);
         w->wind_dir=(w->wind_dir+credits_private_random_int(r,-3,3))%8;
         if (w->wind_dir<0) w->wind_dir+=8;
-        move=credits_private_random_int(r,-100,100)/13.0;
-        move+=(credits_private_random_int(r,0,(int)fabs(15-w->wind))/3.0)*(15-w->wind<0 ? -1:1);
-        w->wind=credits_private_weather_maximum(0,w->wind+move);
+        move=credits_private_random_int(r,-100,100)/13.0f;
+        move+=(credits_private_random_int(r,0,(int)credits_private_weather60_absolute(15-w->wind))/3.0f)*(15-w->wind<0 ? -1:1);
+        w->wind=credits_private_weather60_maximum(0,w->wind+move);
         int days=w->days-282;
-        double target=40*(sin((2*credits_private_weather_pi*days)/365-credits_private_weather_pi/3)+1)+20;
-        move=credits_private_random_int(r,-100,100)/20.0;
-        move+=(credits_private_random_int(r,0,(int)fabs(target-w->temp))/5.0)*(target-w->temp<0 ? -1:1);
-        w->temp=credits_private_weather_maximum(0,w->temp+move);
-        move=credits_private_random_int(r,-100,100)/500.0;
-        move+=(credits_private_random_int(r,0,(int)fabs(0.2-w->humidity))/200.0)*(0.5-w->humidity<0 ? -1:1);
-        w->humidity=credits_private_weather_clamp(w->humidity+move);
-        w->gust=w->wind*credits_private_random_int(r,210,260)*0.01;
+        float target=credits_private_math_weather_target(days);
+        move=credits_private_random_int(r,-100,100)/20.0f;
+        move+=(credits_private_random_int(r,0,(int)credits_private_weather60_absolute(target-w->temp))/5.0f)*(target-w->temp<0 ? -1:1);
+        w->temp=credits_private_weather60_maximum(0,w->temp+move);
+        move=credits_private_random_int(r,-100,100)/500.0f;
+        move+=(credits_private_random_int(r,0,(int)credits_private_weather60_absolute(0.2f-w->humidity))/200.0f)*(0.5f-w->humidity<0 ? -1:1);
+        w->humidity=credits_private_weather60_clamp(w->humidity+move);
+        w->gust=w->wind*credits_private_random_int(r,210,260)*0.01f;
         w->days++;
     }
-    w->name=credits_private_weather_weather_name(w);
+    w->name=credits_private_weather60_weather_name(w);
 }
 void credits_private_credits_date(char *out,int beat,int day_offset) {
     const int lengths[]={31,28,31,30,31,30,31,31,30,31,30,31};
@@ -1446,7 +1494,7 @@ void credits_private_credits_date(char *out,int beat,int day_offset) {
     }
     snprintf(out,32,"%02d.%02d.%04d",day,month+1,year);
 }
-static void credits_private_weather_spaced(credits_private_Credits *a,int x,int y,char *text,const char *colour,double chance) {
+static void credits_private_weather60_spaced(credits_private_Credits *a,int x,int y,char *text,const char *colour,float chance) {
     /* Each Unicode character consumes one randint, including the degree symbol. */
     size_t read=0,write=0;
     while (text[read]) {
@@ -1464,10 +1512,10 @@ static void credits_private_weather_spaced(credits_private_Credits *a,int x,int 
     credits_private_canvas_string(&a->canvas,x,y,text,colour);
 #endif
 }
-void credits_private_credits_weather(credits_private_Credits *a,credits_private_Weather *w,int mutations,double chance) {
+void credits_private_credits_weather(credits_private_Credits *a,credits_private_Weather *w,int mutations,float chance) {
     char text[160];
     snprintf(text,sizeof(text),"%14s",w->name);
-    credits_private_weather_spaced(a,w->precip!=-1 ? 32:27,15,text,w->precip!=-1 ? CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_NORMAL:CREDITS_PRIVATE_RED CREDITS_PRIVATE_BRIGHT,chance);
+    credits_private_weather60_spaced(a,w->precip!=-1 ? 32:27,15,text,w->precip!=-1 ? CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_NORMAL:CREDITS_PRIVATE_RED CREDITS_PRIVATE_BRIGHT,chance);
     const char *colours[]={CREDITS_PRIVATE_WHITE CREDITS_PRIVATE_BRIGHT,CREDITS_PRIVATE_CYAN CREDITS_PRIVATE_BRIGHT,CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_BRIGHT,CREDITS_PRIVATE_RED CREDITS_PRIVATE_BRIGHT};
     int temp=(int)w->temp,ix=temp/23;
     if (temp<0 && temp%23) ix--;
@@ -1475,18 +1523,26 @@ void credits_private_credits_weather(credits_private_Credits *a,credits_private_
     if (ix<0) ix+=4;
     if (ix<0 || ix>3) credits_private_credits_fail("temperature colour index");
     snprintf(text,sizeof(text),"%2d\xc2\xb0" "F  ",temp);
-    credits_private_weather_spaced(a,27,17,text,colours[ix],chance);
+    credits_private_weather60_spaced(a,27,17,text,colours[ix],chance);
     const char *directions[]={"N ","NE","E ","SE","S ","SW","W ","NW"};
     int direction=w->wind_dir<0 ? w->wind_dir+8:w->wind_dir;
     if (direction<0 || direction>7) credits_private_credits_fail("wind direction index");
     snprintf(text,sizeof(text),"Wind %2d mph %s",(int)w->wind,directions[direction]);
-    credits_private_weather_spaced(a,32,17,text,CREDITS_PRIVATE_CYAN CREDITS_PRIVATE_BRIGHT,chance);
-    strcpy(text,"Precipitation "); credits_private_weather_spaced(a,32,19,text,CREDITS_PRIVATE_BLUE CREDITS_PRIVATE_BRIGHT,chance);
+    credits_private_weather60_spaced(a,32,17,text,CREDITS_PRIVATE_CYAN CREDITS_PRIVATE_BRIGHT,chance);
+    strcpy(text,"Precipitation "); credits_private_weather60_spaced(a,32,19,text,CREDITS_PRIVATE_BLUE CREDITS_PRIVATE_BRIGHT,chance);
     char percent[64];
     /* min/max clamps return Python int 0/1; the disconnected sentinel is int -1. */
     int integer=w->precip==0 || w->precip==1 || w->precip==-1;
     if (integer) snprintf(percent,sizeof(percent),"%d",(int)(w->precip*100));
-    else snprintf(percent,sizeof(percent),"%.2f",w->precip*100);
+    else {
+        /* Round to hundredths of a percent without promoting a float vararg to
+           double or linking the floating-point printf formatter. */
+        float scaled=w->precip*10000.0f;
+        int cents=(int)scaled;
+        float fraction=scaled-cents;
+        if (fraction>0.5f || (fraction==0.5f && (cents&1))) cents++;
+        snprintf(percent,sizeof(percent),"%d.%02d",cents/100,cents%100);
+    }
     size_t n=strlen(percent);
     if (!integer && n && percent[n-1]=='0') percent[--n]=0; /* retain one decimal, like str(round()). */
     percent[n++]='%'; percent[n]=0;
@@ -1494,7 +1550,7 @@ void credits_private_credits_weather(credits_private_Credits *a,credits_private_
     int left=padding/2; /* odd padding goes right for a 13-character center field. */
     memset(text,' ',(size_t)left); memcpy(text+left,percent,n);
     memset(text+left+n,' ',(size_t)(padding-left+1)); text[n+padding+1]=0;
-    credits_private_weather_spaced(a,32,20,text,CREDITS_PRIVATE_BLUE CREDITS_PRIVATE_BRIGHT,chance);
+    credits_private_weather60_spaced(a,32,20,text,CREDITS_PRIVATE_BLUE CREDITS_PRIVATE_BRIGHT,chance);
     credits_private_weather_mutate(w,&a->random,mutations);
 }
 
@@ -1653,15 +1709,6 @@ int credits_private_fixed_player_sync(credits_private_FixedPlayer *p,credits_pri
 
 /* Module: ocean60.c */
 
-#ifndef CREDITS_MATH_LOOKUP_H
-#define CREDITS_MATH_LOOKUP_H
-int credits_private_math_ocean_height(int phase);
-int credits_private_math_ocean_text(int beat,int generator);
-int credits_private_math_access_limit(int beat);
-int credits_private_math_noise_count(int beat,int wipe);
-int credits_private_math_poweroff_height(int adjusted);
-unsigned credits_private_math_lookup_bytes(void);
-#endif
 
 #include <string.h>
 
@@ -2184,6 +2231,39 @@ static const uint8_t credits_private_math_lookup_poweroff_height[10] = {
 };
 
 #define CREDITS_PRIVATE_COUNT(a) (sizeof(a)/sizeof(*(a)))
+static const float credits_private_math_lookup_sin_tens[]={
+    0.0f,0.1736481777f,0.3420201433f,0.5f,0.6427876097f,
+    0.7660444431f,0.8660254038f,0.9396926208f,0.9848077530f,1.0f
+};
+static const float credits_private_math_lookup_cos_units[]={
+    1.0f,0.9998476952f,0.9993908270f,0.9986295348f,0.9975640503f,
+    0.9961946981f,0.9945218954f,0.9925461516f,0.9902680687f,
+    0.9876883406f,0.9848077530f
+};
+float credits_private_math_sin_degrees(float x) {
+    if (!(x>=-360.0f && x<=360.0f)) credits_private_credits_fail("sine degree range");
+    if (x<0.0f) x+=360.0f;
+    if (x>=360.0f) x-=360.0f;
+    int negative=x>=180.0f;
+    if (negative) x-=180.0f;
+    if (x>90.0f) x=180.0f-x;
+    int a=(int)(x/10.0f);
+    float b=x-10.0f*a;
+    int unit=(int)b;
+    float fraction=b-unit;
+    /* Retain fractional degrees in cos(b); sin(b) uses r-r^3/6.
+       Directly truncating b in the cosine lookup introduces visible jumps. */
+    float cosine=credits_private_math_lookup_cos_units[unit]+fraction*(credits_private_math_lookup_cos_units[unit+1]-credits_private_math_lookup_cos_units[unit]);
+    float r=b*0.01745329251994329577f;
+    float sine=r*(1.0f-r*r/6.0f);
+    float y=credits_private_math_lookup_sin_tens[a]*cosine+credits_private_math_lookup_sin_tens[9-a]*sine;
+    return negative ? -y:y;
+}
+float credits_private_math_weather_target(int days) {
+    int phase=days%365;
+    if (phase<0) phase+=365;
+    return 40.0f*(credits_private_math_sin_degrees(phase*(360.0f/365.0f)-60.0f)+1.0f)+20.0f;
+}
 int credits_private_math_ocean_height(int phase) {
     if (phase<0 || (unsigned)phase>=CREDITS_PRIVATE_COUNT(credits_private_math_lookup_ocean_height)) credits_private_credits_fail("ocean phase exceeds validated lookup range");
     return credits_private_math_lookup_ocean_height[phase];
@@ -2205,7 +2285,7 @@ int credits_private_math_poweroff_height(int adjusted) {
     return (unsigned)adjusted<=CREDITS_PRIVATE_COUNT(credits_private_math_lookup_poweroff_height) ? credits_private_math_lookup_poweroff_height[adjusted-1]:0;
 }
 unsigned credits_private_math_lookup_bytes(void) {
-    return sizeof(credits_private_math_lookup_ocean_height)+sizeof(credits_private_math_lookup_ocean_text_mask)+sizeof(credits_private_math_lookup_access_limit)+sizeof(credits_private_math_lookup_wipe_count)+sizeof(credits_private_math_lookup_clear_count)+sizeof(credits_private_math_lookup_poweroff_height);
+    return sizeof(credits_private_math_lookup_ocean_height)+sizeof(credits_private_math_lookup_ocean_text_mask)+sizeof(credits_private_math_lookup_access_limit)+sizeof(credits_private_math_lookup_wipe_count)+sizeof(credits_private_math_lookup_clear_count)+sizeof(credits_private_math_lookup_poweroff_height)+sizeof(credits_private_math_lookup_sin_tens)+sizeof(credits_private_math_lookup_cos_units);
 }
 
 
@@ -2372,7 +2452,7 @@ static void credits_private_scenes60_weather_scene(credits_private_Credits *a,in
     case 1: credits_private_credits_weather(a,&a->weather[2],1,0); break;
     case 2: credits_private_credits_weather(a,&a->weather[4],1,0); break;
     case 3: credits_private_credits_weather(a,&a->weather[2],14,0); break;
-    case 4: credits_private_credits_weather(a,&a->weather[3],1,b>1080 ? (b-1080)*2.2:0); break;
+    case 4: credits_private_credits_weather(a,&a->weather[3],1,b>1080 ? (b-1080)*2.2f:0.0f); break;
     }
 }
 static void credits_private_scenes60_fatal_error(credits_private_Credits *a) {
@@ -2401,6 +2481,10 @@ static void credits_private_scenes60_loading(credits_private_Credits *a,int scen
         credits_private_canvas_string(&a->canvas,15,8,text,fast ? CREDITS_PRIVATE_GREEN CREDITS_PRIVATE_BRIGHT:g==5 ? CREDITS_PRIVATE_RED CREDITS_PRIVATE_BRIGHT:CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_BRIGHT);
     } else if (g==6) credits_private_credits_type_words(a,credits_private_credits_typer(a,scene,g),6,11,0);
 }
+/* Three visible rows; keep the hidden fourth row's RNG draws for replay. */
+static void credits_private_scenes60_access_tile(credits_private_Credits *a,int block,const char *text,const char *colour) {
+    if (block<18) credits_private_credits_multiline(a,10*(block%6)+2,1+4*(block/6),text,colour);
+}
 static void credits_private_scenes60_access_grid(credits_private_Credits *a,int b,int randomize) {
     int limit=randomize ? credits_private_math_access_limit(b):1;
     for (int block=0;block<4;block++) {
@@ -2415,22 +2499,21 @@ static void credits_private_scenes60_access_grid(credits_private_Credits *a,int 
                 memcpy(text+offset,item,7); offset+=7;
                 if (x<5) { memcpy(text+offset,"   ",3); offset+=3; }
             }
-            text[offset]=0; credits_private_canvas_string(&a->canvas,2,1+block*4+line,text,randomize ? CREDITS_PRIVATE_BLACK CREDITS_PRIVATE_BRIGHT:CREDITS_PRIVATE_RED CREDITS_PRIVATE_NORMAL);
+            text[offset]=0;
+            if (block<3) credits_private_canvas_string(&a->canvas,2,1+block*4+line,text,randomize ? CREDITS_PRIVATE_BLACK CREDITS_PRIVATE_BRIGHT:CREDITS_PRIVATE_RED CREDITS_PRIVATE_NORMAL);
         }
-        if (block<3) credits_private_canvas_string(&a->canvas,2,1+block*4+3,"",randomize ? CREDITS_PRIVATE_BLACK CREDITS_PRIVATE_BRIGHT:CREDITS_PRIVATE_RED CREDITS_PRIVATE_NORMAL);
     }
 }
 static void credits_private_scenes60_access_ping(credits_private_Credits *a) {
     char text[64]; int block=a->access_block,counter=a->access_counter;
-    int x=10*(block%6)+2,y=4*(block/6)+1;
     if (counter<8) {
         snprintf(text,sizeof(text),"  ###  \nPBS #%02d\nPing  %d",block+1,counter+1);
-        credits_private_credits_multiline(a,x,y,text,CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_NORMAL); a->access_counter++;
+        credits_private_scenes60_access_tile(a,block,text,CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_NORMAL); a->access_counter++;
     } else {
         snprintf(text,sizeof(text),"  ...  \nPBS #%02d\n-------",block+1);
-        credits_private_credits_multiline(a,x,y,text,CREDITS_PRIVATE_BLACK CREDITS_PRIVATE_BRIGHT);
+        credits_private_scenes60_access_tile(a,block,text,CREDITS_PRIVATE_BLACK CREDITS_PRIVATE_BRIGHT);
         snprintf(text,sizeof(text),"  ###  \nPBS #%02d\nPing  1",block+2);
-        credits_private_credits_multiline(a,10*((block+1)%6)+2,4*((block+1)/6)+1,text,CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_NORMAL);
+        credits_private_scenes60_access_tile(a,block+1,text,CREDITS_PRIVATE_YELLOW CREDITS_PRIVATE_NORMAL);
         a->access_counter=1; a->access_block++;
     }
 }
@@ -2503,13 +2586,14 @@ void credits_private_credits_request_generator(void *context,int scene,int g,int
         break;
     case SC_ACCESSPOINTS:
         if (g<2) credits_private_scenes60_access_grid(a,beat,g==0);
-        if (g==2) credits_private_credits_multiline(a,2,17,"No access points are broadcasting.\nManual search in progress.\nLast search 27.02.2019 (532 days ago)",CREDITS_PRIVATE_BLACK CREDITS_PRIVATE_BRIGHT);
+        if (g==2) credits_private_credits_multiline(a,2,13,"No access points are broadcasting.\nManual search in progress.\nLast search 27.02.2019 (532 days ago)",CREDITS_PRIVATE_BLACK CREDITS_PRIVATE_BRIGHT);
         if (g==3) credits_private_scenes60_access_ping(a);
-        if (g==4) credits_private_credits_multiline(a,12,9,"  @@@  \nPBS #14\n Active",CREDITS_PRIVATE_GREEN CREDITS_PRIVATE_BRIGHT);
+        if (g==4) credits_private_scenes60_access_tile(a,13,"  @@@  \nPBS #14\n Active",CREDITS_PRIVATE_GREEN CREDITS_PRIVATE_BRIGHT);
         break;
     case SC_FDG_SINGLE:
-        if (!g) credits_private_credits_multiline(a,0,16,"------------------------------------------------------------\n  Sending > ",CREDITS_PRIVATE_WHITE CREDITS_PRIVATE_BRIGHT);
-        else credits_private_credits_type_words(a,credits_private_credits_typer(a,scene,g),12,17,0);
+        /* Grid 1..11, gap 12, status 13..15, gap 16, divider 17, Sending 18. */
+        if (!g) credits_private_credits_multiline(a,2,17,"---------------------------------------------------------\nSending > ",CREDITS_PRIVATE_WHITE CREDITS_PRIVATE_BRIGHT);
+        else credits_private_credits_type_words(a,credits_private_credits_typer(a,scene,g),12,18,0);
         break;
     case SC_FDG_DOWN: {
         credits_private_Typewriter *t=credits_private_credits_typer(a,scene,g); credits_private_credits_type_words(a,t,2,g ? 16:1,0); break;
@@ -2565,7 +2649,7 @@ static credits_private_TextRegion credits_private_text60_words_region(const cred
     case SC_FUNDINGX2:
         return a->draw_generator==0 ? (credits_private_TextRegion){x,2,60-x,3}:
                a->draw_generator==1 ? (credits_private_TextRegion){x,19,60-x,1}:(credits_private_TextRegion){x,5,60-x,6};
-    case SC_FDG_SINGLE: return (credits_private_TextRegion){x,17,60-x,3};
+    case SC_FDG_SINGLE: return (credits_private_TextRegion){x,18,60-x,1};
     case SC_FDG_DOWN: return a->draw_generator ? (credits_private_TextRegion){x,16,60-x,4}:(credits_private_TextRegion){x,1,60-x,5};
     default: return (credits_private_TextRegion){x,y,60-x,20-y};
     }

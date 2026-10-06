@@ -1,0 +1,472 @@
+[
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2544:credits_private_credits_request_generator",
+    "bytes": 408,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1515:credits_private_credits_weather",
+    "bytes": 288,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2611:credits_private_credits60_characters",
+    "bytes": 136,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1458:credits_private_weather_mutate",
+    "bytes": 136,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1118:credits_private_credits_timeline",
+    "bytes": 120,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2527:credits_private_scenes60_noise",
+    "bytes": 120,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2669:credits_private_credits60_words",
+    "bytes": 112,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2683:credits_private_credits60_history",
+    "bytes": 112,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2507:credits_private_scenes60_access_ping",
+    "bytes": 112,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1497:credits_private_weather60_spaced",
+    "bytes": 104,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1595:credits_private_framebuffer_render_grid",
+    "bytes": 80,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1738:credits_private_credits_ocean_begin",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2375:credits_private_canvas60_line",
+    "bytes": 72,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:808:credits_private_data_init",
+    "bytes": 64,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1293:credits_private_credits_type_words",
+    "bytes": 64,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:446:credits_private_random_bits",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:455:credits_private_random_scaled",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:799:credits_private_corrupt_text",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2726:credits_animator_sync",
+    "bytes": 56,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1698:credits_private_fixed_player_sync",
+    "bytes": 48,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1751:credits_private_credits_ocean_render",
+    "bytes": 48,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2365:credits_private_canvas60_newline",
+    "bytes": 48,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:418:credits_private_random_seed",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:502:credits_private_scheduler_frame",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:513:credits_private_scheduler_start",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:529:credits_private_scheduler_next",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1655:credits_private_fixed_player_init",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2331:credits_private_canvas_chars",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2361:credits_private_canvas60_flow",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2750:credits_animator_update",
+    "bytes": 40,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:433:credits_private_random_u32",
+    "bytes": 36,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:495:scheduler_init",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:846:credits_private_data_readonly_size",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1250:credits_private_credits_multiline",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2345:credits_private_canvas_string",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1664:credits_private_player_fixed_step",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2335:credits_private_canvas_string_cursor",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2348:credits_private_canvas_char",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2411:credits_private_scenes60_ui",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2658:credits_private_text60_emit_words",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2716:credits_animator_init",
+    "bytes": 32,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:477:credits_private_random_below",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:485:credits_private_random_int",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:524:credits_private_scheduler_remove",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1145:credits_private_credits_init",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2353:credits_private_canvas60_clear_region",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1481:credits_private_credits_date",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1634:credits_private_fixed_beat_deadline",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1695:credits_private_fixed_player_step",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1730:credits_private_ocean60_column",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2485:credits_private_scenes60_access_tile",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2765:credits_animator_stats",
+    "bytes": 24,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1084:credits_private_credits_scratch",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1370:credits_private_credits_create_generator",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1187:credits_private_credits_destroy",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1352:credits_private_credits_history_destroy",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1637:credits_private_fixed_time_ratio",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1745:credits_private_credits_ocean_update",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2713:credits_time_from_counter",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2760:credits_animator_frame",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2776:credits_animator_destroy",
+    "bytes": 16,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:381:credits_private_mem_resize",
+    "bytes": 8,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:839:credits_private_data_destroy",
+    "bytes": 8,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2358:credits_private_canvas_init",
+    "bytes": 8,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1448:credits_private_weather_init",
+    "bytes": 8,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1183:credits_private_credits_next",
+    "bytes": 8,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1211:credits_private_credits_type_characters",
+    "bytes": 8,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2299:credits_private_canvas60_style",
+    "bytes": 8,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:372:credits_private_credits_fail",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:399:credits_private_mem_free",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:670:credits_private_scene_due",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1068:credits_private_credits_typer",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1139:credits_private_credits_native_scene_due",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1134:credits_private_credits_no_clear",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1177:credits_private_credits_jump",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2359:credits_private_canvas_render",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2360:credits_private_canvas_destroy",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1324:credits_private_credits_write_history",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2357:credits_private_canvas_clear",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2262:credits_private_math_weather_target",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1577:credits_private_framebuffer_pixel",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1581:credits_private_framebuffer_render",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1585:credits_private_framebuffer_render_case",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:1592:credits_private_framebuffer_render60",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2326:credits_private_canvas60_put",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2243:credits_private_math_sin_degrees",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2267:credits_private_math_ocean_height",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2271:credits_private_math_ocean_text",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2275:credits_private_math_access_limit",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2279:credits_private_math_noise_count",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2283:credits_private_math_poweroff_height",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2287:credits_private_math_lookup_bytes",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2296:credits_private_cell_pack",
+    "bytes": 0,
+    "kind": "static"
+  },
+  {
+    "function": "D:\\credits_vfd\\include/credits_animator.h:2771:credits_animator_set_uppercase",
+    "bytes": 0,
+    "kind": "static"
+  }
+]

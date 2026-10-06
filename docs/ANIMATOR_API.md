@@ -46,17 +46,19 @@ stats 提供对象大小、工作区容量/使用量、预留载荷、帧数、�
 
 ## 内存与可移植范围
 
+Cortex-M3的逐成员、文本/历史容量及20 KiB SRAM分析见 [RAM_USAGE.md](RAM_USAGE.md)。
+
 当前核心将初始化数据和历史预留在实例工作区，32 次初始化预留，播放期间零预留；没有显式 malloc/calloc/realloc/free 调用。所有容量有检查，不允许越界静默截断。不要把工作区载荷再次加到 sizeof(Animator)。
 
-| 项目 | Windows x64 | ARM ABI / Cortex-M0 编译探针 |
+| 项目 | Windows x64 | ARM ABI / Cortex-M3 编译探针 |
 | --- | ---: | ---: |
-| 整个 CreditsAnimator（含工作区、播放器、fb） | 40584 B | 34872 B |
+| 整个 CreditsAnimator（含工作区、播放器、fb） | 40504 B | 34752 B |
 | 内含 framebuffer | 4096 B | 4096 B |
 | 内含字符画布及元数据 | 4812 B | 4812 B |
 
-ARM 对象约 34.05 KiB，32 KiB RAM 容纳不了整个对象。这里未计调用栈、板端驱动、少量独立静态数据和目标 libc 内部开销。只读表/代码适合 XIP，但当前未完成目标固件链接，不能给出真实 MCU ROM 或周期预算。
+ARM 对象约 33.94 KiB，32 KiB RAM 容纳不了整个对象。这里未计调用栈、板端驱动、少量独立静态数据和目标 libc 内部开销。只读表/代码适合 XIP，但当前未完成目标固件链接，不能给出真实 MCU ROM 或周期预算。
 
-这不是 freestanding/no-libc 实现：仍依赖 C99 libc/libm（含天气 sin、浮点 snprintf、sscanf 等）。核心对象无堆导入不保证目标 libc 内部完全不分配。既有 pow/cos 已消除，三种子每次完整播放仍有天气 sin 1002 次、初始化 floor 1 次；本轮未改这些算法。目标 libc、栈和 soft-float 周期需接入具体 MCU 工程后测量。
+这不是 freestanding/no-libc 实现：仍使用整数snprintf、sscanf、字符串函数及默认错误处理。原生天气已改float与小表正弦，不调用sin或浮点printf；终端参考和宿主适配保留double。核心无显式堆调用不保证目标libc内部完全不分配。误差、像素变化与F401代码生成审计见 [NATIVE_FLOAT.md](NATIVE_FLOAT.md)。
 
 ## 维护与验证
 

@@ -3,7 +3,7 @@ import argparse
 from pathlib import Path
 import re
 ROOT=Path(__file__).resolve().parents[1]
-MODULES='memory random scheduler data credits text scene_init weather framebuffer player_fixed ocean60 math_lookup charbuf60 scenes60 text60 animator'.split()
+MODULES='memory random scheduler data credits text scene_init weather60 framebuffer player_fixed ocean60 math_lookup charbuf60 scenes60 text60 animator'.split()
 TOKEN=re.compile(r'"(?:\\.|[^"\\])*"|\'(?:\\.|[^\'\\])*\'|/\*.*?\*/|//[^\n]*|\b[A-Za-z_]\w*\b', re.S)
 
 def rename(text,names):
@@ -37,6 +37,7 @@ def generate():
     private_types.update(re.findall(r'\benum\s+(\w+)\s*{',api+'\n'+implementation))
     private_types={n for n in private_types if n[0].isupper() and not n.startswith('CreditsAnimator') and n!='CreditsFrameView'}
     private_types.add('FixedTime')
+    private_types.add('WeatherNumber')
     names={n:'credits_private_'+n for n in private_functions|private_types|{'scene_definitions'}}
     combined=api+'\n'+implementation
     macros=set(re.findall(r'^#define\s+(\w+)',combined,re.M))

@@ -1,0 +1,146 @@
+
+File: build/ocean-overlay/libanimator_header_impl.a(animator_single_impl.c.obj)
+Format: COFF-x86-64
+Arch: x86_64
+AddressSize: 64bit
+Sections [
+  Section {
+    Number: 1
+    Name: .text (2E 74 65 78 74 00 00 00)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 52490
+    PointerToRawData: 0x154
+    PointerToRelocations: 0xCE5E
+    PointerToLineNumbers: 0x0
+    RelocationCount: 622
+    LineNumberCount: 0
+    Characteristics [ (0x60500020)
+      IMAGE_SCN_ALIGN_16BYTES (0x500000)
+      IMAGE_SCN_CNT_CODE (0x20)
+      IMAGE_SCN_MEM_EXECUTE (0x20000000)
+      IMAGE_SCN_MEM_READ (0x40000000)
+    ]
+  }
+  Section {
+    Number: 2
+    Name: .data (2E 64 61 74 61 00 00 00)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 32
+    PointerToRawData: 0xE6AA
+    PointerToRelocations: 0xE6CA
+    PointerToLineNumbers: 0x0
+    RelocationCount: 2
+    LineNumberCount: 0
+    Characteristics [ (0xC0500040)
+      IMAGE_SCN_ALIGN_16BYTES (0x500000)
+      IMAGE_SCN_CNT_INITIALIZED_DATA (0x40)
+      IMAGE_SCN_MEM_READ (0x40000000)
+      IMAGE_SCN_MEM_WRITE (0x80000000)
+    ]
+  }
+  Section {
+    Number: 3
+    Name: .bss (2E 62 73 73 00 00 00 00)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 0
+    PointerToRawData: 0x0
+    PointerToRelocations: 0x0
+    PointerToLineNumbers: 0x0
+    RelocationCount: 0
+    LineNumberCount: 0
+    Characteristics [ (0xC0300080)
+      IMAGE_SCN_ALIGN_4BYTES (0x300000)
+      IMAGE_SCN_CNT_UNINITIALIZED_DATA (0x80)
+      IMAGE_SCN_MEM_READ (0x40000000)
+      IMAGE_SCN_MEM_WRITE (0x80000000)
+    ]
+  }
+  Section {
+    Number: 4
+    Name: .xdata (2E 78 64 61 74 61 00 00)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 1080
+    PointerToRawData: 0xE6DE
+    PointerToRelocations: 0x0
+    PointerToLineNumbers: 0x0
+    RelocationCount: 0
+    LineNumberCount: 0
+    Characteristics [ (0x40300040)
+      IMAGE_SCN_ALIGN_4BYTES (0x300000)
+      IMAGE_SCN_CNT_INITIALIZED_DATA (0x40)
+      IMAGE_SCN_MEM_READ (0x40000000)
+    ]
+  }
+  Section {
+    Number: 5
+    Name: .rdata (2E 72 64 61 74 61 00 00)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 32064
+    PointerToRawData: 0xEB16
+    PointerToRelocations: 0x16856
+    PointerToLineNumbers: 0x0
+    RelocationCount: 457
+    LineNumberCount: 0
+    Characteristics [ (0x40500040)
+      IMAGE_SCN_ALIGN_16BYTES (0x500000)
+      IMAGE_SCN_CNT_INITIALIZED_DATA (0x40)
+      IMAGE_SCN_MEM_READ (0x40000000)
+    ]
+  }
+  Section {
+    Number: 6
+    Name: .debug$S (2E 64 65 62 75 67 24 53)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 156
+    PointerToRawData: 0x17A30
+    PointerToRelocations: 0x0
+    PointerToLineNumbers: 0x0
+    RelocationCount: 0
+    LineNumberCount: 0
+    Characteristics [ (0x42300040)
+      IMAGE_SCN_ALIGN_4BYTES (0x300000)
+      IMAGE_SCN_CNT_INITIALIZED_DATA (0x40)
+      IMAGE_SCN_MEM_DISCARDABLE (0x2000000)
+      IMAGE_SCN_MEM_READ (0x40000000)
+    ]
+  }
+  Section {
+    Number: 7
+    Name: .pdata (2E 70 64 61 74 61 00 00)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 816
+    PointerToRawData: 0x17ACC
+    PointerToRelocations: 0x17DFC
+    PointerToLineNumbers: 0x0
+    RelocationCount: 204
+    LineNumberCount: 0
+    Characteristics [ (0x40300040)
+      IMAGE_SCN_ALIGN_4BYTES (0x300000)
+      IMAGE_SCN_CNT_INITIALIZED_DATA (0x40)
+      IMAGE_SCN_MEM_READ (0x40000000)
+    ]
+  }
+  Section {
+    Number: 8
+    Name: .llvm_addrsig (2F 33 30 33 34 00 00 00)
+    VirtualSize: 0x0
+    VirtualAddress: 0x0
+    RawDataSize: 89
+    PointerToRawData: 0x185F4
+    PointerToRelocations: 0x0
+    PointerToLineNumbers: 0x0
+    RelocationCount: 0
+    LineNumberCount: 0
+    Characteristics [ (0x100800)
+      IMAGE_SCN_ALIGN_1BYTES (0x100000)
+      IMAGE_SCN_LNK_REMOVE (0x800)
+    ]
+  }
+]
